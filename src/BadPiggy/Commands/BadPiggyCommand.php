@@ -56,7 +56,7 @@ class BadPiggyCommand extends VanillaCommand{
                 if(!is_numeric($args[2])){
                     $sender->sendMessage("Seconds must be numeric.");
                 }
-                $this->plugin->burn($player, $arg[2]);
+                $this->plugin->burn($player, $args[2]);
                 $sender->sendMessage("§a" . $player->getName() . " is becoming human bacon.");
                 break;
             case "void":

@@ -29,7 +29,7 @@ class Main extends PluginBase{
 	}
 
 	public function explode(Player $player){
-		$explosion = new Explosion($player, 4, $player);
+		$explosion = new Explosion($player, 4);
 		$explosion->explodeA();
 	}
 

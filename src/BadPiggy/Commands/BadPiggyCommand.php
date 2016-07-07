@@ -19,10 +19,45 @@ class BadPiggyCommand extends VanillaCommand{
         if(!$this->testPermission($sender)){
             return true;
         }
+        if(isset($args[0])){
+            if($args[0] == "help"){
+                if(!isset($args[1])){
+                    $page = 1;
+                }else{       
+                    $page = $args[1];
+                }
+                if(!is_numeric($page)){
+                    $page = 1;
+                }
+                if($page > 5){
+                    $page = 5;
+                }
+                switch($page){
+                    case 0:
+                    case 1:
+                        $sender->sendMessage("--- Punishments Page 1 of 5---\n§2fall\n§2explode\n§2burn\n§2end");
+                        break;
+                    case 2:
+                        $sender->sendMessage("--- Punishments Page 2 of 5 ---\n§2void\n§2invoid\n§2lavablock\n§2fexplode");
+                        break;
+                    case 3:
+                        $sender->sendMessage("--- Punishments Page 3 of 5 ---\n§2glass\n§2babble\n§2leveldown\n§2exblock");
+                        break;
+                    case 4:
+                        $sender->sendMessage("--- Punishments Page 4 of 5 ---\n§2popular\n§2pumpkin\n§2armour\n§2maim");
+                        break;
+                    case 5:
+                        $sender->sendMessage("--- Punishments Page 5 of 5 ---\n§2scream");
+                        break;
+                }
+                return true;
+            }
+        }
         if(count($args) < 2){
             $sender->sendMessage("/badpiggy <player> <punishment>");
             return false;
         }
+        if($args )
         $player = $this->plugin->getServer()->getPlayer($args[0]);
         if(!$player instanceof Player){
             $sender->sendMessage("§cInvalid player.");
@@ -178,9 +213,9 @@ class BadPiggyCommand extends VanillaCommand{
                 }
                 $this->plugin->end($player);
                 $sender->sendMessage("§aAww.. this is the end of the trolling...");
-                break;           
+                break;   
             default:
-                $sender->sendMessage("§cInvalid punishments");
+                $sender->sendMessage("§cUnknown punishment. Try /badpiggy help for a list of punishments");
                 break;
         }
         return true;

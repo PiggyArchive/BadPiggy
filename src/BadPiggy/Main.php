@@ -21,7 +21,7 @@ class Main extends PluginBase{
 
 	public function explode(Player $player){
 		$explosion = new Explosion($player, 4, $player);
-		$explosion->explodeB();
+		$explosion->explodeA();
 	}
 
 	public function strike(Player $player){ //Coming Soon
@@ -45,6 +45,15 @@ class Main extends PluginBase{
 		if(isset($this->infall[strtolower($player->getName())])){
 			unset($this->infall[strtolower($player->getName())]);
 		}
+	}
+
+	public function void(Player $player){
+		$player->teleport($player->x, 0, $player->z);
+	}
+
+	public function fexplode(Player $player){
+		$explosion = new Explosion($player, 4, $player);
+		$explosion->explodeB();
 	}
 
 }

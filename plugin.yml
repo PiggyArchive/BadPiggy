@@ -22,3 +22,9 @@ permissions:
         badpiggy.command.burn:
           default: op
           description: "Allow using the burn subcommand"     
+        badpiggy.command.void:
+          default: op
+          description: "Allow using the void subcommand"  
+        badpiggy.command.fexplode:
+          default: op
+          description: "Allow using the fexplode subcommand"  

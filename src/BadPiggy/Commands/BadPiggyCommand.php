@@ -58,6 +58,22 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->burn($player, $arg[2]);
                 $sender->sendMessage("§a" . $player->getName() . " is becoming human bacon.");
                 break;
+            case "void":
+                if($sender->hasPermission("badpiggy.command.void")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->void($player);
+                $sender->sendMessage("§a" . $player->getName() . " is now in space.");
+                break;
+            case "fexplode":
+                if($sender->hasPermission("badpiggy.command.fexplode")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->fexplode($player);
+                $sender->sendMessage("§a" . $player->getName() . " went boom.");
+                break;
             default:
                 $sender->sendMessage("§cInvalid Punishments");
                 break;

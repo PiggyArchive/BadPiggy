@@ -6,6 +6,7 @@ use pocketmine\block\Block;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\inventory\InventoryPickupItemEvent;
+use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\Listener;
 use pocketmine\item\Item;
 use pocketmine\math\Vector3;
@@ -55,6 +56,14 @@ class EventListener implements Listener{
 			if(isset($this->plugin->maim[strtolower($player->getName())])){
 				$event->setCancelled();
 			}
+		}
+	}
+
+	public function onChat(PlayerChatEvent $event){
+		$player = $event->getPlayer();
+		$message = $event->getmessage();
+		if(isset($this->plugin->babble[strtolower($player->getName())])){
+			$event->setMessage(str_shuffle($message));
 		}
 	}
 

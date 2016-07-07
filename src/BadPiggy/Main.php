@@ -2,7 +2,7 @@
 
 namespace BadPiggy;
 
-use BadPiggy\Commands\BreakReplaceCommand;
+use BadPiggy\Commands\BadPiggyCommand;
 use pocketmine\block\Block;
 use pocketmine\item\Item;
 use pocketmine\level\Explosion;

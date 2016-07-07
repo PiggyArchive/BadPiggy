@@ -16,6 +16,9 @@ class BadPiggyCommand extends VanillaCommand{
 	}
 
 	public function execute(CommandSender $sender, $currentAlias, array $args){
+        if(!$this->testPermission($sender)){
+            return true;
+        }
         if(count($args) < 3){
             $sender->sendMessage("/badpiggy <player> <punishment>");
             return false;

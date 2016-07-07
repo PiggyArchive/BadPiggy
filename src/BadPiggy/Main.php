@@ -6,11 +6,13 @@ use BadPiggy\Commands\BreakReplaceCommand;
 use pocketmine\block\Block;
 use pocketmine\item\Item;
 use pocketmine\level\Explosion;
+use pocketmine\level\sound\GhastSound;
 use pocketmine\math\Vector3;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
 
 class Main extends PluginBase{
+	public $invoid;
 	public $lavablock;
 	public $exblock;
 	public $maim;
@@ -35,6 +37,11 @@ class Main extends PluginBase{
 	}
 
 	public function void(Player $player){
+		$player->teleport($player->x, 0, $player->z);
+	}
+
+	public function invoid(Player $player){
+		$this->invoid[strtolower($player->getName())] = true;
 		$player->teleport($player->x, 0, $player->z);
 	}
 
@@ -86,8 +93,15 @@ class Main extends PluginBase{
 		$this->maim[strtolower($player->getName())] = true;
 	}
 
+	public function scream(Player $player){
+		$players->getLevel()->addSound(new GhastSound($player), array($player));
+	}
+
 	public function end(Player $player){
 		$player->kill();
+		if(isset($this->invoid[strtolower($player->getName())])){
+			unset($this->invoid[strtolower($player->getName())]);
+		}
 		if(isset($this->maim[strtolower($player->getName())])){
 			unset($this->maim[strtolower($player->getName())]);
 		}

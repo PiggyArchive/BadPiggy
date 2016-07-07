@@ -10,7 +10,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Infall
 - [ ] Web
 - [x] Void
-- [ ] Invoid
+- [X] Invoid
 - [X] Lavablock
 - [ ] Hole
 - [ ] Teleport
@@ -53,5 +53,5 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Crash
 - [ ] Useless
 - [ ] IDTheft
-- [ ] Scream
+- [X] Scream
 - [ ] Trip

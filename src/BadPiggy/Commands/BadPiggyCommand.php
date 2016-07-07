@@ -66,6 +66,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->void($player);
                 $sender->sendMessage("§a" . $player->getName() . " is now in space.");
                 break;
+            case "invoid":
+                if($sender->hasPermission("badpiggy.command.invoid")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->invoid($player);
+                $sender->sendMessage("§a" . $player->getName() . " is now in space forever.");
+                break;
             case "lavablock":
                 if($sender->hasPermission("badpiggy.command.lavablock")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -136,6 +144,14 @@ class BadPiggyCommand extends VanillaCommand{
                 }
                 $this->plugin->maim($player);
                 $sender->sendMessage("§a" . $player->getName() . " won't be able to pick thing ups for a while...");
+                break; 
+            case "scream":
+                if($sender->hasPermission("badpiggy.command.scream")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->scream($player);
+                $sender->sendMessage("§a" . $player->getName() . " won't forget this for a while.");
                 break; 
             case "end":
                 if($sender->hasPermission("badpiggy.command.end")){

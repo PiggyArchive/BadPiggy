@@ -4,6 +4,8 @@ namespace BadPiggy;
 
 use pocketmine\block\Block;
 use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\event\inventory\InventoryPickupItemEvent;
 use pocketmine\event\Listener;
 use pocketmine\item\Item;
 use pocketmine\math\Vector3;
@@ -32,6 +34,17 @@ class EventListener implements Listener{
 			$explosion = new Explosion($player, 4, $player);
 			$explosion->explodeA();
 			$event->setCancelled();
+		}
+	}
+
+	public function onDamage(EntityDamageEvent $event){
+		$entity = $event->getEntity();
+		if($entity instanceof Player){
+			if(isset($this->plugin->invoid[strtolower($entity->getName())])){
+				if($event->getCause() == EntityDamageEvent::CAUSE_VOID){
+					$event->setCancelled();
+				}
+			}
 		}
 	}
 

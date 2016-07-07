@@ -13,7 +13,8 @@ use pocketmine\Player;
 class Main extends PluginBase{
 	public $lavablock;
 	public $exblock;
-	
+	public $maim;
+
 	public function onEnable(){
     	$this->getServer()->getCommandMap()->register('badpiggy', new BadPiggyCommand('badpiggy', $this));
     	$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
@@ -63,6 +64,17 @@ class Main extends PluginBase{
 
 	public function pumpkin(Player $player){
 		$player->getInventory()->setHelmet(Item::get(Item::PUMPKIN));
+	}
+
+	public function maim(Player $player){
+		$this->maim[strtolower($player->getName())] = true;
+	}
+
+	public function end(Player $player){
+		$player->kill();
+		if(isset($this->maim[strtolower($player->getName())])){
+			unset($this->maim[strtolower($player->getName())]);
+		}
 	}
 
 }

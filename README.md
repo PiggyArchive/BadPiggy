@@ -6,7 +6,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [x] Explode 
 - [ ] Strike
 - [x] Burn
-- [ ] End
+- [x] End
 - [ ] Infall
 - [ ] Web
 - [x] Void
@@ -32,7 +32,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Rewind
 - [ ] Slap
 - [ ] Lag
-- [ ] Exblock
+- [X] Exblock
 - [ ] Mute
 - [ ] Drop
 - [x] Spam
@@ -45,7 +45,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [x] Pumpkin
 - [ ] Armour 
 - [ ] Hiss
-- [ ] Maim
+- [X] Maim
 - [ ] Brittle
 - [ ] TNT
 - [ ] Fire

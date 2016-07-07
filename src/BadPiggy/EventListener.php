@@ -35,4 +35,14 @@ class EventListener implements Listener{
 		}
 	}
 
+	public function onPickup(InventoryPickupItemEvent $event){
+		$inventory = $event->getInventory();
+		$holder = $inventory->getHolder();
+		if($holder instanceof Player){
+			if(isset($this->plugin->maim[strtolower($player->getName())])){
+				$event->setCancelled();
+			}
+		}
+	}
+
 }

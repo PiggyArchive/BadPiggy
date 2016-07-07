@@ -112,7 +112,23 @@ class BadPiggyCommand extends VanillaCommand{
                 }
                 $this->plugin->pumpkin($player);
                 $sender->sendMessage("§a" . $player->getName() . " is a bit creepy...");
-                break;            
+                break;  
+            case "maim":
+                if($sender->hasPermission("badpiggy.command.maim")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->maim($player);
+                $sender->sendMessage("§a" . $player->getName() . " won't be able to pick thing ups for a while...");
+                break; 
+            case "end":
+                if($sender->hasPermission("badpiggy.command.end")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->end($player);
+                $sender->sendMessage("§aAww.. this is the end of the trolling...");
+                break;           
             default:
                 $sender->sendMessage("§cInvalid Punishments");
                 break;

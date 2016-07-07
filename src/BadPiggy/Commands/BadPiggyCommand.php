@@ -89,6 +89,14 @@ class BadPiggyCommand extends VanillaCommand{
                 }
                 $this->plugin->glass($player);
                 $sender->sendMessage("§a" . $player->getName() . " is uh... stuck.");
+                break; 
+            case "leveldown":
+                if($sender->hasPermission("badpiggy.command.leveldown")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->leveldown($player);
+                $sender->sendMessage("§a" . $player->getName() . " has no enchanting rights!");
                 break;   
             case "exblock":
                 if($sender->hasPermission("badpiggy.command.exblock")){
@@ -104,8 +112,16 @@ class BadPiggyCommand extends VanillaCommand{
                 }
                 $this->plugin->spam($player);
                 $sender->sendMessage("§a" . $player->getName() . " is too busy reading his emails.");
-                break;   
+                break;  
             case "pumpkin":
+                if($sender->hasPermission("badpiggy.command.popular")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->popular($player);
+                $sender->sendMessage("§a" . $player->getName() . " has lots of fans...");
+                break;   
+            case "popular":
                 if($sender->hasPermission("badpiggy.command.pumpkin")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;

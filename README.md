@@ -24,7 +24,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Strip
 - [x] Glass
 - [ ] Shoot
-- [ ] Babble
+- [x] Babble
 - [ ] Spin
 - [ ] Unaware
 - [X] Leveldown
@@ -43,7 +43,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [X] Popular
 - [ ] Display
 - [x] Pumpkin
-- [ ] Armour 
+- [X] Armour 
 - [ ] Hiss
 - [X] Maim
 - [ ] Brittle

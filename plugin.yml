@@ -37,6 +37,9 @@ permissions:
         badpiggy.command.glass:
           default: op
           description: "Allow using the glass subcommand"  
+        badpiggy.command.babble:
+          default: op
+          description: "Allow using the babble subcommand"  
         badpiggy.command.leveldown:
           default: op
           description: "Allow using the leveldown subcommand"
@@ -52,6 +55,9 @@ permissions:
         badpiggy.command.pumpkin:
           default: op
           description: "Allow using the pumpkin subcommand"  
+        badpiggy.command.armour:
+          default: op
+          description: "Allow using the armour subcommand"  
         badpiggy.command.maim:
           default: op
           description: "Allow using the maim subcommand"  

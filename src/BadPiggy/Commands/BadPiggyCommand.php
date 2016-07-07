@@ -98,6 +98,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->glass($player);
                 $sender->sendMessage("§a" . $player->getName() . " is uh... stuck.");
                 break; 
+            case "babble":
+                if($sender->hasPermission("badpiggy.command.babble")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->babble($player);
+                $sender->sendMessage("§a" . $player->getName() . " babbles too much...");
+                break; 
             case "leveldown":
                 if($sender->hasPermission("badpiggy.command.leveldown")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -121,15 +129,15 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->spam($player);
                 $sender->sendMessage("§a" . $player->getName() . " is too busy reading his emails.");
                 break;  
-            case "pumpkin":
+            case "popular":
                 if($sender->hasPermission("badpiggy.command.popular")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
                 $this->plugin->popular($player);
                 $sender->sendMessage("§a" . $player->getName() . " has lots of fans...");
-                break;   
-            case "popular":
+                break;     
+            case "pumpkin":
                 if($sender->hasPermission("badpiggy.command.pumpkin")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
@@ -137,6 +145,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->pumpkin($player);
                 $sender->sendMessage("§a" . $player->getName() . " is a bit creepy...");
                 break;  
+            case "armour":
+                if($sender->hasPermission("badpiggy.command.armour")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->armour($player);
+                $sender->sendMessage("§a" . $player->getName() . " has very good armor...");
+                break; 
             case "maim":
                 if($sender->hasPermission("badpiggy.command.maim")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");

@@ -14,6 +14,7 @@ use pocketmine\Player;
 class Main extends PluginBase{
 	public $invoid;
 	public $lavablock;
+	public $babble;
 	public $exblock;
 	public $maim;
 
@@ -59,6 +60,10 @@ class Main extends PluginBase{
 		$player->teleport(new Vector3($player->x, 128, $player->z));
 	}
 
+	public function babble(Player $player){
+		$this->babble[strtolower($player->getName())] = true;
+	}
+
 	public function leveldown(Player $player){
 		switch($this->getServer()->getName()){
 			case "ClearSky":
@@ -89,6 +94,13 @@ class Main extends PluginBase{
 		$player->getInventory()->setHelmet(Item::get(Item::PUMPKIN));
 	}
 
+	public function armour(Player $player){
+		$player->getInventory()->setHelmet(Item::get(Item::BUCKET));
+		$player->getInventory()->setChestplate(Item::get(Item::BUCKET));
+		$player->getInventory()->setLeggings(Item::get(Item::BUCKET));
+		$player->getInventory()->setBoots(Item::get(Item::BUCKET));
+	}
+
 	public function maim(Player $player){
 		$this->maim[strtolower($player->getName())] = true;
 	}
@@ -101,6 +113,9 @@ class Main extends PluginBase{
 		$player->kill();
 		if(isset($this->invoid[strtolower($player->getName())])){
 			unset($this->invoid[strtolower($player->getName())]);
+		}
+		if(isset($this->babble[strtolower($player->getName())])){
+			unset($this->babble[strtolower($player->getName())]);
 		}
 		if(isset($this->maim[strtolower($player->getName())])){
 			unset($this->maim[strtolower($player->getName())]);

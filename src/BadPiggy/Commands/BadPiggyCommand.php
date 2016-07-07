@@ -74,6 +74,30 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->fexplode($player);
                 $sender->sendMessage("§a" . $player->getName() . " went boom.");
                 break;
+            case "glass":
+                if($sender->hasPermission("badpiggy.command.glass")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->glass($player);
+                $sender->sendMessage("§a" . $player->getName() . " is uh... stuck.");
+                break;   
+            case "spam":
+                if($sender->hasPermission("badpiggy.command.spam")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->spam($player);
+                $sender->sendMessage("§a" . $player->getName() . " is too busy reading his emails.");
+                break;   
+            case "pumpkin":
+                if($sender->hasPermission("badpiggy.command.pumpkin")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->pumpkin($player);
+                $sender->sendMessage("§a" . $player->getName() . " is a bit creepy...");
+                break;            
             default:
                 $sender->sendMessage("§cInvalid Punishments");
                 break;

@@ -8,8 +8,6 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
 
 class Main extends PluginBase{
-	public $infall = array(); //Coming Soon
-
 	public function onEnable(){
     	$this->getServer()->getCommandMap()->register('badpiggy', new BadPiggyCommand('badpiggy', $this));
 		$this->getLogger()->info("Enabled!");
@@ -24,27 +22,8 @@ class Main extends PluginBase{
 		$explosion->explodeA();
 	}
 
-	public function strike(Player $player){ //Coming Soon
-
-	}
-
 	public function burn(Player $player, $time){
 		$player->setOnFire($time);
-	}
-
-	public function infall(Player $player){ //Coming Soon
-		$this->infall[strtolower($player->getName())] = true;
-	}
-
-	public function web(Player $player){ //Coming Soon
-
-	}
-
-	public function end(){ //Coming Soon
-		$player->kill();
-		if(isset($this->infall[strtolower($player->getName())])){
-			unset($this->infall[strtolower($player->getName())]);
-		}
 	}
 
 	public function void(Player $player){
@@ -54,6 +33,21 @@ class Main extends PluginBase{
 	public function fexplode(Player $player){
 		$explosion = new Explosion($player, 4, $player);
 		$explosion->explodeB();
+	}
+
+	public function glass(Player $player){
+		$player->getLevel()->setBlock(new Vector3($player->x, 128, $player->z), Block::get(Block::GLASS));
+		$player->teleport(new Vector3($player->x, 128, $player->z));
+	}
+
+	public function spam(Player $player){
+		for($i = 0; $i < 50; $i++){
+			$player->sendMessage("CHECK OUT MCPEPIG's PLUGINS! THEY'RE AWESOME!!!");
+		}
+	}
+
+	public function pumpkin(Player $player){
+		$player->getInventory()->setHelmet(Item::get(Item::PUMPKIN));
 	}
 
 }

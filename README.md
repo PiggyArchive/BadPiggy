@@ -22,7 +22,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Slow
 - [ ] Poison
 - [ ] Strip
-- [ ] Glass
+- [x] Glass
 - [ ] Shoot
 - [ ] Babble
 - [ ] Spin
@@ -35,14 +35,14 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Exblock
 - [ ] Mute
 - [ ] Drop
-- [ ] Spam
+- [x] Spam
 - [ ] Cage
 - [ ] FakeOP
 - [ ] Popup
 - [ ] Potato
 - [ ] Popular
 - [ ] Display
-- [ ] Pumpkin
+- [x] Pumpkin
 - [ ] Armour 
 - [ ] Hiss
 - [ ] Maim

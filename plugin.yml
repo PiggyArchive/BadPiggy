@@ -28,3 +28,12 @@ permissions:
         badpiggy.command.fexplode:
           default: op
           description: "Allow using the fexplode subcommand"  
+        badpiggy.command.glass:
+          default: op
+          description: "Allow using the glass subcommand"  
+        badpiggy.command.spam:
+          default: op
+          description: "Allow using the spam subcommand"  
+        badpiggy.command.pumpkin:
+          default: op
+          description: "Allow using the pumpkin subcommand"  

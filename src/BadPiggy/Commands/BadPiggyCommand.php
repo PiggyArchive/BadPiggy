@@ -122,6 +122,7 @@ class BadPiggyCommand extends VanillaCommand{
                 }
                 $this->plugin->exblock($player);
                 $sender->sendMessage("§a" . $player->getName() . " is gonna have a nice suprise.");
+                break;
             case "spam":
                 if(!$sender->hasPermission("badpiggy.command.spam")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");

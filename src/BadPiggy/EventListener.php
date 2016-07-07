@@ -27,7 +27,7 @@ class EventListener implements Listener{
 		$block = $event->getBlock();
 		if(isset($this->plugin->lavablock[strtolower($player->getName())])){
 			unset($this->plugin->lavablock[strtolower($player->getName())]);
-			$player->getLevel()->setBlock($block->getPosition(), Block::get(Block::LAVA));
+			$player->getLevel()->setBlock(new Vector3($block->x, $block->y, $block->z), Block::get(Block::LAVA));
 			$event->setCancelled();
 		}
 		if(isset($this->plugin->exblock[strtolower($player->getName())])){

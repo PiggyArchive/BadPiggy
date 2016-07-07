@@ -56,8 +56,9 @@ class Main extends PluginBase{
 	}
 
 	public function glass(Player $player){
-		$player->getLevel()->setBlock(new Vector3($player->x, 128, $player->z), Block::get(Block::GLASS));
-		$player->teleport(new Vector3($player->x, 128, $player->z));
+		$Vector3 = new Vector3($player->x, 125, $player->z);
+		$player->getLevel()->setBlock($Vector3, Block::get(Block::GLASS));
+		$player->teleport(new Vector3($player->x, 126, $player->z));
 	}
 
 	public function babble(Player $player){
@@ -80,7 +81,7 @@ class Main extends PluginBase{
 
 	public function spam(Player $player){
 		for($i = 0; $i < 50; $i++){
-			$player->sendMessage("CHECK OUT MCPEPIG's PLUGINS! THEY'RE AWESOME!!!");
+			$player->sendMessage("§aCHECK OUT MCPEPIG's PLUGINS! THEY'RE AWESOME!!!");
 		}
 	}
 

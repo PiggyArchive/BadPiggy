@@ -21,11 +21,11 @@ class Main extends PluginBase{
 	public function onEnable(){
     	$this->getServer()->getCommandMap()->register('badpiggy', new BadPiggyCommand('badpiggy', $this));
     	$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
-		$this->getLogger()->info("Enabled!");
+		$this->getLogger()->info("§aEnabled.");
 	}
 
 	public function fall(Player $player){
-		$player->teleport($player->x, $player->y + 200, $player->z);
+		$player->teleport($player->add(0, 200));
 	}
 
 	public function explode(Player $player){

@@ -52,6 +52,16 @@ class Main extends PluginBase{
 		$player->teleport(new Vector3($player->x, 128, $player->z));
 	}
 
+	public function leveldown(Player $player){
+		switch($this->getServer()->getName()){
+			case "ClearSky":
+			case "ImagicalMine":
+			case "Genisys":
+				$player->setExp(0);
+				break;
+		}
+	}
+
 	public function exblock(Player $player){
 		$this->exblock[strtolower($player->getName())] = true;
 	}
@@ -59,6 +69,12 @@ class Main extends PluginBase{
 	public function spam(Player $player){
 		for($i = 0; $i < 50; $i++){
 			$player->sendMessage("CHECK OUT MCPEPIG's PLUGINS! THEY'RE AWESOME!!!");
+		}
+	}
+
+	public function popular(Player $player){
+		foreach($this->getServer()->getOnlinePlayers() as $p){
+			$p->teleport($player);
 		}
 	}
 

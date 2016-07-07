@@ -27,7 +27,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Babble
 - [ ] Spin
 - [ ] Unaware
-- [ ] Leveldown
+- [X] Leveldown
 - [ ] Night
 - [ ] Rewind
 - [ ] Slap
@@ -40,7 +40,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] FakeOP
 - [ ] Popup
 - [ ] Potato
-- [ ] Popular
+- [X] Popular
 - [ ] Display
 - [x] Pumpkin
 - [ ] Armour 

@@ -25,12 +25,18 @@ permissions:
         badpiggy.command.void:
           default: op
           description: "Allow using the void subcommand"  
+        badpiggy.command.lavablock:
+          default: op
+          description: "Allow using the lavablock subcommand"  
         badpiggy.command.fexplode:
           default: op
           description: "Allow using the fexplode subcommand"  
         badpiggy.command.glass:
           default: op
           description: "Allow using the glass subcommand"  
+        badpiggy.command.exblock:
+          default: op
+          description: "Allow using the exblock subcommand"  
         badpiggy.command.spam:
           default: op
           description: "Allow using the spam subcommand"  

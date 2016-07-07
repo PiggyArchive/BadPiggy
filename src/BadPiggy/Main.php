@@ -3,13 +3,20 @@
 namespace BadPiggy;
 
 use BadPiggy\Commands\BreakReplaceCommand;
+use pocketmine\block\Block;
+use pocketmine\item\Item;
 use pocketmine\level\Explosion;
+use pocketmine\math\Vector3;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
 
 class Main extends PluginBase{
+	public $lavablock;
+	public $exblock;
+	
 	public function onEnable(){
     	$this->getServer()->getCommandMap()->register('badpiggy', new BadPiggyCommand('badpiggy', $this));
+    	$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 		$this->getLogger()->info("Enabled!");
 	}
 
@@ -30,6 +37,10 @@ class Main extends PluginBase{
 		$player->teleport($player->x, 0, $player->z);
 	}
 
+	public function lavablock(Player $player){
+		$this->lavablock[strtolower($player->getName())] = true;
+	}
+
 	public function fexplode(Player $player){
 		$explosion = new Explosion($player, 4, $player);
 		$explosion->explodeB();
@@ -38,6 +49,10 @@ class Main extends PluginBase{
 	public function glass(Player $player){
 		$player->getLevel()->setBlock(new Vector3($player->x, 128, $player->z), Block::get(Block::GLASS));
 		$player->teleport(new Vector3($player->x, 128, $player->z));
+	}
+
+	public function exblock(Player $player){
+		$this->exblock[strtolower($player->getName())] = true;
 	}
 
 	public function spam(Player $player){

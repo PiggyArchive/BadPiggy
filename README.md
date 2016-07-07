@@ -11,11 +11,11 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Web
 - [x] Void
 - [ ] Invoid
-- [ ] Lavablock
+- [X] Lavablock
 - [ ] Hole
 - [ ] Teleport
 - [ ] Freeze
-- [ ] Fexplode
+- [X] Fexplode
 - [ ] Blind
 - [ ] Drunk
 - [ ] Starve

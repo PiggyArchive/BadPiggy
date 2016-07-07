@@ -26,7 +26,7 @@ class BadPiggyCommand extends VanillaCommand{
         $player = $this->plugin->getServer()->getPlayer($args[0]);
         if(!$player instanceof Player){
             $sender->sendMessage("§cInvalid player.");
-            return false
+            return false;
         }
         switch(strtolower($args[1])){
             case "fall":

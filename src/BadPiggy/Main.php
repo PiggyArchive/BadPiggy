@@ -38,12 +38,12 @@ class Main extends PluginBase{
 	}
 
 	public function void(Player $player){
-		$player->teleport($player->x, 0, $player->z);
+		$player->teleport(new Vector3($player->x, 0, $player->z));
 	}
 
 	public function invoid(Player $player){
 		$this->invoid[strtolower($player->getName())] = true;
-		$player->teleport($player->x, 0, $player->z);
+		$player->teleport(new Vector3($player->x, 0, $player->z));
 	}
 
 	public function lavablock(Player $player){

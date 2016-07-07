@@ -11,6 +11,7 @@ use pocketmine\event\Listener;
 use pocketmine\item\Item;
 use pocketmine\level\Explosion;
 use pocketmine\math\Vector3;
+use pocketmine\Player;
 
 class EventListener implements Listener{
 	public function __construct($plugin){
@@ -54,9 +55,12 @@ class EventListener implements Listener{
 	public function onPickup(InventoryPickupItemEvent $event){
 		$inventory = $event->getInventory();
 		$holder = $inventory->getHolder();
+		echo "Bye";
 		if($holder instanceof Player){
-			if(isset($this->plugin->maim[strtolower($player->getName())])){
+			echo "Hi";
+			if(isset($this->plugin->maim[strtolower($holder->getName())])){
 				$event->setCancelled();
+				echo "k";
 			}
 		}
 	}

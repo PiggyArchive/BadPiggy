@@ -6,7 +6,7 @@ use BadPiggy\Commands\BadPiggyCommand;
 use pocketmine\block\Block;
 use pocketmine\item\Item;
 use pocketmine\level\Explosion;
-use pocketmine\level\sound\GhastSound;
+use pocketmine\level\sound\GhastShootSound;
 use pocketmine\math\Vector3;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
@@ -108,7 +108,7 @@ class Main extends PluginBase{
 	}
 
 	public function scream(Player $player){
-		$player->getLevel()->addSound(new GhastSound($player), array($player));
+		$player->getLevel()->addSound(new GhastShootSound($player));
 	}
 
 	public function end(Player $player){

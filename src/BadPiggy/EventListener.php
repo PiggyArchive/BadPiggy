@@ -9,6 +9,7 @@ use pocketmine\event\inventory\InventoryPickupItemEvent;
 use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\Listener;
 use pocketmine\item\Item;
+use pocketmine\level\Explosion;
 use pocketmine\math\Vector3;
 
 class EventListener implements Listener{

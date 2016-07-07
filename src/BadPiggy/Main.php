@@ -107,7 +107,7 @@ class Main extends PluginBase{
 	}
 
 	public function scream(Player $player){
-		$players->getLevel()->addSound(new GhastSound($player), array($player));
+		$player->getLevel()->addSound(new GhastSound($player), array($player));
 	}
 
 	public function end(Player $player){

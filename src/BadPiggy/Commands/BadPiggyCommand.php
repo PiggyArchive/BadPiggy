@@ -26,14 +26,26 @@ class BadPiggyCommand extends VanillaCommand{
         }
         switch(strtolower($args[1])){
             case "fall":
+                if($sender->hasPermission("badpiggy.command.fall")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
                 $this->plugin->fall($player);
                 $sender->sendMessage("§a" . $player->getName() . " is now falling to their deaths.");
                 break;
             case "explode":
+                if($sender->hasPermission("badpiggy.command.explode")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
                 $this->plugin->explode($player);
                 $sender->sendMessage("§a" . $player->getName() . " went boom.");
                 break;
             case "burn":
+                if($sender->hasPermission("badpiggy.command.burn")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
                 if(!isset($args[2])){
                     $sender->sendMessage("/badpiggy burn <seconds>");
                 }

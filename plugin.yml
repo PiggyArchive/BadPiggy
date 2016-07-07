@@ -14,5 +14,11 @@ permissions:
       description: "Allow using all BadPiggy commands"
       children:
         badpiggy.command.fall:
-          default: true
+          default: op
           description: "Allow using the fall subcommand"
+        badpiggy.command.explode:
+          default: op
+          description: "Allow using the explode subcommand"  
+        badpiggy.command.burn:
+          default: op
+          description: "Allow using the burn subcommand"     

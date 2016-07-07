@@ -21,7 +21,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Starve
 - [ ] Slow
 - [ ] Poison
-- [ ] Strip
+- [X] Strip
 - [x] Glass
 - [ ] Shoot
 - [x] Babble

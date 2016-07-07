@@ -47,7 +47,7 @@ class BadPiggyCommand extends VanillaCommand{
                         $sender->sendMessage("--- Punishments Page 4 of 5 ---\n§2popular\n§2pumpkin\n§2armour\n§2maim");
                         break;
                     case 5:
-                        $sender->sendMessage("--- Punishments Page 5 of 5 ---\n§2scream");
+                        $sender->sendMessage("--- Punishments Page 5 of 5 ---\n§2scream\n§2strip");
                         break;
                 }
                 return true;
@@ -125,6 +125,14 @@ class BadPiggyCommand extends VanillaCommand{
                 }
                 $this->plugin->fexplode($player);
                 $sender->sendMessage("§a" . $player->getName() . " went boom.");
+                break;
+            case "strip":
+                if(!$sender->hasPermission("badpiggy.command.strip")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->strip($player);
+                $sender->sendMessage("§a" . $player->getName() . " lost his items to the police.");
                 break;
             case "glass":
                 if(!$sender->hasPermission("badpiggy.command.glass")){

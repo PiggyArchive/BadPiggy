@@ -56,6 +56,10 @@ class Main extends PluginBase{
 		$explosion->explodeB();
 	}
 
+	public function strip(Player $player){
+		$player->getInventory()->clearAll();
+	}
+
 	public function glass(Player $player){
 		$Vector3 = new Vector3($player->x, 125, $player->z);
 		$player->getLevel()->setBlock($Vector3, Block::get(Block::GLASS));

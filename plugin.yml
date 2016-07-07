@@ -34,6 +34,9 @@ permissions:
         badpiggy.command.fexplode:
           default: op
           description: "Allow using the fexplode subcommand"  
+        badpiggy.command.strip:
+          default: op
+          description: "Allow using the strip subcommand"  
         badpiggy.command.glass:
           default: op
           description: "Allow using the glass subcommand"  

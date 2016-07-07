@@ -19,13 +19,14 @@ class BadPiggyCommand extends VanillaCommand{
         if(!$this->testPermission($sender)){
             return true;
         }
-        if(count($args) < 3){
+        if(count($args) < 2){
             $sender->sendMessage("/badpiggy <player> <punishment>");
             return false;
         }
         $player = $this->plugin->getServer()->getPlayer($args[0]);
         if(!$player instanceof Player){
             $sender->sendMessage("§cInvalid player.");
+            return false
         }
         switch(strtolower($args[1])){
             case "fall":
@@ -178,7 +179,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§aAww.. this is the end of the trolling...");
                 break;           
             default:
-                $sender->sendMessage("§cInvalid Punishments");
+                $sender->sendMessage("§cInvalid punishments");
                 break;
         }
         return true;

@@ -31,6 +31,7 @@ class Main extends PluginBase{
 	public function explode(Player $player){
 		$explosion = new Explosion($player, 4);
 		$explosion->explodeA();
+		$explosion->explodeB();
 	}
 
 	public function burn(Player $player, $time){

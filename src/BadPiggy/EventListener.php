@@ -35,6 +35,7 @@ class EventListener implements Listener{
 			unset($this->plugin->exblock[strtolower($player->getName())]);
 			$explosion = new Explosion($player, 4, $player);
 			$explosion->explodeA();
+			$explosion->explodeB();
 			$event->setCancelled();
 		}
 	}

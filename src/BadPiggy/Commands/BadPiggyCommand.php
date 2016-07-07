@@ -30,7 +30,7 @@ class BadPiggyCommand extends VanillaCommand{
         }
         switch(strtolower($args[1])){
             case "fall":
-                if($sender->hasPermission("badpiggy.command.fall")){
+                if(!$sender->hasPermission("badpiggy.command.fall")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -38,7 +38,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " is now falling to their deaths.");
                 break;
             case "explode":
-                if($sender->hasPermission("badpiggy.command.explode")){
+                if(!$sender->hasPermission("badpiggy.command.explode")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -46,7 +46,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " went boom.");
                 break;
             case "burn":
-                if($sender->hasPermission("badpiggy.command.burn")){
+                if(!$sender->hasPermission("badpiggy.command.burn")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -60,7 +60,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " is becoming human bacon.");
                 break;
             case "void":
-                if($sender->hasPermission("badpiggy.command.void")){
+                if(!$sender->hasPermission("badpiggy.command.void")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -68,7 +68,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " is now in space.");
                 break;
             case "invoid":
-                if($sender->hasPermission("badpiggy.command.invoid")){
+                if(!$sender->hasPermission("badpiggy.command.invoid")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -76,7 +76,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " is now in space forever.");
                 break;
             case "lavablock":
-                if($sender->hasPermission("badpiggy.command.lavablock")){
+                if(!$sender->hasPermission("badpiggy.command.lavablock")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -84,7 +84,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " is gonna have a nice suprise.");
                 break;               
             case "fexplode":
-                if($sender->hasPermission("badpiggy.command.fexplode")){
+                if(!$sender->hasPermission("badpiggy.command.fexplode")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -92,7 +92,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " went boom.");
                 break;
             case "glass":
-                if($sender->hasPermission("badpiggy.command.glass")){
+                if(!$sender->hasPermission("badpiggy.command.glass")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -100,7 +100,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " is uh... stuck.");
                 break; 
             case "babble":
-                if($sender->hasPermission("badpiggy.command.babble")){
+                if(!$sender->hasPermission("badpiggy.command.babble")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -108,7 +108,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " babbles too much...");
                 break; 
             case "leveldown":
-                if($sender->hasPermission("badpiggy.command.leveldown")){
+                if(!$sender->hasPermission("badpiggy.command.leveldown")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -116,14 +116,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " has no enchanting rights!");
                 break;   
             case "exblock":
-                if($sender->hasPermission("badpiggy.command.exblock")){
+                if(!$sender->hasPermission("badpiggy.command.exblock")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
                 $this->plugin->exblock($player);
                 $sender->sendMessage("§a" . $player->getName() . " is gonna have a nice suprise.");
             case "spam":
-                if($sender->hasPermission("badpiggy.command.spam")){
+                if(!$sender->hasPermission("badpiggy.command.spam")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -131,7 +131,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " is too busy reading his emails.");
                 break;  
             case "popular":
-                if($sender->hasPermission("badpiggy.command.popular")){
+                if(!$sender->hasPermission("badpiggy.command.popular")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -139,7 +139,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " has lots of fans...");
                 break;     
             case "pumpkin":
-                if($sender->hasPermission("badpiggy.command.pumpkin")){
+                if(!$sender->hasPermission("badpiggy.command.pumpkin")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -147,7 +147,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " is a bit creepy...");
                 break;  
             case "armour":
-                if($sender->hasPermission("badpiggy.command.armour")){
+                if(!$sender->hasPermission("badpiggy.command.armour")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -155,7 +155,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " has very good armor...");
                 break; 
             case "maim":
-                if($sender->hasPermission("badpiggy.command.maim")){
+                if(!$sender->hasPermission("badpiggy.command.maim")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -163,7 +163,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " won't be able to pick thing ups for a while...");
                 break; 
             case "scream":
-                if($sender->hasPermission("badpiggy.command.scream")){
+                if(!$sender->hasPermission("badpiggy.command.scream")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
@@ -171,7 +171,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " won't forget this for a while.");
                 break; 
             case "end":
-                if($sender->hasPermission("badpiggy.command.end")){
+                if(!$sender->hasPermission("badpiggy.command.end")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }

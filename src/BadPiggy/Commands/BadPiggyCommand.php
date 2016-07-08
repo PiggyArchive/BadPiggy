@@ -20,7 +20,7 @@ class BadPiggyCommand extends VanillaCommand{
             return true;
         }
         if(isset($args[0])){
-            if($args[0] == "help"){
+            if($args[0] == "list"){
                 if(!isset($args[1])){
                     $page = 1;
                 }else{       
@@ -223,7 +223,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§aAww.. this is the end of the trolling...");
                 break;   
             default:
-                $sender->sendMessage("§cUnknown punishment. Try /badpiggy help for a list of punishments");
+                $sender->sendMessage("§cUnknown punishment. Try /badpiggy list for a list of punishments");
                 break;
         }
         return true;

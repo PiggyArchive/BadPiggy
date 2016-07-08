@@ -20,6 +20,7 @@ class Main extends PluginBase{
 	public $freeze;
 	public $babble;
 	public $exblock;
+	public $mute;
 	public $maim;
 
 	public function onEnable(){
@@ -105,6 +106,10 @@ class Main extends PluginBase{
 
 	public function exblock(Player $player){
 		$this->exblock[strtolower($player->getName())] = true;
+	}
+
+	public function mute(Player $player){
+		$this->mute[strtolower($player->getName())] = true;
 	}
 
 	public function spam(Player $player){

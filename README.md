@@ -33,7 +33,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Slap
 - [ ] Lag
 - [X] Exblock
-- [ ] Mute
+- [X] Mute
 - [ ] Drop
 - [x] Spam
 - [ ] Cage

@@ -72,6 +72,9 @@ class EventListener implements Listener{
 		if(isset($this->plugin->babble[strtolower($player->getName())])){
 			$event->setMessage(str_shuffle($message));
 		}
+		if(isset($this->plugin->mute[strtolower($player->getName())])){
+			$event->setCancelled();
+		}
 	}
 
 	public function onMove(PlayerMoveEvent $event){

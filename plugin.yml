@@ -55,6 +55,9 @@ permissions:
         badpiggy.command.exblock:
           default: op
           description: "Allow using the exblock subcommand"  
+        badpiggy.command.mute:
+          default: op
+          description: "Allow using the mute subcommand"  
         badpiggy.command.spam:
           default: op
           description: "Allow using the spam subcommand" 

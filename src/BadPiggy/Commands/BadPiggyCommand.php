@@ -182,6 +182,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->exblock($player);
                 $sender->sendMessage("§a" . $player->getName() . " is gonna have a nice suprise.");
                 break;
+            case "mute":
+                if(!$sender->hasPermission("badpiggy.command.mute")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->mute($player);
+                $sender->sendMessage("§a" . $player->getName() . " got duck tape on his mouth.");
+                break;
             case "spam":
                 if(!$sender->hasPermission("badpiggy.command.spam")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");

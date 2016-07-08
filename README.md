@@ -4,7 +4,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 #Punishments
 - [x] Fall
 - [x] Explode 
-- [ ] Strike
+- [X] Strike
 - [x] Burn
 - [x] End
 - [ ] Infall
@@ -14,7 +14,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [X] Lavablock
 - [ ] Hole
 - [ ] Teleport
-- [ ] Freeze
+- [X] Freeze
 - [X] Fexplode
 - [ ] Blind
 - [ ] Drunk

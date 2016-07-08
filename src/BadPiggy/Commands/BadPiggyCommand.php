@@ -80,6 +80,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->explode($player);
                 $sender->sendMessage("§a" . $player->getName() . " went boom.");
                 break;
+            case "strike":
+                if(!$sender->hasPermission("badpiggy.command.strike")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->strike($player);
+                $sender->sendMessage("§a" . $player->getName() . " became the flash.");
+                break;
             case "burn":
                 if(!$sender->hasPermission("badpiggy.command.burn")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -117,7 +125,15 @@ class BadPiggyCommand extends VanillaCommand{
                 }
                 $this->plugin->lavablock($player);
                 $sender->sendMessage("§a" . $player->getName() . " is gonna have a nice suprise.");
-                break;               
+                break; 
+            case "freeze":
+                if(!$sender->hasPermission("badpiggy.command.freeze")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->freeze($player);
+                $sender->sendMessage("§a" . $player->getName() . " is now a statue.");
+                break;              
             case "fexplode":
                 if(!$sender->hasPermission("badpiggy.command.fexplode")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");

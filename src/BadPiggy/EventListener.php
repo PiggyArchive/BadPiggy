@@ -7,6 +7,7 @@ use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\inventory\InventoryPickupItemEvent;
 use pocketmine\event\player\PlayerChatEvent;
+use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\event\Listener;
 use pocketmine\item\Item;
 use pocketmine\level\Explosion;
@@ -70,6 +71,13 @@ class EventListener implements Listener{
 		$message = $event->getmessage();
 		if(isset($this->plugin->babble[strtolower($player->getName())])){
 			$event->setMessage(str_shuffle($message));
+		}
+	}
+
+	public function onMove(PlayerMoveEvent $event){
+		$player = $event->getPlayer();
+		if(isset($this->plugin->freeze[strtolower($player->getName())])){
+			$event->setCancelled();
 		}
 	}
 

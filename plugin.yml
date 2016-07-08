@@ -1,6 +1,6 @@
 name: BadPiggy
 main: BadPiggy\Main
-version: 1.0.0 BETA 1
+version: 1.0.0 BETA2
 api: 2.0.0
 author: MCPEPIG
 
@@ -18,7 +18,10 @@ permissions:
           description: "Allow using the fall subcommand"
         badpiggy.command.explode:
           default: op
-          description: "Allow using the explode subcommand"  
+          description: "Allow using the explode subcommand" 
+        badpiggy.command.strike:
+          default: op
+          description: "Allow using the strike subcommand"   
         badpiggy.command.burn:
           default: op
           description: "Allow using the burn subcommand"     
@@ -31,6 +34,9 @@ permissions:
         badpiggy.command.lavablock:
           default: op
           description: "Allow using the lavablock subcommand"  
+        badpiggy.command.freeze:
+          default: op
+          description: "Allow using the freeze subcommand"  
         badpiggy.command.fexplode:
           default: op
           description: "Allow using the fexplode subcommand"  

@@ -4,16 +4,20 @@ namespace BadPiggy;
 
 use BadPiggy\Commands\BadPiggyCommand;
 use pocketmine\block\Block;
+use pocketmine\entity\Entity;
 use pocketmine\item\Item;
 use pocketmine\level\Explosion;
 use pocketmine\level\sound\GhastShootSound;
 use pocketmine\math\Vector3;
+use pocketmine\network\protocol\AddEntityPacket;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
+use pocketmine\Server;
 
 class Main extends PluginBase{
 	public $invoid;
 	public $lavablock;
+	public $freeze;
 	public $babble;
 	public $exblock;
 	public $maim;
@@ -34,6 +38,21 @@ class Main extends PluginBase{
 		$explosion->explodeB();
 	}
 
+	public function strike(Player $player){
+		$pk = new AddEntityPacket();
+        $pk->type = 93;
+        $pk->eid = Entity::$entityCount++;
+        $pk->x = $player->x;
+       	$pk->y = $player->y;
+        $pk->z = $player->z;        
+        $pk->speedX = 0;
+        $pk->speedY = 0;
+        $pk->speedZ = 0;
+        $pk->yaw = 0;
+        $pk->pitch = 0;
+        Server::broadcastPacket($this->getServer()->getOnlinePlayers(), $pk);
+	}
+
 	public function burn(Player $player, $time){
 		$player->setOnFire($time);
 	}
@@ -49,6 +68,10 @@ class Main extends PluginBase{
 
 	public function lavablock(Player $player){
 		$this->lavablock[strtolower($player->getName())] = true;
+	}
+
+	public function freeze(Player $player){
+		$this->freeze[strtolower($player->getName())] = true;
 	}
 
 	public function fexplode(Player $player){
@@ -119,6 +142,9 @@ class Main extends PluginBase{
 		$player->kill();
 		if(isset($this->invoid[strtolower($player->getName())])){
 			unset($this->invoid[strtolower($player->getName())]);
+		}
+		if(isset($this->freeze[strtolower($player->getName())])){
+			unset($this->freeze[strtolower($player->getName())]);
 		}
 		if(isset($this->babble[strtolower($player->getName())])){
 			unset($this->babble[strtolower($player->getName())]);

@@ -49,6 +49,9 @@ permissions:
         badpiggy.command.babble:
           default: op
           description: "Allow using the babble subcommand"  
+        badpiggy.command.unaware:
+          default: op
+          description: "Allow using the babble subcommand"  
         badpiggy.command.leveldown:
           default: op
           description: "Allow using the leveldown subcommand"

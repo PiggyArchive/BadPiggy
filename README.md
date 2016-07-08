@@ -26,7 +26,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Shoot
 - [x] Babble
 - [ ] Spin
-- [ ] Unaware
+- [x] Unaware
 - [X] Leveldown
 - [ ] Night
 - [ ] Rewind

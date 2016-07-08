@@ -166,6 +166,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->babble($player);
                 $sender->sendMessage("§a" . $player->getName() . " babbles too much...");
                 break; 
+            case "unaware":
+                if(!$sender->hasPermission("badpiggy.command.unaware")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->unaware($player);
+                $sender->sendMessage("§a" . $player->getName() . " is human-blind.");
+                break; 
             case "leveldown":
                 if(!$sender->hasPermission("badpiggy.command.leveldown")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");

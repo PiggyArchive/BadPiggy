@@ -94,6 +94,13 @@ class Main extends PluginBase{
 		$this->babble[strtolower($player->getName())] = true;
 	}
 
+	public function unaware(Player $player){
+		foreach($this->getServer()->getOnlinePlayers() as $p){
+			$player->hidePlayer($p);
+		}
+		$this->unaware[strtolower($player->getName())] = true;
+	}
+
 	public function leveldown(Player $player){
 		switch($this->getServer()->getName()){
 			case "ClearSky":
@@ -153,6 +160,12 @@ class Main extends PluginBase{
 		}
 		if(isset($this->babble[strtolower($player->getName())])){
 			unset($this->babble[strtolower($player->getName())]);
+		}
+		if(isset($this->unaware[strtolower($player->getName())])){
+			foreach($this->getServer()->getOnlinePlayers() as $p){
+				$player->showPlayer($p);
+			}
+			unset($this->unaware[strtolower($player->getName())]);
 		}
 		if(isset($this->maim[strtolower($player->getName())])){
 			unset($this->maim[strtolower($player->getName())]);

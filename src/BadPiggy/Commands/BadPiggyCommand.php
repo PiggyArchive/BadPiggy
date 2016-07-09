@@ -271,6 +271,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " won't forget this for a while.");
                 break; 
             case "end":
+            case "stop":
                 if(!$sender->hasPermission("badpiggy.command.end")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;

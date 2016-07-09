@@ -11,6 +11,8 @@ use pocketmine\item\Item;
 use pocketmine\level\sound\GhastShootSound;
 use pocketmine\math\Vector3;
 use pocketmine\network\protocol\AddEntityPacket;
+use pocketmine\network\protocol\SetTimePacket;
+
 use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
 use pocketmine\Server;
@@ -31,8 +33,10 @@ class Main extends PluginBase{
 	public $slow;
 	public $poison;
 	public $unaware;
+	public $rewind;
+	public $unrewind;
 	public $mute;
-	public $spam = array();
+	public $spam;
 	public $maim;
 	public $idtheft;
 
@@ -204,6 +208,18 @@ class Main extends PluginBase{
 		}
 	}
 
+	public function night(Player $player){
+		$pk = new SetTimePacket();
+		$pk->time = 18000;
+		$pk->started = false;
+		$player->dataPacket($pk);
+	}
+
+	public function rewind(Player $player){
+		$this->rewind[strtolower($player->getName())] = $player->getLevel()->getTime();
+		$this->unrewind[strtolower($player->getName())] = 0;
+	}
+
 	public function exblock(Player $player){
 		$this->exblock[strtolower($player->getName())] = true;
 	}
@@ -301,6 +317,9 @@ class Main extends PluginBase{
 				$player->showPlayer($p);
 			}
 			unset($this->unaware[strtolower($player->getName())]);
+		}
+		if(isset($this->rewind[strtolower($player->getName())])){
+			unset($this->rewind[strtolower($player->getName())]);
 		}
 		if(isset($this->mute[strtolower($player->getName())])){
 			unset($this->mute[strtolower($player->getName())]);

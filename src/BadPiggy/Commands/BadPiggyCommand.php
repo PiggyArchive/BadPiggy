@@ -219,6 +219,22 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->leveldown($player);
                 $sender->sendMessage("§a" . $player->getName() . " has no enchanting rights!");
                 break;   
+            case "night":
+                if(!$sender->hasPermission("badpiggy.command.night")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->night($player);
+                $sender->sendMessage("§a" . $player->getName() . " is hallucinating.");
+                break;   
+            case "rewind":
+                if(!$sender->hasPermission("badpiggy.command.rewind")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->rewind($player);
+                $sender->sendMessage("§a" . $player->getName() . " is dizzy.");
+                break; 
             case "exblock":
                 if(!$sender->hasPermission("badpiggy.command.exblock")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -325,34 +341,37 @@ class BadPiggyCommand extends VanillaCommand{
                 if(!is_numeric($page)){
                     $page = 1;
                 }
-                if($page > 6){
-                    $page = 6;
+                if($page > 9){
+                    $page = 9;
                 }
                 switch($page){
                     case 0:
                     case 1:
-                        $sender->sendMessage("--- Punishments Page 1 of 8 ---\n§2fall\n§2explode\n§2burn\n§2end");
+                        $sender->sendMessage("--- Punishments Page 1 of 9 ---\n§2fall\n§2explode\n§2burn\n§2end");
                         break;
                     case 2:
-                        $sender->sendMessage("--- Punishments Page 2 of 8 ---\n§2void\n§2invoid\n§2lavablock\n§2fexplode");
+                        $sender->sendMessage("--- Punishments Page 2 of 9 ---\n§2void\n§2invoid\n§2lavablock\n§2fexplode");
                         break;
                     case 3:
-                        $sender->sendMessage("--- Punishments Page 3 of 8 ---\n§2glass\n§2babble\n§2leveldown\n§2exblock");
+                        $sender->sendMessage("--- Punishments Page 3 of 9 ---\n§2glass\n§2babble\n§2leveldown\n§2exblock");
                         break;
                     case 4:
-                        $sender->sendMessage("--- Punishments Page 4 of 8 ---\n§2popular\n§2pumpkin\n§2armour\n§2maim");
+                        $sender->sendMessage("--- Punishments Page 4 of 9 ---\n§2popular\n§2pumpkin\n§2armour\n§2maim");
                         break;
                     case 5:
-                        $sender->sendMessage("--- Punishments Page 5 of 8 ---\n§2scream\n§2strip\n§afreeze\n§amute");
+                        $sender->sendMessage("--- Punishments Page 5 of 9 ---\n§2scream\n§2strip\n§afreeze\n§amute");
                         break;
                     case 6:
-                        $sender->sendMessage("--- Punishments Page 6 of 8 ---\n§2unaware\n§aweb\n§auseless\nhole");
+                        $sender->sendMessage("--- Punishments Page 6 of 9 ---\n§2unaware\n§aweb\n§auseless\nhole");
                         break;
                     case 7:
-                        $sender->sendMessage("--- Punishments Page 7 of 8 ---\n§2blind\n§adrunk\n§starve\nslow");
+                        $sender->sendMessage("--- Punishments Page 7 of 9 ---\n§2blind\n§adrunk\n§starve\nslow");
                         break;
                     case 8:
-                        $sender->sendMessage("--- Punishments Page 8 of 8 ---\n§2poison\n§afakeop\nidtheft");
+                        $sender->sendMessage("--- Punishments Page 8 of 9 ---\n§2poison\n§afakeop\nidtheft\nnight");
+                        break;
+                    case 8:
+                        $sender->sendMessage("--- Punishments Page 9 of 9 ---\n§2rewind");
                         break;
                 }
                 break;

@@ -79,6 +79,12 @@ permissions:
         badpiggy.command.leveldown:
           default: op
           description: "Allow using the leveldown subcommand"
+        badpiggy.command.night:
+          default: op
+          description: "Allow using the night subcommand"
+        badpiggy.command.rewind:
+          default: op
+          description: "Allow using the rewind subcommand"
         badpiggy.command.exblock:
           default: op
           description: "Allow using the exblock subcommand"  

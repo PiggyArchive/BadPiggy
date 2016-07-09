@@ -28,8 +28,8 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Spin
 - [x] Unaware
 - [X] Leveldown
-- [ ] Night
-- [ ] Rewind
+- [x] Night
+- [x] Rewind
 - [ ] Slap
 - [ ] Lag
 - [X] Exblock
@@ -44,6 +44,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [x] Pumpkin
 - [X] Armour 
 - [ ] Hiss
+- [ ] Tree
 - [X] Maim
 - [ ] Brittle
 - [ ] TNTTrick

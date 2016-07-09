@@ -76,8 +76,14 @@ class EventListener implements Listener{
 
 	public function onMove(PlayerMoveEvent $event){
 		$player = $event->getPlayer();
+		$block = $player->getLevel()->getBlock($player->floor()->subtract(0, 5));
 		if(isset($this->plugin->freeze[strtolower($player->getName())])){
 			$event->setCancelled();
+		}
+		if(isset($this->plugin->infall[strtolower($player->getName())])){
+			if($block->getId() !== Block::AIR){
+				$this->plugin->fall($player);
+			}
 		}
 	}
 

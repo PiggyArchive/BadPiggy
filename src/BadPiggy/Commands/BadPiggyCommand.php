@@ -50,7 +50,7 @@ class BadPiggyCommand extends VanillaCommand{
                         $sender->sendMessage("--- Punishments Page 5 of 6 ---\n§2scream\n§2strip\n§afreeze\n§amute");
                         break;
                     case 6:
-                        $sender->sendMessage("--- Punishments Page 6 of 6 ---\n§2unaware\n§aweb\n§auseless");
+                        $sender->sendMessage("--- Punishments Page 6 of 6 ---\n§2unaware\n§aweb\n§auseless\nhole");
                         break;
                 }
                 return true;
@@ -110,6 +110,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->burn($player, $args[2]);
                 $sender->sendMessage("§a" . $player->getName() . " is becoming human bacon.");
                 break;
+            case "infall":
+                if(!$sender->hasPermission("badpiggy.command.infall")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->infall($player);
+                $sender->sendMessage("§a" . $player->getName() . " is clearly on a trampoline.");
+                break;
             case "web":
                 if(!$sender->hasPermission("badpiggy.command.web")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -141,6 +149,14 @@ class BadPiggyCommand extends VanillaCommand{
                 }
                 $this->plugin->lavablock($player);
                 $sender->sendMessage("§a" . $player->getName() . " is gonna have a nice suprise.");
+                break; 
+            case "hole":
+                if(!$sender->hasPermission("badpiggy.command.hole")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->hole($player);
+                $sender->sendMessage("§a" . $player->getName() . " fell into a hole & went splat.");
                 break; 
             case "freeze":
                 if(!$sender->hasPermission("badpiggy.command.freeze")){

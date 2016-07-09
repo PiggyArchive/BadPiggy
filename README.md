@@ -7,12 +7,12 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [X] Strike
 - [x] Burn
 - [x] End
-- [ ] Infall
+- [x] Infall
 - [X] Web
 - [x] Void
 - [X] Invoid
 - [X] Lavablock
-- [ ] Hole
+- [X] Hole
 - [ ] Teleport
 - [X] Freeze
 - [X] Fexplode

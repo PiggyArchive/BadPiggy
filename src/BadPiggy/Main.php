@@ -15,7 +15,9 @@ use pocketmine\Player;
 use pocketmine\Server;
 
 class Main extends PluginBase{
+	public $holes = array();
 	public $webs = array();
+	public $infall;
 	public $invoid;
 	public $lavablock;
 	public $freeze;
@@ -60,6 +62,11 @@ class Main extends PluginBase{
 		$player->setOnFire($time);
 	}
 
+	public function infall(Player $player){
+		$this->infall[strtolower($player->getName())] = true;
+		$this->fall($player);
+	}
+
 	public function web(Player $player){
 		$x1 = $player->x + 3;
 		$x2 = $player->x - 1;
@@ -84,11 +91,24 @@ class Main extends PluginBase{
 
 	public function invoid(Player $player){
 		$this->invoid[strtolower($player->getName())] = true;
-		$player->teleport(new Vector3($player->x, 0, $player->z));
+		$this->void($player);
 	}
 
 	public function lavablock(Player $player){
 		$this->lavablock[strtolower($player->getName())] = true;
+	}
+
+	public function hole(Player $player){
+		$x = $player->x;
+		$y1 = $player->y;
+		$y2 = $player->y - 26;
+		$z = $player->z;
+		for($y = $y2; $y < $y1; $y++){
+			$vector3 = new Vector3($x, $y, $z);
+			array_push($this->holes, array($player->getLevel(), $vector3, $player->getLevel()->getBlock($vector3)));
+			$player->getLevel()->setBlock($vector3, Block::get(Block::AIR));
+		}
+		$player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y), floor($player->z) + 0.5)); //Make sure player falls in ;)
 	}
 
 	public function freeze(Player $player){
@@ -179,6 +199,9 @@ class Main extends PluginBase{
 
 	public function end(Player $player){
 		$player->kill();
+		if(isset($this->infall[strtolower($player->getName())])){
+			unset($this->infall[strtolower($player->getName())]);
+		}
 		if(isset($this->invoid[strtolower($player->getName())])){
 			unset($this->invoid[strtolower($player->getName())]);
 		}
@@ -209,12 +232,19 @@ class Main extends PluginBase{
 	}
 
 	public function restore(){
+		foreach($this->holes as $info){
+			$level = $info[0];
+			$vector3 = $info[1];
+			$block = $info[2];
+			$level->setBlock($vector3, $block);
+		}
 		foreach($this->webs as $info){
 			$level = $info[0];
 			$vector3 = $info[1];
 			$block = $info[2];
 			$level->setBlock($vector3, $block);
 		}
+		$this->holes = array();
 		$this->webs = array();
 	}
 

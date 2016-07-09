@@ -25,6 +25,9 @@ permissions:
         badpiggy.command.burn:
           default: op
           description: "Allow using the burn subcommand"  
+        badpiggy.command.infall:
+          default: op
+          description: "Allow using the infall subcommand"  
         badpiggy.command.web:
           default: op
           description: "Allow using the web subcommand"     
@@ -37,6 +40,9 @@ permissions:
         badpiggy.command.lavablock:
           default: op
           description: "Allow using the lavablock subcommand"  
+        badpiggy.command.hole:
+          default: op
+          description: "Allow using the hole subcommand"  
         badpiggy.command.freeze:
           default: op
           description: "Allow using the freeze subcommand"  

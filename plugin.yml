@@ -1,6 +1,6 @@
 name: BadPiggy
 main: BadPiggy\Main
-version: 1.0.0 BETA2
+version: 1.0.0 BETA3
 api: 2.0.0
 author: MCPEPIG
 
@@ -49,6 +49,21 @@ permissions:
         badpiggy.command.fexplode:
           default: op
           description: "Allow using the fexplode subcommand"  
+        badpiggy.command.blind:
+          default: op
+          description: "Allow using the blind subcommand" 
+        badpiggy.command.drunk:
+          default: op
+          description: "Allow using the drunk subcommand"  
+        badpiggy.command.starve:
+          default: op
+          description: "Allow using the starve subcommand"  
+        badpiggy.command.slow:
+          default: op
+          description: "Allow using the slow subcommand" 
+        badpiggy.command.poison:
+          default: op
+          description: "Allow using the poison subcommand" 
         badpiggy.command.strip:
           default: op
           description: "Allow using the strip subcommand"  
@@ -73,6 +88,9 @@ permissions:
         badpiggy.command.spam:
           default: op
           description: "Allow using the spam subcommand" 
+        badpiggy.command.fakeop:
+          default: op
+          description: "Allow using the fakeop subcommand" 
         badpiggy.command.popular:
           default: op
           description: "Allow using the popular subcommand"   
@@ -88,6 +106,9 @@ permissions:
         badpiggy.command.useless:
           default: op
           description: "Allow using the scream subcommand"  
+        badpiggy.command.idtheft:
+          default: op
+          description: "Allow using the idtheft subcommand"  
         badpiggy.command.scream:
           default: op
           description: "Allow using the scream subcommand"  

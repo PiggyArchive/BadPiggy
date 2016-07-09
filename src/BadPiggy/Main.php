@@ -4,9 +4,10 @@ namespace BadPiggy;
 
 use BadPiggy\Commands\BadPiggyCommand;
 use pocketmine\block\Block;
+use pocketmine\command\CommandSender;
+use pocketmine\entity\Effect;
 use pocketmine\entity\Entity;
 use pocketmine\item\Item;
-use pocketmine\level\Explosion;
 use pocketmine\level\sound\GhastShootSound;
 use pocketmine\math\Vector3;
 use pocketmine\network\protocol\AddEntityPacket;
@@ -15,6 +16,7 @@ use pocketmine\Player;
 use pocketmine\Server;
 
 class Main extends PluginBase{
+	public $explode = array();
 	public $holes = array();
 	public $webs = array();
 	public $infall;
@@ -23,12 +25,20 @@ class Main extends PluginBase{
 	public $freeze;
 	public $babble;
 	public $exblock;
+	public $blind;
+	public $drunk;
+	public $starve;
+	public $slow;
+	public $poison;
 	public $unaware;
 	public $mute;
+	public $spam = array();
 	public $maim;
+	public $idtheft;
 
 	public function onEnable(){
     	$this->getServer()->getCommandMap()->register('badpiggy', new BadPiggyCommand('badpiggy', $this));
+    	$this->getServer()->getScheduler()->scheduleRepeatingTask(new BadPiggyTick($this), 1);
     	$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 		$this->getLogger()->info("§aEnabled.");
 	}
@@ -38,7 +48,7 @@ class Main extends PluginBase{
 	}
 
 	public function explode(Player $player){
-		$explosion = new Explosion($player, 4);
+		$explosion = new BadPiggyExplosion($player, 4, $player, $this);
 		$explosion->explodeA();
 		$explosion->explodeB();
 	}
@@ -116,8 +126,51 @@ class Main extends PluginBase{
 	}
 
 	public function fexplode(Player $player){
-		$explosion = new Explosion($player, 4, $player);
+		$explosion = new BadPiggyExplosion($player, 4, $player, $this);
 		$explosion->explodeB();
+	}
+
+	public function blind(Player $player){
+        $effect = Effect::getEffect(15);
+       	$effect->setDuration(999999);
+        $effect->setAmplifier(2);
+        $effect->setVisible(false);
+        $player->addEffect($effect);
+        $this->blind[strtolower($player->getName())] = true;
+	}
+
+	public function drunk(Player $player){
+        $effect = Effect::getEffect(9);
+       	$effect->setDuration(999999);
+        $effect->setAmplifier(2);
+        $effect->setVisible(false);
+        $player->addEffect($effect);
+        $this->drunk[strtolower($player->getName())] = true;
+	}
+
+	public function starve(Player $player){
+		$player->setFood(0);
+        $effect = Effect::getEffect(17);
+       	$effect->setDuration(999999);
+        $effect->setAmplifier(2);
+        $effect->setVisible(false);
+        $player->addEffect($effect);	
+        $this->starve[strtolower($player->getName())] = true;	
+	}
+
+	public function slow(Player $player){
+ 		$player->getAttributeMap()->getAttribute(5)->setValue(0.05);
+        $this->slow[strtolower($player->getName())] = true;	
+	}
+
+
+	public function poison(Player $player){;
+        $effect = Effect::getEffect(19);
+       	$effect->setDuration(999999);
+        $effect->setAmplifier(2);
+        $effect->setVisible(false);
+        $player->addEffect($effect);	
+        $this->poison[strtolower($player->getName())] = true;	
 	}
 
 	public function strip(Player $player){
@@ -160,9 +213,11 @@ class Main extends PluginBase{
 	}
 
 	public function spam(Player $player){
-		for($i = 0; $i < 50; $i++){
-			$player->sendMessage("§aCHECK OUT MCPEPIG's PLUGINS! THEY'RE AWESOME!!!");
-		}
+		$this->spam[strtolower($player->getName())] = true;
+	}
+
+	public function fakeop(Player $player){
+		$player->sendMessage("§7You are now op!");
 	}
 
 	public function popular(Player $player){
@@ -193,12 +248,16 @@ class Main extends PluginBase{
 		}
 	}
 
+	public function idtheft(Player $player){
+		$this->idtheft[strtolower($player->getName())] = true;
+	}
+
 	public function scream(Player $player){
 		$player->getLevel()->addSound(new GhastShootSound($player));
 	}
 
 	public function end(Player $player){
-		$player->kill();
+		$player->setHealth(0);
 		if(isset($this->infall[strtolower($player->getName())])){
 			unset($this->infall[strtolower($player->getName())]);
 		}
@@ -217,6 +276,26 @@ class Main extends PluginBase{
 		if(isset($this->exblock[strtolower($player->getName())])){
 			unset($this->exblock[strtolower($player->getName())]);
 		}
+		if(isset($this->blind[strtolower($player->getName())])){
+			$player->removeEffect(15);
+			unset($this->blind[strtolower($player->getName())]);
+		}
+		if(isset($this->drunk[strtolower($player->getName())])){
+			$player->removeEffect(9);
+			unset($this->drunk[strtolower($player->getName())]);
+		}
+		if(isset($this->starve[strtolower($player->getName())])){
+			$player->removeEffect(17);
+			unset($this->starve[strtolower($player->getName())]);
+		}
+		if(isset($this->slow[strtolower($player->getName())])){
+			$player->getAttributeMap()->getAttribute(5)->setValue(0.1);
+			unset($this->slow[strtolower($player->getName())]);
+		}
+		if(isset($this->poison[strtolower($player->getName())])){
+			$player->removeEffect(19);
+			unset($this->poison[strtolower($player->getName())]);
+		}
 		if(isset($this->unaware[strtolower($player->getName())])){
 			foreach($this->getServer()->getOnlinePlayers() as $p){
 				$player->showPlayer($p);
@@ -226,26 +305,44 @@ class Main extends PluginBase{
 		if(isset($this->mute[strtolower($player->getName())])){
 			unset($this->mute[strtolower($player->getName())]);
 		}
+		if(isset($this->spam[strtolower($player->getName())])){
+			unset($this->spam[strtolower($player->getName())]);
+		}
 		if(isset($this->maim[strtolower($player->getName())])){
 			unset($this->maim[strtolower($player->getName())]);
 		}
+		if(isset($this->idtheft[strtolower($player->getName())])){
+			unset($this->idtheft[strtolower($player->getName())]);
+		}
 	}
 
-	public function restore(){
+	public function restore(CommandSender $sender){
+		$count = 0;
+		foreach($this->explode as $info){
+			$count++;
+			$level = $info[0];
+			$vector3 = $info[1];
+			$block = $info[2];
+			$level->setBlock($vector3, $block);
+		}
 		foreach($this->holes as $info){
+			$count++;
 			$level = $info[0];
 			$vector3 = $info[1];
 			$block = $info[2];
 			$level->setBlock($vector3, $block);
 		}
 		foreach($this->webs as $info){
+			$count++;
 			$level = $info[0];
 			$vector3 = $info[1];
 			$block = $info[2];
 			$level->setBlock($vector3, $block);
 		}
+		$this->explode = array();
 		$this->holes = array();
 		$this->webs = array();
+		$sender->sendMessage("§a" . $count . " blocks restored.");
 	}
 
 }

@@ -16,11 +16,11 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Teleport
 - [X] Freeze
 - [X] Fexplode
-- [ ] Blind
-- [ ] Drunk
-- [ ] Starve
-- [ ] Slow
-- [ ] Poison
+- [X] Blind
+- [x] Drunk
+- [x] Starve
+- [x] Slow
+- [x] Poison
 - [X] Strip
 - [x] Glass
 - [ ] Shoot
@@ -34,10 +34,9 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Lag
 - [X] Exblock
 - [X] Mute
-- [ ] Drop
 - [x] Spam
 - [ ] Cage
-- [ ] FakeOP
+- [x] FakeOP
 - [ ] Popup
 - [ ] Potato
 - [X] Popular
@@ -53,6 +52,6 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Squid
 - [ ] Crash
 - [X] Useless
-- [ ] IDTheft
+- [x] IDTheft
 - [X] Scream
 - [ ] Trip

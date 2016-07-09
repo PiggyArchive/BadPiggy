@@ -19,59 +19,24 @@ class BadPiggyCommand extends VanillaCommand{
         if(!$this->testPermission($sender)){
             return true;
         }
-        if(isset($args[0])){
-            if($args[0] == "list"){
-                if(!isset($args[1])){
-                    $page = 1;
-                }else{       
-                    $page = $args[1];
-                }
-                if(!is_numeric($page)){
-                    $page = 1;
-                }
-                if($page > 6){
-                    $page = 6;
-                }
-                switch($page){
-                    case 0:
-                    case 1:
-                        $sender->sendMessage("--- Punishments Page 1 of 6---\n§2fall\n§2explode\n§2burn\n§2end");
-                        break;
-                    case 2:
-                        $sender->sendMessage("--- Punishments Page 2 of 6 ---\n§2void\n§2invoid\n§2lavablock\n§2fexplode");
-                        break;
-                    case 3:
-                        $sender->sendMessage("--- Punishments Page 3 of 6 ---\n§2glass\n§2babble\n§2leveldown\n§2exblock");
-                        break;
-                    case 4:
-                        $sender->sendMessage("--- Punishments Page 4 of 6 ---\n§2popular\n§2pumpkin\n§2armour\n§2maim");
-                        break;
-                    case 5:
-                        $sender->sendMessage("--- Punishments Page 5 of 6 ---\n§2scream\n§2strip\n§afreeze\n§amute");
-                        break;
-                    case 6:
-                        $sender->sendMessage("--- Punishments Page 6 of 6 ---\n§2unaware\n§aweb\n§auseless\nhole");
-                        break;
-                }
-                return true;
-            }
-            if($args[0] == "restore"){
-                $this->plugin->restore();
-                $sender->sendMessage("§aRestoring damage...");
-                return true;
-            }
-        }
-        if(count($args) < 2){
-            $sender->sendMessage("/badpiggy <player> <punishment>");
+        if(!isset($args[0])){
+            $sender->sendMessage("/badpiggy <punishment> <player>");
             return false;
         }
-        if($args )
-        $player = $this->plugin->getServer()->getPlayer($args[0]);
-        if(!$player instanceof Player){
-            $sender->sendMessage("§cInvalid player.");
-            return false;
+        $player = null;
+        if($args[0] !== "list" && $args[0] !== "restore"){
+            if(isset($args[1])){
+                $player = $this->plugin->getServer()->getPlayer($args[1]);
+                if(!$player instanceof Player){
+                    $sender->sendMessage("§cInvalid player.");
+                    return false;
+                }
+            }else{
+                $sender->sendMessage("/badpiggy <punishment> <player>");
+                return false;                
+            }
         }
-        switch(strtolower($args[1])){
+        switch(strtolower($args[0])){
             case "fall":
                 if(!$sender->hasPermission("badpiggy.command.fall")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -174,6 +139,46 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->fexplode($player);
                 $sender->sendMessage("§a" . $player->getName() . " went boom.");
                 break;
+            case "blind":
+                if(!$sender->hasPermission("badpiggy.command.blind")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->blind($player);
+                $sender->sendMessage("§a" . $player->getName() . " needs glasses...");
+                break;
+            case "drunk":
+                if(!$sender->hasPermission("badpiggy.command.drunk")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->drunk($player);
+                $sender->sendMessage("§a" . $player->getName() . " drank too much beer...");
+                break;
+            case "starve":
+                if(!$sender->hasPermission("badpiggy.command.starve")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->starve($player);
+                $sender->sendMessage("§a" . $player->getName() . " has been stranded on an island with no food...");
+                break;
+            case "slow":
+                if(!$sender->hasPermission("badpiggy.command.slow")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->slow($player);
+                $sender->sendMessage("§a" . $player->getName() . " is as slow as a sloth!");
+                break;
+            case "poison":
+                if(!$sender->hasPermission("badpiggy.command.poison")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->poison($player);
+                $sender->sendMessage("§a" . $player->getName() . " got hungry and ate too much raw chicken.");
+                break;
             case "strip":
                 if(!$sender->hasPermission("badpiggy.command.strip")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -238,6 +243,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->spam($player);
                 $sender->sendMessage("§a" . $player->getName() . " is too busy reading his emails.");
                 break;  
+            case "fakeop":
+                if(!$sender->hasPermission("badpiggy.command.fakeop")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->fakeop($player);
+                $sender->sendMessage("§a" . $player->getName() . " thinks he's op.");
+                break;
             case "popular":
                 if(!$sender->hasPermission("badpiggy.command.popular")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -278,6 +291,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->useless($player);
                 $sender->sendMessage("§a" . $player->getName() . " has so much trash....");
                 break; 
+            case "idtheft":
+                if(!$sender->hasPermission("badpiggy.command.idtheft")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->idtheft($player);
+                $sender->sendMessage("§a" . $player->getName() . " is an organized criminal.");
+                break; 
             case "scream":
                 if(!$sender->hasPermission("badpiggy.command.scream")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -295,6 +316,50 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->end($player);
                 $sender->sendMessage("§aAww.. this is the end of the trolling...");
                 break;   
+            case "list":
+                if(!isset($args[1])){
+                    $page = 1;
+                }else{       
+                    $page = $args[1];
+                }
+                if(!is_numeric($page)){
+                    $page = 1;
+                }
+                if($page > 6){
+                    $page = 6;
+                }
+                switch($page){
+                    case 0:
+                    case 1:
+                        $sender->sendMessage("--- Punishments Page 1 of 8 ---\n§2fall\n§2explode\n§2burn\n§2end");
+                        break;
+                    case 2:
+                        $sender->sendMessage("--- Punishments Page 2 of 8 ---\n§2void\n§2invoid\n§2lavablock\n§2fexplode");
+                        break;
+                    case 3:
+                        $sender->sendMessage("--- Punishments Page 3 of 8 ---\n§2glass\n§2babble\n§2leveldown\n§2exblock");
+                        break;
+                    case 4:
+                        $sender->sendMessage("--- Punishments Page 4 of 8 ---\n§2popular\n§2pumpkin\n§2armour\n§2maim");
+                        break;
+                    case 5:
+                        $sender->sendMessage("--- Punishments Page 5 of 8 ---\n§2scream\n§2strip\n§afreeze\n§amute");
+                        break;
+                    case 6:
+                        $sender->sendMessage("--- Punishments Page 6 of 8 ---\n§2unaware\n§aweb\n§auseless\nhole");
+                        break;
+                    case 7:
+                        $sender->sendMessage("--- Punishments Page 7 of 8 ---\n§2blind\n§adrunk\n§starve\nslow");
+                        break;
+                    case 8:
+                        $sender->sendMessage("--- Punishments Page 8 of 8 ---\n§2poison\n§afakeop\nidtheft");
+                        break;
+                }
+                break;
+            case "restore":
+                $sender->sendMessage("§aRestoring damage...");
+                $this->plugin->restore($sender);
+                break;
             default:
                 $sender->sendMessage("§cUnknown punishment. Try /badpiggy list for a list of punishments");
                 break;

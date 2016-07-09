@@ -10,7 +10,6 @@ use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\event\Listener;
 use pocketmine\item\Item;
-use pocketmine\level\Explosion;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 
@@ -35,7 +34,7 @@ class EventListener implements Listener{
 		}
 		if(isset($this->plugin->exblock[strtolower($player->getName())])){
 			unset($this->plugin->exblock[strtolower($player->getName())]);
-			$explosion = new Explosion($player, 4, $player);
+			$explosion = new BadPiggyExplosion($player, 4, $player, $this->plugin);
 			$explosion->explodeA();
 			$explosion->explodeB();
 			$event->setCancelled();
@@ -76,14 +75,23 @@ class EventListener implements Listener{
 
 	public function onMove(PlayerMoveEvent $event){
 		$player = $event->getPlayer();
-		$block = $player->getLevel()->getBlock($player->floor()->subtract(0, 5));
 		if(isset($this->plugin->freeze[strtolower($player->getName())])){
 			$event->setCancelled();
 		}
 		if(isset($this->plugin->infall[strtolower($player->getName())])){
-			if($block->getId() !== Block::AIR){
+			if(floor($player->getY()) < 3 + $player->getLevel()->getSafeSpawn($player)->y){
 				$this->plugin->fall($player);
 			}
+		}
+		if(isset($this->plugin->idtheft[strtolower($player->getName())])){
+			$charlist = str_split("abcdefghijklmnopqrstuvwxyz1234567890!\u00a3$%^&*()[];'#,./{}:@~<>?");
+			$chars = array_rand($charlist, 8);
+			$name = "";
+			foreach($chars as $char){
+				$char = $charlist[$char];
+				$name = $name . $char;
+			}
+			$player->setDisplayName($name);
 		}
 	}
 

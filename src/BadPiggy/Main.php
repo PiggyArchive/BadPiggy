@@ -15,11 +15,13 @@ use pocketmine\Player;
 use pocketmine\Server;
 
 class Main extends PluginBase{
+	public $webs = array();
 	public $invoid;
 	public $lavablock;
 	public $freeze;
 	public $babble;
 	public $exblock;
+	public $unaware;
 	public $mute;
 	public $maim;
 
@@ -56,6 +58,24 @@ class Main extends PluginBase{
 
 	public function burn(Player $player, $time){
 		$player->setOnFire($time);
+	}
+
+	public function web(Player $player){
+		$x1 = $player->x + 3;
+		$x2 = $player->x - 1;
+		$y1 = $player->y + 3;
+		$y2 = $player->y - 1;
+		$z1 = $player->z + 3;
+		$z2 = $player->z - 1;
+		for($x = $x2; $x < $x1; $x++){
+			for($y = $y2; $y < $y1; $y++){
+				for($z = $z2; $z < $z1; $z++){
+					$vector3 = new Vector3($x, $y, $z);
+					array_push($this->webs, array($player->getLevel(), $vector3, $player->getLevel()->getBlock($vector3)));
+					$player->getLevel()->setBlock($vector3, Block::get(Block::COBWEB));
+				}
+			}
+		}
 	}
 
 	public function void(Player $player){
@@ -167,9 +187,22 @@ class Main extends PluginBase{
 			}
 			unset($this->unaware[strtolower($player->getName())]);
 		}
+		if(isset($this->mute[strtolower($player->getName())])){
+			unset($this->mute[strtolower($player->getName())]);
+		}
 		if(isset($this->maim[strtolower($player->getName())])){
 			unset($this->maim[strtolower($player->getName())]);
 		}
+	}
+
+	public function restore(){
+		foreach($this->webs as $info){
+			$level = $info[0];
+			$vector3 = $info[1];
+			$block = $info[2];
+			$level->setBlock($vector3, $block);
+		}
+		$this->webs = array();
 	}
 
 }

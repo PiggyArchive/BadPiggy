@@ -52,6 +52,11 @@ class BadPiggyCommand extends VanillaCommand{
                 }
                 return true;
             }
+            if($args[0] == "restore"){
+                $this->plugin->restore();
+                $sender->sendMessage("§aRestoring damage...");
+                return true;
+            }
         }
         if(count($args) < 2){
             $sender->sendMessage("/badpiggy <player> <punishment>");
@@ -101,6 +106,14 @@ class BadPiggyCommand extends VanillaCommand{
                 }
                 $this->plugin->burn($player, $args[2]);
                 $sender->sendMessage("§a" . $player->getName() . " is becoming human bacon.");
+                break;
+            case "web":
+                if(!$sender->hasPermission("badpiggy.command.web")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->web($player);
+                $sender->sendMessage("§a" . $player->getName() . " is stuck.");
                 break;
             case "void":
                 if(!$sender->hasPermission("badpiggy.command.void")){

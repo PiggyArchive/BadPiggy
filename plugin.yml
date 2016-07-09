@@ -24,7 +24,10 @@ permissions:
           description: "Allow using the strike subcommand"   
         badpiggy.command.burn:
           default: op
-          description: "Allow using the burn subcommand"     
+          description: "Allow using the burn subcommand"  
+        badpiggy.command.web:
+          default: op
+          description: "Allow using the web subcommand"     
         badpiggy.command.void:
           default: op
           description: "Allow using the void subcommand" 

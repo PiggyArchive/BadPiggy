@@ -321,6 +321,9 @@ class Main extends PluginBase{
 		if(isset($this->rewind[strtolower($player->getName())])){
 			unset($this->rewind[strtolower($player->getName())]);
 		}
+		if(isset($this->unrewind[strtolower($player->getName())])){
+			unset($this->unrewind[strtolower($player->getName())]);
+		}
 		if(isset($this->mute[strtolower($player->getName())])){
 			unset($this->mute[strtolower($player->getName())]);
 		}

@@ -182,11 +182,17 @@ class Main extends PluginBase{
 		if(isset($this->invoid[strtolower($player->getName())])){
 			unset($this->invoid[strtolower($player->getName())]);
 		}
+		if(isset($this->lavablock[strtolower($player->getName())])){
+			unset($this->lavablock[strtolower($player->getName())]);
+		}
 		if(isset($this->freeze[strtolower($player->getName())])){
 			unset($this->freeze[strtolower($player->getName())]);
 		}
 		if(isset($this->babble[strtolower($player->getName())])){
 			unset($this->babble[strtolower($player->getName())]);
+		}
+		if(isset($this->exblock[strtolower($player->getName())])){
+			unset($this->exblock[strtolower($player->getName())]);
 		}
 		if(isset($this->unaware[strtolower($player->getName())])){
 			foreach($this->getServer()->getOnlinePlayers() as $p){

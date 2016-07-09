@@ -166,6 +166,13 @@ class Main extends PluginBase{
 		$this->maim[strtolower($player->getName())] = true;
 	}
 
+	public function useless(Player $player){
+		foreach($player->getInventory()->getContents() as $index => $item){
+			$item->setCustomName("Useless");
+			$player->getInventory()->setItem($index, $item);
+		}
+	}
+
 	public function scream(Player $player){
 		$player->getLevel()->addSound(new GhastShootSound($player));
 	}

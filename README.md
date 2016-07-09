@@ -47,11 +47,12 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Hiss
 - [X] Maim
 - [ ] Brittle
+- [ ] TNTTrick
 - [ ] TNT
 - [ ] Fire
 - [ ] Squid
 - [ ] Crash
-- [ ] Useless
+- [X] Useless
 - [ ] IDTheft
 - [X] Scream
 - [ ] Trip

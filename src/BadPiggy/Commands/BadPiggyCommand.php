@@ -29,25 +29,28 @@ class BadPiggyCommand extends VanillaCommand{
                 if(!is_numeric($page)){
                     $page = 1;
                 }
-                if($page > 5){
-                    $page = 5;
+                if($page > 6){
+                    $page = 6;
                 }
                 switch($page){
                     case 0:
                     case 1:
-                        $sender->sendMessage("--- Punishments Page 1 of 5---\n§2fall\n§2explode\n§2burn\n§2end");
+                        $sender->sendMessage("--- Punishments Page 1 of 6---\n§2fall\n§2explode\n§2burn\n§2end");
                         break;
                     case 2:
-                        $sender->sendMessage("--- Punishments Page 2 of 5 ---\n§2void\n§2invoid\n§2lavablock\n§2fexplode");
+                        $sender->sendMessage("--- Punishments Page 2 of 6 ---\n§2void\n§2invoid\n§2lavablock\n§2fexplode");
                         break;
                     case 3:
-                        $sender->sendMessage("--- Punishments Page 3 of 5 ---\n§2glass\n§2babble\n§2leveldown\n§2exblock");
+                        $sender->sendMessage("--- Punishments Page 3 of 6 ---\n§2glass\n§2babble\n§2leveldown\n§2exblock");
                         break;
                     case 4:
-                        $sender->sendMessage("--- Punishments Page 4 of 5 ---\n§2popular\n§2pumpkin\n§2armour\n§2maim");
+                        $sender->sendMessage("--- Punishments Page 4 of 6 ---\n§2popular\n§2pumpkin\n§2armour\n§2maim");
                         break;
                     case 5:
-                        $sender->sendMessage("--- Punishments Page 5 of 5 ---\n§2scream\n§2strip");
+                        $sender->sendMessage("--- Punishments Page 5 of 6 ---\n§2scream\n§2strip\n§afreeze\n§amute");
+                        break;
+                    case 6:
+                        $sender->sendMessage("--- Punishments Page 6 of 6 ---\n§2unaware\n§aweb\n§auseless");
                         break;
                 }
                 return true;
@@ -250,6 +253,14 @@ class BadPiggyCommand extends VanillaCommand{
                 }
                 $this->plugin->maim($player);
                 $sender->sendMessage("§a" . $player->getName() . " won't be able to pick thing ups for a while...");
+                break; 
+            case "useless":
+                if(!$sender->hasPermission("badpiggy.command.useless")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->useless($player);
+                $sender->sendMessage("§a" . $player->getName() . " has so much trash....");
                 break; 
             case "scream":
                 if(!$sender->hasPermission("badpiggy.command.scream")){

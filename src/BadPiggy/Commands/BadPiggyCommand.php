@@ -13,7 +13,7 @@ class BadPiggyCommand extends VanillaCommand{
         );
         $this->setPermission("badpiggy.command");
         $this->plugin = $plugin;
-	}
+    }
 
     public function execute(CommandSender $sender, $currentAlias, array $args){
         if(!$this->testPermission($sender)){

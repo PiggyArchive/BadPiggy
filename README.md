@@ -50,9 +50,12 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] TNTTrick
 - [ ] TNT
 - [ ] Fire
-- [ ] Squid
+- [x] Squid
 - [ ] Crash
 - [X] Useless
 - [x] IDTheft
 - [X] Scream
 - [ ] Trip
+- [ ] Chat
+- [ ] Rename
+- [ ] Kick

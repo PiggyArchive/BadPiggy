@@ -299,6 +299,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->maim($player);
                 $sender->sendMessage("§a" . $player->getName() . " won't be able to pick thing ups for a while...");
                 break; 
+            case "squid":
+                if(!$sender->hasPermission("badpiggy.command.squid")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->squid($player);
+                $sender->sendMessage("§a" . $player->getName() . " must save the squid!");
+                break; 
             case "useless":
                 if(!$sender->hasPermission("badpiggy.command.useless")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -324,12 +332,19 @@ class BadPiggyCommand extends VanillaCommand{
                 $sender->sendMessage("§a" . $player->getName() . " won't forget this for a while.");
                 break; 
             case "end":
-            case "stop":
                 if(!$sender->hasPermission("badpiggy.command.end")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
                 $this->plugin->end($player);
+                $sender->sendMessage("§aAww.. this is the end of the trolling...");
+                break;               
+            case "stop":
+                if(!$sender->hasPermission("badpiggy.command.stop")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->stop($player);
                 $sender->sendMessage("§aAww.. this is the end of the trolling...");
                 break;   
             case "list":
@@ -371,7 +386,7 @@ class BadPiggyCommand extends VanillaCommand{
                         $sender->sendMessage("--- Punishments Page 8 of 9 ---\n§2poison\n§afakeop\nidtheft\nnight");
                         break;
                     case 8:
-                        $sender->sendMessage("--- Punishments Page 9 of 9 ---\n§2rewind");
+                        $sender->sendMessage("--- Punishments Page 9 of 9 ---\n§2rewind\n§asquid\nstop");
                         break;
                 }
                 break;

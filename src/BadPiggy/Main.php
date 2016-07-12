@@ -10,6 +10,11 @@ use pocketmine\entity\Entity;
 use pocketmine\item\Item;
 use pocketmine\level\sound\GhastShootSound;
 use pocketmine\math\Vector3;
+use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\nbt\tag\DoubleTag;
+use pocketmine\nbt\tag\ListTag;
+use pocketmine\nbt\tag\FloatTag;
+use pocketmine\nbt\tag\StringTag;
 use pocketmine\network\protocol\AddEntityPacket;
 use pocketmine\network\protocol\SetTimePacket;
 
@@ -257,6 +262,27 @@ class Main extends PluginBase{
 		$this->maim[strtolower($player->getName())] = true;
 	}
 
+	public function squid(Player $player){
+		$chunk = $player->getLevel()->getChunk($player->x >> 4, $player->z >> 4);
+		$nbt = new CompoundTag("", [
+			"Pos" => new ListTag("Pos", [
+				new DoubleTag("", floor($player->x)),
+				new DoubleTag("", floor($player->y) + 5),
+				new DoubleTag("", floor($player->z)))
+			]),
+			"Motion" => new ListTag("Motion", [
+				new DoubleTag("", 0),
+				new DoubleTag("", 0),
+				new DoubleTag("", 0)
+			]),
+			"Rotation" => new ListTag("Rotation", [
+				new FloatTag("", lcg_value() * 360),
+				new FloatTag("", 0)
+			]),
+		]);
+		$entity = Entity::createEntity("Squid", $chunk, $nbt);
+	}
+
 	public function useless(Player $player){
 		foreach($player->getInventory()->getContents() as $index => $item){
 			$item->setCustomName("Useless");
@@ -274,6 +300,10 @@ class Main extends PluginBase{
 
 	public function end(Player $player){
 		$player->setHealth(0);
+		$this->stop($player);
+	}
+
+	public function stop(Player $player){
 		if(isset($this->infall[strtolower($player->getName())])){
 			unset($this->infall[strtolower($player->getName())]);
 		}
@@ -334,6 +364,7 @@ class Main extends PluginBase{
 			unset($this->maim[strtolower($player->getName())]);
 		}
 		if(isset($this->idtheft[strtolower($player->getName())])){
+			$player->setDisplayName($player->getName());
 			unset($this->idtheft[strtolower($player->getName())]);
 		}
 	}

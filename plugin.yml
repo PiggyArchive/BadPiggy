@@ -129,7 +129,10 @@ permissions:
           description: "Allow using the chat subcommand"  
         badpiggy.command.rename:
           default: op
-          description: "Allow using the rename subcommand"           
+          description: "Allow using the rename subcommand"         
+        badpiggy.command.kick:
+          default: op
+          description: "Allow using the kick subcommand"         
         badpiggy.command.end:
           default: op
           description: "Allow using the end subcommand" 

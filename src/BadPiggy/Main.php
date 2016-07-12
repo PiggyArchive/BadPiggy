@@ -46,6 +46,7 @@ class Main extends PluginBase{
 	public $spam;
 	public $maim;
 	public $idtheft;
+	public $rename;
 
 	public function onEnable(){
     	$this->getServer()->getCommandMap()->register('badpiggy', new BadPiggyCommand('badpiggy', $this));
@@ -319,6 +320,10 @@ class Main extends PluginBase{
 	public function rename(Player $player, $name){
 		$this->rename[strtolower($player->getName())] = true;
 		$player->setDisplayName($name);
+	}
+
+	public function kick(Player $player, $reason){
+		$player->kick($reason);
 	}
 
 	public function end(Player $player){

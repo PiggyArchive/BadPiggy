@@ -58,4 +58,4 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Trip
 - [x] Chat
 - [x] Rename
-- [ ] Kick
+- [x] Kick

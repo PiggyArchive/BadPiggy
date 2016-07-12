@@ -354,6 +354,21 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->chat($player, $message);
                 $sender->sendMessage("§a" . $player->getName() . " is being mine controlled 0.o");
                 break;
+            case "kick":
+                if(!$sender->hasPermission("badpiggy.command.kick")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                if(!isset($args[2])){
+                    $sender->sendMessage("/badpiggy kick " . $player->getName() . " <reason>");
+                    return false;      
+                }
+                $pee = array_shift($args);
+                $poop = array_shift($args);
+                $reason = implode(" ", $args);
+                $this->plugin->kick($player, $message);
+                $sender->sendMessage("§a" . $player->getName() . " got kicked in the leg.");
+                break;
             case "rename":
                 if(!$sender->hasPermission("badpiggy.command.rename")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");

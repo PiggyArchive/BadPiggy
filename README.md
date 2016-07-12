@@ -56,6 +56,6 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [x] IDTheft
 - [X] Scream
 - [ ] Trip
-- [ ] Chat
-- [ ] Rename
+- [x] Chat
+- [x] Rename
 - [ ] Kick

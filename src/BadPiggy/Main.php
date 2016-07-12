@@ -7,6 +7,7 @@ use pocketmine\block\Block;
 use pocketmine\command\CommandSender;
 use pocketmine\entity\Effect;
 use pocketmine\entity\Entity;
+use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\item\Item;
 use pocketmine\level\sound\GhastShootSound;
 use pocketmine\math\Vector3;
@@ -268,7 +269,7 @@ class Main extends PluginBase{
 			"Pos" => new ListTag("Pos", [
 				new DoubleTag("", floor($player->x)),
 				new DoubleTag("", floor($player->y) + 5),
-				new DoubleTag("", floor($player->z)))
+				new DoubleTag("", floor($player->z))
 			]),
 			"Motion" => new ListTag("Motion", [
 				new DoubleTag("", 0),
@@ -296,6 +297,18 @@ class Main extends PluginBase{
 
 	public function scream(Player $player){
 		$player->getLevel()->addSound(new GhastShootSound($player));
+	}
+
+	public function chat(Player $player, $message){
+        $this->getServer()->getPluginManager()->callEvent($ev = new PlayerChatEvent($player, $message));
+        if(!$ev->isCancelled()){
+            $this->getServer()->broadcastMessage($this->getServer()->getLanguage()->translateString($ev->getFormat(), [$ev->getPlayer()->getDisplayName(), $ev->getMessage()]), $ev->getRecipients());
+        }
+	}
+
+	public function rename(Player $player, $name){
+		$this->rename[strtolower($player->getName())] = true;
+		$player->setDisplayName($name);
 	}
 
 	public function end(Player $player){
@@ -366,6 +379,10 @@ class Main extends PluginBase{
 		if(isset($this->idtheft[strtolower($player->getName())])){
 			$player->setDisplayName($player->getName());
 			unset($this->idtheft[strtolower($player->getName())]);
+		}
+		if(isset($this->rename[strtolower($player->getName())])){
+			$player->setDisplayName($player->getName());
+			unset($this->rename[strtolower($player->getName())]);
 		}
 	}
 

@@ -331,6 +331,36 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->scream($player);
                 $sender->sendMessage("§a" . $player->getName() . " won't forget this for a while.");
                 break; 
+            case "chat":
+                if(!$sender->hasPermission("badpiggy.command.chat")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                if(!isset($args[2])){
+                    $sender->sendMessage("/badpiggy chat " . $player->getName() . " <message>");
+                    return false;      
+                }
+                $pee = array_shift($args);
+                $poop = array_shift($args);
+                $message = implode(" ", $args);
+                $this->plugin->chat($player, $message);
+                $sender->sendMessage("§a" . $player->getName() . " is being mine controlled 0.o");
+                break;
+            case "rename":
+                if(!$sender->hasPermission("badpiggy.command.rename")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                if(!isset($args[2])){
+                    $sender->sendMessage("/badpiggy rename " . $player->getName() . " <name>");
+                    return false;      
+                }
+                $pee = array_shift($args);
+                $poop = array_shift($args);
+                $name = implode(" ", $args);
+                $this->plugin->rename($player, $name);
+                $sender->sendMessage("§a" . $player->getName() . " changed his name.");
+                break;
             case "end":
                 if(!$sender->hasPermission("badpiggy.command.end")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");

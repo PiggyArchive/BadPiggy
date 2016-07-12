@@ -50,9 +50,9 @@ class Main extends PluginBase{
 	public $rename;
 
 	public function onEnable(){
-    	$this->getServer()->getCommandMap()->register('badpiggy', new BadPiggyCommand('badpiggy', $this));
-    	$this->getServer()->getScheduler()->scheduleRepeatingTask(new BadPiggyTick($this), 1);
-    	$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
+		$this->getServer()->getCommandMap()->register('badpiggy', new BadPiggyCommand('badpiggy', $this));
+		$this->getServer()->getScheduler()->scheduleRepeatingTask(new BadPiggyTick($this), 1);
+		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 		$this->getLogger()->info("§aEnabled.");
 	}
 
@@ -68,17 +68,17 @@ class Main extends PluginBase{
 
 	public function strike(Player $player){
 		$pk = new AddEntityPacket();
-        $pk->type = 93;
-        $pk->eid = Entity::$entityCount++;
-        $pk->x = $player->x;
-       	$pk->y = $player->y;
-        $pk->z = $player->z;        
-        $pk->speedX = 0;
-        $pk->speedY = 0;
-        $pk->speedZ = 0;
-        $pk->yaw = 0;
-        $pk->pitch = 0;
-        Server::broadcastPacket($this->getServer()->getOnlinePlayers(), $pk);
+		$pk->type = 93;
+		$pk->eid = Entity::$entityCount++;
+		$pk->x = $player->x;
+		$pk->y = $player->y;
+		$pk->z = $player->z;        
+		$pk->speedX = 0;
+		$pk->speedY = 0;
+		$pk->speedZ = 0;
+		$pk->yaw = 0;
+		$pk->pitch = 0;
+		Server::broadcastPacket($this->getServer()->getOnlinePlayers(), $pk);
 	}
 
 	public function burn(Player $player, $time){
@@ -144,46 +144,46 @@ class Main extends PluginBase{
 	}
 
 	public function blind(Player $player){
-        $effect = Effect::getEffect(15);
-       	$effect->setDuration(999999);
-        $effect->setAmplifier(2);
-        $effect->setVisible(false);
-        $player->addEffect($effect);
-        $this->blind[strtolower($player->getName())] = true;
+		$effect = Effect::getEffect(15);
+		$effect->setDuration(999999);
+		$effect->setAmplifier(2);
+		$effect->setVisible(false);
+		$player->addEffect($effect);
+		$this->blind[strtolower($player->getName())] = true;
 	}
 
 	public function drunk(Player $player){
-        $effect = Effect::getEffect(9);
-       	$effect->setDuration(999999);
-        $effect->setAmplifier(2);
-        $effect->setVisible(false);
-        $player->addEffect($effect);
-        $this->drunk[strtolower($player->getName())] = true;
+		$effect = Effect::getEffect(9);
+		$effect->setDuration(999999);
+		$effect->setAmplifier(2);
+		$effect->setVisible(false);
+		$player->addEffect($effect);
+		$this->drunk[strtolower($player->getName())] = true;
 	}
 
 	public function starve(Player $player){
 		$player->setFood(0);
-        $effect = Effect::getEffect(17);
-       	$effect->setDuration(999999);
-        $effect->setAmplifier(2);
-        $effect->setVisible(false);
-        $player->addEffect($effect);	
-        $this->starve[strtolower($player->getName())] = true;	
+		$effect = Effect::getEffect(17);
+		$effect->setDuration(999999);
+		$effect->setAmplifier(2);
+		$effect->setVisible(false);
+		$player->addEffect($effect);	
+		$this->starve[strtolower($player->getName())] = true;	
 	}
 
 	public function slow(Player $player){
  		$player->getAttributeMap()->getAttribute(5)->setValue(0.05);
-        $this->slow[strtolower($player->getName())] = true;	
+ 		$this->slow[strtolower($player->getName())] = true;	
 	}
 
 
-	public function poison(Player $player){;
-        $effect = Effect::getEffect(19);
-       	$effect->setDuration(999999);
-        $effect->setAmplifier(2);
-        $effect->setVisible(false);
-        $player->addEffect($effect);	
-        $this->poison[strtolower($player->getName())] = true;	
+	public function poison(Player $player){
+		$effect = Effect::getEffect(19);
+		$effect->setDuration(999999);
+		$effect->setAmplifier(2);
+		$effect->setVisible(false);
+		$player->addEffect($effect);	
+		$this->poison[strtolower($player->getName())] = true;	
 	}
 
 	public function strip(Player $player){
@@ -191,7 +191,7 @@ class Main extends PluginBase{
 	}
 
 	public function glass(Player $player){
-		$Vector3 = new Vector3($player->x, 125, $player->z);
+		$vector3 = new Vector3($player->x, 125, $player->z);
 		$player->getLevel()->setBlock($Vector3, Block::get(Block::GLASS));
 		$player->teleport(new Vector3($player->x, 126, $player->z));
 	}
@@ -339,10 +339,10 @@ class Main extends PluginBase{
 	}
 
 	public function chat(Player $player, $message){
-        $this->getServer()->getPluginManager()->callEvent($ev = new PlayerChatEvent($player, $message));
-        if(!$ev->isCancelled()){
-            $this->getServer()->broadcastMessage($this->getServer()->getLanguage()->translateString($ev->getFormat(), [$ev->getPlayer()->getDisplayName(), $ev->getMessage()]), $ev->getRecipients());
-        }
+		$this->getServer()->getPluginManager()->callEvent($ev = new PlayerChatEvent($player, $message));
+		if(!$ev->isCancelled()){
+			$this->getServer()->broadcastMessage($this->getServer()->getLanguage()->translateString($ev->getFormat(), [$ev->getPlayer()->getDisplayName(), $ev->getMessage()]), $ev->getRecipients());
+		}
 	}
 
 	public function rename(Player $player, $name){

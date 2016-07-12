@@ -17,13 +17,13 @@ class EventListener implements Listener{
 	public function __construct($plugin){
 		$this->plugin = $plugin;
 	}
-
-    /**
-     * @param BlockBreakEvent $event
-     *
-     * @priority MONITOR
-     * @ignoreCancelled true
-     */
+	
+	/**
+	 * @param BlockBreakEvent $event
+	 *
+	 * @priority MONITOR
+	 * @ignoreCancelled true
+	 */
 	public function onBreak(BlockBreakEvent $event){
 		$player = $event->getPlayer();
 		$block = $event->getBlock();

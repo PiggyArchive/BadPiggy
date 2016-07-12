@@ -7,15 +7,15 @@ use pocketmine\command\CommandSender;
 use pocketmine\Player;
 
 class BadPiggyCommand extends VanillaCommand{
-	public function __construct($name, $plugin){
-		parent::__construct(
-			$name, "Troll a player", "/badpiggy <player> <punishment>"
-		);
-		$this->setPermission("badpiggy.command");
-		$this->plugin = $plugin;
+    public function __construct($name, $plugin){
+        parent::__construct(
+            $name, "Troll a player", "/badpiggy <player> <punishment>"
+        );
+        $this->setPermission("badpiggy.command");
+        $this->plugin = $plugin;
 	}
 
-	public function execute(CommandSender $sender, $currentAlias, array $args){
+    public function execute(CommandSender $sender, $currentAlias, array $args){
         if(!$this->testPermission($sender)){
             return true;
         }

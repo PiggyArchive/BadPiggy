@@ -79,8 +79,15 @@ class EventListener implements Listener{
 			$event->setCancelled();
 		}
 		if(isset($this->plugin->infall[strtolower($player->getName())])){
-			if(floor($player->getY()) < 3 + $player->getLevel()->getSafeSpawn($player)->y){
+			if(floor($player->y) < 3 + $player->getLevel()->getSafeSpawn($player)->y){
 				$this->plugin->fall($player);
+			}
+		}
+		if(isset($this->plugin->brittle[strtolower($player->getName())])){
+			if($event->getTo()->y - $event->getFrom()->y > 0 || $event->getFrom()->y - $event->getTo()->y > 0){
+				echo($event->getTo()->y - $event->getFrom()->y);
+				unset($this->plugin->brittle[strtolower($player->getName())]);
+				$player->setHealth(0);
 			}
 		}
 		if(isset($this->plugin->idtheft[strtolower($player->getName())])){

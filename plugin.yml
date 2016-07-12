@@ -109,6 +109,9 @@ permissions:
         badpiggy.command.maim:
           default: op
           description: "Allow using the maim subcommand"  
+        badpiggy.command.brittle:
+          default: op
+          description: "Allow using the brittle subcommand"  
         badpiggy.command.tnttrick:
           default: op
           description: "Allow using the tnttrick subcommand"  

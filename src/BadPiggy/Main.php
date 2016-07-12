@@ -45,6 +45,7 @@ class Main extends PluginBase{
 	public $mute;
 	public $spam;
 	public $maim;
+	public $brittle;
 	public $idtheft;
 	public $rename;
 
@@ -265,6 +266,10 @@ class Main extends PluginBase{
 		$this->maim[strtolower($player->getName())] = true;
 	}
 
+	public function brittle(Player $player){
+		$this->brittle[strtolower($player->getName())] = true;
+	}
+
 	public function tnttrick(Player $player){
 		$player->getLevel()->setBlock($player->add(1, 1), Block::get(Block::TNT));
 		$player->getLevel()->setBlock($player->subtract(1)->add(0, 1), Block::get(Block::TNT));
@@ -374,15 +379,12 @@ class Main extends PluginBase{
 			unset($this->exblock[strtolower($player->getName())]);
 		}
 		if(isset($this->blind[strtolower($player->getName())])){
-			$player->removeEffect(15);
 			unset($this->blind[strtolower($player->getName())]);
 		}
 		if(isset($this->drunk[strtolower($player->getName())])){
-			$player->removeEffect(9);
 			unset($this->drunk[strtolower($player->getName())]);
 		}
 		if(isset($this->starve[strtolower($player->getName())])){
-			$player->removeEffect(17);
 			unset($this->starve[strtolower($player->getName())]);
 		}
 		if(isset($this->slow[strtolower($player->getName())])){
@@ -390,7 +392,6 @@ class Main extends PluginBase{
 			unset($this->slow[strtolower($player->getName())]);
 		}
 		if(isset($this->poison[strtolower($player->getName())])){
-			$player->removeEffect(19);
 			unset($this->poison[strtolower($player->getName())]);
 		}
 		if(isset($this->unaware[strtolower($player->getName())])){

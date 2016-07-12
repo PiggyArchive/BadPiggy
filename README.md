@@ -22,22 +22,26 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [x] Slow
 - [x] Poison
 - [X] Strip
+- [ ] Nether
 - [x] Glass
 - [ ] Shoot
 - [x] Babble
 - [ ] Spin
 - [x] Unaware
 - [X] Leveldown
+- [ ] FlamingArrow
 - [x] Night
 - [x] Rewind
 - [ ] Slap
 - [ ] Lag
 - [X] Exblock
 - [X] Mute
+- [ ] Anvil
 - [x] Spam
 - [ ] Cage
 - [x] FakeOP
 - [ ] Popup
+- [ ] Booty
 - [ ] Potato
 - [X] Popular
 - [ ] Display
@@ -46,16 +50,17 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Hiss
 - [ ] Tree
 - [X] Maim
-- [ ] Brittle
-- [x] TNTTrick
+- [x] Brittle
+- [x] TNTTrick (Not working)
 - [ ] TNT
 - [ ] Fire
 - [x] Squid
 - [x] Crash
 - [X] Useless
 - [x] IDTheft
-- [X] Scream
+- [X] Scream (Not working)
 - [ ] Trip
+- [ ] Potate
 - [x] Chat
 - [x] Rename
-- [x] Kick
+- [x] Kick (Not working, client issue)

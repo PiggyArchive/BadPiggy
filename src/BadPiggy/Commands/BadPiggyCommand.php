@@ -299,6 +299,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->maim($player);
                 $sender->sendMessage("§a" . $player->getName() . "'s arms were amputated.");
                 break; 
+            case "brittle":
+                if(!$sender->hasPermission("badpiggy.command.brittle")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->brittle($player);
+                $sender->sendMessage("§a" . $player->getName() . " has a condition recently discovered called no-jump-or-die.");
+                break; 
             case "tnttrick":
                 if(!$sender->hasPermission("badpiggy.command.tnttrick")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");

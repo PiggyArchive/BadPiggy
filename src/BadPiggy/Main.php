@@ -3,6 +3,8 @@
 namespace BadPiggy;
 
 use BadPiggy\Commands\BadPiggyCommand;
+use BadPiggy\Sounds\TNTPrimeSound;
+
 use pocketmine\block\Block;
 use pocketmine\command\CommandSender;
 use pocketmine\entity\Effect;
@@ -18,7 +20,6 @@ use pocketmine\nbt\tag\FloatTag;
 use pocketmine\nbt\tag\StringTag;
 use pocketmine\network\protocol\AddEntityPacket;
 use pocketmine\network\protocol\SetTimePacket;
-
 use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
 use pocketmine\Server;
@@ -263,6 +264,14 @@ class Main extends PluginBase{
 		$this->maim[strtolower($player->getName())] = true;
 	}
 
+	public function tnttrick(Player $player){
+		$player->getLevel()->setBlock($player->add(1), Block::get(Block::TNT));
+		$player->getLevel()->setBlock($player->subtract(1), Block::get(Block::TNT));
+		$player->getLevel()->setBlock($player->add(0, 0, 1), Block::get(Block::TNT));
+		$player->getLevel()->setBlock($player->subtract(0, 0, 1), Block::get(Block::TNT));
+		$player->getLevel()->addSound(new TNTPrimeSound($player->add(0)));
+	}
+
 	public function squid(Player $player){
 		$chunk = $player->getLevel()->getChunk($player->x >> 4, $player->z >> 4);
 		$nbt = new CompoundTag("", [
@@ -282,6 +291,7 @@ class Main extends PluginBase{
 			]),
 		]);
 		$entity = Entity::createEntity("Squid", $chunk, $nbt);
+		$entity->spawnToAll();
 	}
 
 	public function useless(Player $player){

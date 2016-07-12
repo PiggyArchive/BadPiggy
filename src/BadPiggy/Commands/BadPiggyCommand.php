@@ -297,7 +297,15 @@ class BadPiggyCommand extends VanillaCommand{
                     return false;
                 }
                 $this->plugin->maim($player);
-                $sender->sendMessage("§a" . $player->getName() . " won't be able to pick thing ups for a while...");
+                $sender->sendMessage("§a" . $player->getName() . "'s arms were amputated.");
+                break; 
+            case "tnttrick":
+                if(!$sender->hasPermission("badpiggy.command.tnttrick")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->tnttrick($player);
+                $sender->sendMessage("§a" . $player->getName() . " is gonna be freaked out from these fake tnt blocks.");
                 break; 
             case "squid":
                 if(!$sender->hasPermission("badpiggy.command.squid")){

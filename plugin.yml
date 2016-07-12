@@ -115,6 +115,9 @@ permissions:
         badpiggy.command.squid:
           default: op
           description: "Allow using the squid subcommand"  
+        badpiggy.command.crash:
+          default: op
+          description: "Allow using the crash subcommand"  
         badpiggy.command.useless:
           default: op
           description: "Allow using the scream subcommand"  

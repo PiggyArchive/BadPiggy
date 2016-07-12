@@ -315,6 +315,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->squid($player);
                 $sender->sendMessage("§a" . $player->getName() . " must save the squid!");
                 break; 
+            case "crash":
+                if(!$sender->hasPermission("badpiggy.command.crash")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->crash($player);
+                $sender->sendMessage("§a" . $player->getName() . " was involved in a car crash.");
+                break; 
             case "useless":
                 if(!$sender->hasPermission("badpiggy.command.useless")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -366,7 +374,7 @@ class BadPiggyCommand extends VanillaCommand{
                 $pee = array_shift($args);
                 $poop = array_shift($args);
                 $reason = implode(" ", $args);
-                $this->plugin->kick($player, $message);
+                $this->plugin->kick($player, $reason);
                 $sender->sendMessage("§a" . $player->getName() . " got kicked in the leg.");
                 break;
             case "rename":
@@ -409,37 +417,40 @@ class BadPiggyCommand extends VanillaCommand{
                 if(!is_numeric($page)){
                     $page = 1;
                 }
-                if($page > 9){
-                    $page = 9;
+                if($page > 10){
+                    $page = 10;
                 }
                 switch($page){
                     case 0:
                     case 1:
-                        $sender->sendMessage("--- Punishments Page 1 of 9 ---\n§2fall\n§2explode\n§2burn\n§2end");
+                        $sender->sendMessage("--- Punishments Page 1 of 10 ---\n§2fall\n§2explode\n§2burn\n§2end");
                         break;
                     case 2:
-                        $sender->sendMessage("--- Punishments Page 2 of 9 ---\n§2void\n§2invoid\n§2lavablock\n§2fexplode");
+                        $sender->sendMessage("--- Punishments Page 2 of 10 ---\n§2void\n§2invoid\n§2lavablock\n§2fexplode");
                         break;
                     case 3:
-                        $sender->sendMessage("--- Punishments Page 3 of 9 ---\n§2glass\n§2babble\n§2leveldown\n§2exblock");
+                        $sender->sendMessage("--- Punishments Page 3 of 10 ---\n§2glass\n§2babble\n§2leveldown\n§2exblock");
                         break;
                     case 4:
-                        $sender->sendMessage("--- Punishments Page 4 of 9 ---\n§2popular\n§2pumpkin\n§2armour\n§2maim");
+                        $sender->sendMessage("--- Punishments Page 4 of 10 ---\n§2popular\n§2pumpkin\n§2armour\n§2maim");
                         break;
                     case 5:
-                        $sender->sendMessage("--- Punishments Page 5 of 9 ---\n§2scream\n§2strip\n§afreeze\n§amute");
+                        $sender->sendMessage("--- Punishments Page 5 of 10 ---\n§2scream\n§2strip\n§afreeze\n§amute");
                         break;
                     case 6:
-                        $sender->sendMessage("--- Punishments Page 6 of 9 ---\n§2unaware\n§aweb\n§auseless\nhole");
+                        $sender->sendMessage("--- Punishments Page 6 of 10 ---\n§2unaware\n§aweb\n§auseless\nhole");
                         break;
                     case 7:
-                        $sender->sendMessage("--- Punishments Page 7 of 9 ---\n§2blind\n§adrunk\n§starve\nslow");
+                        $sender->sendMessage("--- Punishments Page 7 of 10 ---\n§2blind\n§adrunk\n§starve\nslow");
                         break;
                     case 8:
-                        $sender->sendMessage("--- Punishments Page 8 of 9 ---\n§2poison\n§afakeop\nidtheft\nnight");
+                        $sender->sendMessage("--- Punishments Page 8 of 10 ---\n§2poison\n§afakeop\nidtheft\nnight");
                         break;
-                    case 8:
-                        $sender->sendMessage("--- Punishments Page 9 of 9 ---\n§2rewind\n§asquid\nstop");
+                    case 9:
+                        $sender->sendMessage("--- Punishments Page 9 of 10 ---\n§2rewind\n§asquid\nstop\nkick");
+                        break;
+                    case 10:
+                        $sender->sendMessage("--- Punishments Page 10 of 10 ---\n§2crash");
                         break;
                 }
                 break;

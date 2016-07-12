@@ -295,6 +295,29 @@ class Main extends PluginBase{
 		$entity->spawnToAll();
 	}
 
+	public function crash(Player $player){
+		$chunk = $player->getLevel()->getChunk($player->x >> 4, $player->z >> 4);
+		$nbt = new CompoundTag("", [
+			"Pos" => new ListTag("Pos", [
+				new DoubleTag("", floor($player->x)),
+				new DoubleTag("", floor($player->y) + 5),
+				new DoubleTag("", floor($player->z))
+			]),
+			"Motion" => new ListTag("Motion", [
+				new DoubleTag("", 0),
+				new DoubleTag("", 0),
+				new DoubleTag("", 0)
+			]),
+			"Rotation" => new ListTag("Rotation", [
+				new FloatTag("", lcg_value() * 360),
+				new FloatTag("", 0)
+			]),
+		]);
+		$entity = Entity::createEntity("Villager", $chunk, $nbt);
+		$entity->setDataProperty(16, Entity::DATA_TYPE_BYTE, 5);
+		$entity->spawnTo($player);		
+	}
+
 	public function useless(Player $player){
 		foreach($player->getInventory()->getContents() as $index => $item){
 			$item->setCustomName("Useless");
@@ -323,7 +346,7 @@ class Main extends PluginBase{
 	}
 
 	public function kick(Player $player, $reason){
-		$player->kick($reason);
+		$player->close("", $reason);
 	}
 
 	public function end(Player $player){

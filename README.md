@@ -51,7 +51,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] TNT
 - [ ] Fire
 - [x] Squid
-- [ ] Crash
+- [x] Crash
 - [X] Useless
 - [x] IDTheft
 - [X] Scream

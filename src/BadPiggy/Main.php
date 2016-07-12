@@ -265,11 +265,11 @@ class Main extends PluginBase{
 	}
 
 	public function tnttrick(Player $player){
-		$player->getLevel()->setBlock($player->add(1), Block::get(Block::TNT));
-		$player->getLevel()->setBlock($player->subtract(1), Block::get(Block::TNT));
-		$player->getLevel()->setBlock($player->add(0, 0, 1), Block::get(Block::TNT));
-		$player->getLevel()->setBlock($player->subtract(0, 0, 1), Block::get(Block::TNT));
-		$player->getLevel()->addSound(new TNTPrimeSound($player->add(0)));
+		$player->getLevel()->setBlock($player->add(1, 1), Block::get(Block::TNT));
+		$player->getLevel()->setBlock($player->subtract(1)->add(0, 1), Block::get(Block::TNT));
+		$player->getLevel()->setBlock($player->add(0, 1, 1), Block::get(Block::TNT));
+		$player->getLevel()->setBlock($player->subtract(0, 0, 1)->add(0, 1), Block::get(Block::TNT));
+		$player->getLevel()->addSound(new TNTPrimeSound($player));
 	}
 
 	public function squid(Player $player){

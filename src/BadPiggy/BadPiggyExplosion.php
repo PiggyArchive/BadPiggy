@@ -24,7 +24,6 @@ use pocketmine\network\protocol\ExplodePacket;
 use pocketmine\utils\Random;
 
 class BadPiggyExplosion{
-
 	private $rays = 16; //Rays
 	public $level;
 	public $source;

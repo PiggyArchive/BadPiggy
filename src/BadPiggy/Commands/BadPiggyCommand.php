@@ -275,6 +275,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->spam($player);
                 $sender->sendMessage("§a" . $player->getName() . " is too busy reading his emails.");
                 break;  
+            case "cage":
+                if(!$sender->hasPermission("badpiggy.command.cage")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->cage($player);
+                $sender->sendMessage("§a" . $player->getName() . " is my your pet.");
+                break;
             case "fakeop":
                 if(!$sender->hasPermission("badpiggy.command.fakeop")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -518,7 +526,7 @@ class BadPiggyCommand extends VanillaCommand{
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2crash\n§2popup\ntrip\n§2anvil");
                         break;
                     case 11:
-                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2fire\n§2teleport\n§2display");
+                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2fire\n§2teleport\n§2display\n§2cage");
                         break;
                     case 12:
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n");

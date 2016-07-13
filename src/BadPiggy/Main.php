@@ -258,6 +258,18 @@ class Main extends PluginBase{
 		$this->spam[strtolower($player->getName())] = true;
 	}
 
+	public function cage(Player $player){
+		$player->getLevel()->setBlock($player->add(1, 15), Block::get(145));
+		$player->getLevel()->setBlock($player->add(0, 16)->subtract(1), Block::get(145));
+		$player->getLevel()->setBlock($player->add(0, 17)->subtract(0, 0, 1), Block::get(145));
+		$player->getLevel()->setBlock($player->add(0, 18, 1), Block::get(145));
+		$player->getLevel()->setBlock($player->add(1, 19), Block::get(145));
+		$player->getLevel()->setBlock($player->add(0, 20)->subtract(1), Block::get(145));
+		$player->getLevel()->setBlock($player->add(0, 21)->subtract(0, 0, 1), Block::get(145));
+		$player->getLevel()->setBlock($player->add(0, 22, 1), Block::get(145));
+		$player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y) + 1, floor($player->z) + 0.5));
+	}
+
 	public function fakeop(Player $player){
 		$player->sendMessage("§7You are now op!");
 	}

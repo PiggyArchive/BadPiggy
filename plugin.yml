@@ -100,6 +100,9 @@ permissions:
         badpiggy.command.spam:
           default: op
           description: "Allow using the spam subcommand" 
+        badpiggy.command.cage:
+          default: op
+          description: "Allow using the cage subcommand" 
         badpiggy.command.fakeop:
           default: op
           description: "Allow using the fakeop subcommand" 

@@ -33,6 +33,7 @@ class Main extends PluginBase {
     public $lavablock;
     public $freeze;
     public $babble;
+    public $spin;
     public $exblock;
     public $blind;
     public $drunk;
@@ -222,6 +223,10 @@ class Main extends PluginBase {
         $this->babble[strtolower($player->getName())] = true;
     }
 
+    public function spin(Player $player) {
+        $this->spin[strtolower($player->getName())] = true;
+    }
+
     public function unaware(Player $player) {
         foreach($this->getServer()->getOnlinePlayers() as $p) {
             $player->hidePlayer($p);
@@ -232,12 +237,20 @@ class Main extends PluginBase {
     public function leveldown(Player $player) {
         switch($this->getServer()->getName()) {
             case "ClearSky":
-            	$player->setExperience(0);
+                $player->setExperience(0);
             case "ImagicalMine":
             case "Genisys":
                 $player->setExp(0);
                 break;
         }
+    }
+
+    public function flamingarrow(Player $player) {
+        $chunk = $player->getLevel()->getChunk($player->x >> 4, $player->z >> 4);
+        $nbt = new CompoundTag("", ["Pos" => new ListTag("Pos", [new DoubleTag("", floor($player->x) + 0.5), new DoubleTag("", floor($player->y) + 10), new DoubleTag("", floor($player->z) + 0.5)]), "Motion" => new ListTag("Motion", [new DoubleTag("", 0), new DoubleTag("", 0), new DoubleTag("", 0)]), "Rotation" => new ListTag("Rotation", [new FloatTag("", lcg_value() * 360), new FloatTag("", 0)]), ]);
+        $entity = Entity::createEntity("Arrow", $chunk, $nbt);
+        $entity->setOnFire(999);
+        $entity->spawnToAll();
     }
 
     public function night(Player $player) {
@@ -332,12 +345,12 @@ class Main extends PluginBase {
         $player->getInventory()->setBoots(Item::get(Item::BUCKET));
     }
 
-    public function tree(Player $player){
-    	$bonemeal = Item::get(Item::DYE, 15);
-    	$player->getLevel()->setBlock($player->add(1), Block::get(Block::SAPLING, 2));
-    	$player->getLevel()->setBlock($player->subtract(1), Block::get(Block::SAPLING, 2));
-    	$player->getLevel()->setBlock($player->add(0, 0, 1), Block::get(Block::SAPLING, 2));
-    	$player->getLevel()->setBlock($player->subtract(0, 0, 1), Block::get(Block::SAPLING, 2));
+    public function tree(Player $player) {
+        $bonemeal = Item::get(Item::DYE, 15);
+        $player->getLevel()->setBlock($player->add(1), Block::get(Block::SAPLING, 2));
+        $player->getLevel()->setBlock($player->subtract(1), Block::get(Block::SAPLING, 2));
+        $player->getLevel()->setBlock($player->add(0, 0, 1), Block::get(Block::SAPLING, 2));
+        $player->getLevel()->setBlock($player->subtract(0, 0, 1), Block::get(Block::SAPLING, 2));
         $player->getLevel()->getBlock($player->add(1))->onActivate($bonemeal, $player);
         $player->getLevel()->getBlock($player->subtract(1))->onActivate($bonemeal, $player);
         $player->getLevel()->getBlock($player->add(0, 0, 1))->onActivate($bonemeal, $player);
@@ -460,6 +473,9 @@ class Main extends PluginBase {
         }
         if(isset($this->babble[strtolower($player->getName())])) {
             unset($this->babble[strtolower($player->getName())]);
+        }
+        if(isset($this->spin[strtolower($player->getName())])) {
+            unset($this->spin[strtolower($player->getName())]);
         }
         if(isset($this->exblock[strtolower($player->getName())])) {
             unset($this->exblock[strtolower($player->getName())]);

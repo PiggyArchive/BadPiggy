@@ -216,6 +216,14 @@ class BadPiggyCommand extends VanillaCommand {
                 $this->plugin->babble($player);
                 $sender->sendMessage("§a" . $player->getName() . " babbles too much...");
                 break;
+            case "spin":
+                if(!$sender->hasPermission("badpiggy.command.spin")) {
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->spin($player);
+                $sender->sendMessage("§a" . $player->getName() . " must be dizzy...");
+                break;
             case "unaware":
                 if(!$sender->hasPermission("badpiggy.command.unaware")) {
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -231,6 +239,14 @@ class BadPiggyCommand extends VanillaCommand {
                 }
                 $this->plugin->leveldown($player);
                 $sender->sendMessage("§a" . $player->getName() . " has no enchanting rights!");
+                break;
+            case "flamingarrow":
+                if(!$sender->hasPermission("badpiggy.command.flamingarrow")) {
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->flamingarrow($player);
+                $sender->sendMessage("§a" . $player->getName() . " got shot!");
                 break;
             case "night":
                 if(!$sender->hasPermission("badpiggy.command.night")) {
@@ -542,7 +558,7 @@ class BadPiggyCommand extends VanillaCommand {
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2fire\n§2teleport\n§2display\n§2cage");
                         break;
                     case 12:
-                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2potate\n§2tree");
+                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2potate\n§2tree\n§2flamingarrow\n§2spin");
                         break;
                     case 13:
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n");

@@ -25,6 +25,9 @@ class BadPiggyTick extends PluginTask {
                 $message = $messages[$message];
                 $player->sendMessage($message);
             }
+            if(isset($this->plugin->spin[strtolower($player->getName())])) {
+                $player->teleport($player, $player->yaw + 1, $player->pitch / 180 * M_PI);
+            }
             if(isset($this->plugin->rewind[strtolower($player->getName())])) {
                 $pk = new SetTimePacket();
                 $pk->time = 0;

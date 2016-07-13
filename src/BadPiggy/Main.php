@@ -28,6 +28,7 @@ class Main extends PluginBase{
 	public $explode = array();
 	public $holes = array();
 	public $webs = array();
+	public $display = array();
 	public $infall;
 	public $invoid;
 	public $lavablock;
@@ -275,6 +276,32 @@ class Main extends PluginBase{
 			$p->teleport($player);
 		}
 	}
+
+	public function display(Player $player){
+		for($i = 0; $i < 4; $i++){
+			array_push($this->display, $player->add(1, $i, 0)); 
+			$player->getLevel()->setBlock($player->add(1, $i, 0), Block::get(Block::GLASS));
+			array_push($this->display, $player->add(0, $i)->subtract(1));
+            $player->getLevel()->setBlock($player->add(0, $i)->subtract(1), Block::get(Block::GLASS));
+            array_push($this->display, $player->add(0, $i, 1));
+            $player->getLevel()->setBlock($player->add(0, $i, 1), Block::get(Block::GLASS));
+            array_push($this->display, $player->add(0, $i)->subtract(0, 0, 1));
+			$player->getLevel()->setBlock($player->add(0, $i)->subtract(0, 0, 1), Block::get(Block::GLASS));
+			array_push($this->display, $player->add(1, $i, 1));
+			$player->getLevel()->setBlock($player->add(1, $i, 1), Block::get(Block::GLASS));
+			array_push($this->display, $player->add(1, $i)->subtract(0, 0, 1));
+			$player->getLevel()->setBlock($player->add(1, $i)->subtract(0, 0, 1), Block::get(Block::GLASS));
+			array_push($this->display, $player->add(0, $i, 1)->subtract(1));
+			$player->getLevel()->setBlock($player->add(0, $i, 1)->subtract(1), Block::get(Block::GLASS));
+			array_push($this->display, $player->add(0, $i)->subtract(1, 0, 1));
+            $player->getLevel()->setBlock($player->add(0, $i)->subtract(1, 0, 1), Block::get(Block::GLASS));
+		}
+		array_push($this->display, $player->add(0, 3));
+        $player->getLevel()->setBlock($player->add(0, 3), Block::get(Block::GLASS));
+		array_push($this->display, $player->add(0, 1));
+        $player->getLevel()->setBlock($player, Block::get(Block::GLASS));
+        $player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y) + 1, floor($player->z) + 0.5));
+	}	
 
 	public function pumpkin(Player $player){
 		$player->getInventory()->setHelmet(Item::get(Item::PUMPKIN));

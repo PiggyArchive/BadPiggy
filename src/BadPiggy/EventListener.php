@@ -17,7 +17,7 @@ class EventListener implements Listener{
 	public function __construct($plugin){
 		$this->plugin = $plugin;
 	}
-	
+
 	/**
 	 * @param BlockBreakEvent $event
 	 *
@@ -27,6 +27,7 @@ class EventListener implements Listener{
 	public function onBreak(BlockBreakEvent $event){
 		$player = $event->getPlayer();
 		$block = $event->getBlock();
+		$vector3 = new Vector3($block->x, $block->y, $block->z);
 		if(isset($this->plugin->lavablock[strtolower($player->getName())])){
 			unset($this->plugin->lavablock[strtolower($player->getName())]);
 			$player->getLevel()->setBlock(new Vector3($block->x, $block->y, $block->z), Block::get(Block::LAVA));
@@ -39,6 +40,15 @@ class EventListener implements Listener{
 			$explosion->explodeB();
 			$event->setCancelled();
 		}
+		foreach($this->plugin->display as $info){
+			if($vector3 == $info->floor()){
+				if($player->isOp()){
+					unset($this->plugin->display[array_search($info, $this->plugin->display)]);
+				}else{
+					$event->setCancelled();
+				}
+			}
+		}		
 	}
 
 	public function onDamage(EntityDamageEvent $event){

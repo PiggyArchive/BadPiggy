@@ -109,6 +109,9 @@ permissions:
         badpiggy.command.popular:
           default: op
           description: "Allow using the popular subcommand"   
+        badpiggy.command.display:
+          default: op
+          description: "Allow using the display subcommand"   
         badpiggy.command.pumpkin:
           default: op
           description: "Allow using the pumpkin subcommand"  

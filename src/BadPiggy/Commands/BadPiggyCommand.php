@@ -298,7 +298,15 @@ class BadPiggyCommand extends VanillaCommand{
                 }
                 $this->plugin->popular($player);
                 $sender->sendMessage("§a" . $player->getName() . " has lots of fans...");
-                break;     
+                break; 
+            case "display":
+                if(!$sender->hasPermission("badpiggy.command.display")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->display($player);
+                $sender->sendMessage("§a" . $player->getName() . " is on display at the Museum of Pigs.");
+                break;      
             case "pumpkin":
                 if(!$sender->hasPermission("badpiggy.command.pumpkin")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -510,7 +518,7 @@ class BadPiggyCommand extends VanillaCommand{
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2crash\n§2popup\ntrip\n§2anvil");
                         break;
                     case 11:
-                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2fire\n§2teleport");
+                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2fire\n§2teleport\n§2display");
                         break;
                     case 12:
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n");

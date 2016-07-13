@@ -44,7 +44,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Booty
 - [ ] Potato
 - [X] Popular
-- [ ] Display
+- [x] Display
 - [x] Pumpkin
 - [X] Armour 
 - [ ] Hiss

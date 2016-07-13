@@ -64,3 +64,21 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [x] Chat
 - [x] Rename
 - [x] Kick (Not working, client issue)
+
+#Coming Soon
+- [ ] Possibly Hounds
+- [ ] Possibly Creeper
+- [ ] Possibly Iron Golem
+- [ ] Possibly Fstrike
+- [ ] Possibly Hailfire
+- [ ] Possibly Floorportal
+- [ ] Possibly Paranoia
+- [ ] Possibly Annoy
+- [ ] Possibly Surround
+- [ ] Possibly Dragon
+- [ ] Possibly Rotate
+- [ ] Possibly Hostile
+- [ ] Possibly Slender
+- [ ] Possibly White
+- [ ] Possibly Ambiance
+- [ ] Possibly iControlU

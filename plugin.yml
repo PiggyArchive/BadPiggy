@@ -70,6 +70,9 @@ permissions:
         badpiggy.command.glass:
           default: op
           description: "Allow using the glass subcommand"  
+        badpiggy.command.anvil:
+          default: op
+          description: "Allow using the anvil subcommand" 
         badpiggy.command.babble:
           default: op
           description: "Allow using the babble subcommand"  

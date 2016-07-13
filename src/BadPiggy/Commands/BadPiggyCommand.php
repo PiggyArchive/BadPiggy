@@ -193,7 +193,15 @@ class BadPiggyCommand extends VanillaCommand{
                     return false;
                 }
                 $this->plugin->glass($player);
-                $sender->sendMessage("§a" . $player->getName() . " is uh... stuck.");
+                $sender->sendMessage("§a" . $player->getName() . " is uh stuck... in the air.");
+                break; 
+            case "anvil":
+                if(!$sender->hasPermission("badpiggy.command.anvil")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->anvil($player);
+                $sender->sendMessage("§a" . $player->getName() . " got squashed.");
                 break; 
             case "babble":
                 if(!$sender->hasPermission("badpiggy.command.babble")){
@@ -474,7 +482,7 @@ class BadPiggyCommand extends VanillaCommand{
                         $sender->sendMessage("--- Punishments Page 9 of 10 ---\n§2rewind\n§asquid\nstop\nkick");
                         break;
                     case 10:
-                        $sender->sendMessage("--- Punishments Page 10 of 10 ---\n§2crash\n§2popup\ntrip");
+                        $sender->sendMessage("--- Punishments Page 10 of 10 ---\n§2crash\n§2popup\ntrip\n§2anvil");
                         break;
                 }
                 break;

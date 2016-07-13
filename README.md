@@ -36,7 +36,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Lag
 - [X] Exblock
 - [X] Mute
-- [ ] Anvil
+- [x] Anvil
 - [x] Spam
 - [ ] Cage
 - [x] FakeOP

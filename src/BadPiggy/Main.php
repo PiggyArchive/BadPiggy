@@ -192,8 +192,14 @@ class Main extends PluginBase{
 
 	public function glass(Player $player){
 		$vector3 = new Vector3($player->x, 125, $player->z);
-		$player->getLevel()->setBlock($Vector3, Block::get(Block::GLASS));
+		$player->getLevel()->setBlock($vector3, Block::get(Block::GLASS));
 		$player->teleport(new Vector3($player->x, 126, $player->z));
+	}
+
+	public function anvil(Player $player){
+		$player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y), floor($player->z) + 0.5));
+		$vector3 = new Vector3($player->x, $player->y + 15, $player->z);
+		$player->getLevel()->setBlock($vector3, Block::get(145));
 	}
 
 	public function babble(Player $player){

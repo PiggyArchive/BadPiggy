@@ -51,14 +51,14 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Tree
 - [X] Maim
 - [x] Brittle
-- [x] TNTTrick (Not working)
+- [x] TNTTrick 
 - [ ] TNT
 - [ ] Fire
 - [x] Squid
 - [x] Crash
 - [X] Useless
 - [x] IDTheft
-- [X] Scream (Not working)
+- [X] Scream 
 - [ ] Trip
 - [ ] Potate
 - [x] Chat

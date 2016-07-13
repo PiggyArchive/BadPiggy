@@ -11,7 +11,7 @@ use pocketmine\entity\Effect;
 use pocketmine\entity\Entity;
 use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\item\Item;
-use pocketmine\level\sound\GhastShootSound;
+use pocketmine\level\sound\GhastSound;
 use pocketmine\math\Vector3;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\DoubleTag;
@@ -335,7 +335,7 @@ class Main extends PluginBase{
 	}
 
 	public function scream(Player $player){
-		$player->getLevel()->addSound(new GhastShootSound($player));
+		$player->getLevel()->addSound(new GhastSound($player));
 	}
 
 	public function chat(Player $player, $message){

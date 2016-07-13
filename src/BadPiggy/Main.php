@@ -303,6 +303,18 @@ class Main extends PluginBase{
 		$player->getLevel()->addSound(new TNTPrimeSound($player));
 	}
 
+	public function tnt(Player $player){
+		$flintnsteel = Item::get(Item::FLINT_STEEL);
+		$player->getLevel()->setBlock($player->add(1), Block::get(Block::TNT));
+		$player->getLevel()->setBlock($player->subtract(1), Block::get(Block::TNT));
+		$player->getLevel()->setBlock($player->add(0, 0, 1), Block::get(Block::TNT));
+		$player->getLevel()->setBlock($player->subtract(0, 0, 1), Block::get(Block::TNT));
+		$player->getLevel()->getBlock($player->add(1))->onActivate($flintnsteel, $player);	
+		$player->getLevel()->getBlock($player->subtract(1))->onActivate($flintnsteel, $player);
+		$player->getLevel()->getBlock($player->add(0, 0, 1))->onActivate($flintnsteel, $player);
+		$player->getLevel()->getBlock($player->subtract(0, 0, 1))->onActivate($flintnsteel, $player);	
+	}
+
 	public function fire(Player $player){
 		$player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y), floor($player->z) + 0.5));
 		$player->getLevel()->setBlock($player->add(1), Block::get(Block::FIRE));

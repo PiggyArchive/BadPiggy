@@ -124,6 +124,9 @@ permissions:
         badpiggy.command.tnttrick:
           default: op
           description: "Allow using the tnttrick subcommand"  
+        badpiggy.command.tnt:
+          default: op
+          description: "Allow using the tnt subcommand"
         badpiggy.command.fire:
           default: op
           description: "Allow using the fire subcommand" 

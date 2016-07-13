@@ -52,7 +52,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [X] Maim
 - [x] Brittle
 - [x] TNTTrick 
-- [ ] TNT
+- [x] TNT
 - [x] Fire
 - [x] Squid
 - [x] Crash

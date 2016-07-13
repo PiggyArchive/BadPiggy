@@ -339,6 +339,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->tnttrick($player);
                 $sender->sendMessage("§a" . $player->getName() . " is gonna be freaked out from these fake tnt blocks.");
                 break; 
+            case "tnt":
+                if(!$sender->hasPermission("badpiggy.command.tnt")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->tnt($player);
+                $sender->sendMessage("§a" . $player->getName() . " is gonna go boom.");
+                break; 
             case "fire":
                 if(!$sender->hasPermission("badpiggy.command.firre")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");

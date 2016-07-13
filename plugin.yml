@@ -154,6 +154,9 @@ permissions:
         badpiggy.command.trip:
           default: op
           description: "Allow using the trip subcommand" 
+        badpiggy.command.potate:
+          default: op
+          description: "Allow using the potate subcommand" 
         badpiggy.command.chat:
           default: op
           description: "Allow using the chat subcommand"  

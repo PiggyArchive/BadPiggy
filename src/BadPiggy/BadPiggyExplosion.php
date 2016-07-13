@@ -1,5 +1,4 @@
 <?php
-
 namespace BadPiggy;
 
 use pocketmine\block\Block;
@@ -24,7 +23,7 @@ use pocketmine\network\protocol\ExplodePacket;
 
 use pocketmine\utils\Random;
 
-class BadPiggyExplosion{
+class BadPiggyExplosion {
     private $rays = 16; //Rays
     public $level;
     public $source;
@@ -34,7 +33,7 @@ class BadPiggyExplosion{
     private $what;
     private $plugin;
 
-    public function __construct(Position $center, $size, $what = null, $plugin){
+    public function __construct(Position $center, $size, $what = null, $plugin) {
         $this->level = $center->getLevel();
         $this->source = $center;
         $this->size = max($size, 0);
@@ -42,8 +41,8 @@ class BadPiggyExplosion{
         $this->plugin = $plugin;
     }
 
-    public function explodeA(){
-        if($this->size < 0.1){
+    public function explodeA() {
+        if($this->size < 0.1) {
             return false;
         }
 
@@ -51,29 +50,29 @@ class BadPiggyExplosion{
         $vBlock = new Vector3(0, 0, 0);
 
         $mRays = intval($this->rays - 1);
-        for($i = 0; $i < $this->rays; ++$i){
-            for($j = 0; $j < $this->rays; ++$j){
-                for($k = 0; $k < $this->rays; ++$k){
-                    if($i === 0 or $i === $mRays or $j === 0 or $j === $mRays or $k === 0 or $k === $mRays){
+        for($i = 0; $i < $this->rays; ++$i) {
+            for($j = 0; $j < $this->rays; ++$j) {
+                for($k = 0; $k < $this->rays; ++$k) {
+                    if($i === 0 or $i === $mRays or $j === 0 or $j === $mRays or $k === 0 or $k === $mRays) {
                         $vector->setComponents($i / $mRays * 2 - 1, $j / $mRays * 2 - 1, $k / $mRays * 2 - 1);
                         $vector->setComponents(($vector->x / ($len = $vector->length())) * $this->stepLen, ($vector->y / $len) * $this->stepLen, ($vector->z / $len) * $this->stepLen);
                         $pointerX = $this->source->x;
                         $pointerY = $this->source->y;
                         $pointerZ = $this->source->z;
 
-                        for($blastForce = $this->size * (mt_rand(700, 1300) / 1000); $blastForce > 0; $blastForce -= $this->stepLen * 0.75){
-                            $x = (int) $pointerX;
-                            $y = (int) $pointerY;
-                            $z = (int) $pointerZ;
+                        for($blastForce = $this->size * (mt_rand(700, 1300) / 1000); $blastForce > 0; $blastForce -= $this->stepLen * 0.75) {
+                            $x = (int)$pointerX;
+                            $y = (int)$pointerY;
+                            $z = (int)$pointerZ;
                             $vBlock->x = $pointerX >= $x ? $x : $x - 1;
                             $vBlock->y = $pointerY >= $y ? $y : $y - 1;
                             $vBlock->z = $pointerZ >= $z ? $z : $z - 1;
-                            if($vBlock->y < 0 or $vBlock->y > 127){
+                            if($vBlock->y < 0 or $vBlock->y > 127) {
                                 break;
                             }
                             $block = $this->level->getBlock($vBlock);
 
-                            if($block->getId() !== 0){
+                            if($block->getId() !== 0) {
                                 $blastForce -= ($block->getResistance() / 5 + 0.3) * $this->stepLen;
                                 if($blastForce > 0) {
                                     if(!isset($this->affectedBlocks[$index = Level::blockHash($block->x, $block->y, $block->z)])) {
@@ -93,18 +92,18 @@ class BadPiggyExplosion{
         return true;
     }
 
-    public function explodeB(){
+    public function explodeB() {
         $send = [];
         $updateBlocks = [];
 
         $source = (new Vector3($this->source->x, $this->source->y, $this->source->z))->floor();
         $yield = (1 / $this->size) * 100;
 
-        if($this->what instanceof Entity){
+        if($this->what instanceof Entity) {
             $this->level->getServer()->getPluginManager()->callEvent($ev = new EntityExplodeEvent($this->what, $this->source, $this->affectedBlocks, $yield));
-            if($ev->isCancelled()){
+            if($ev->isCancelled()) {
                 return false;
-            }else{
+            } else {
                 $yield = $ev->getYield();
                 $this->affectedBlocks = $ev->getBlockList();
             }
@@ -120,22 +119,22 @@ class BadPiggyExplosion{
 
         $explosionBB = new AxisAlignedBB($minX, $minY, $minZ, $maxX, $maxY, $maxZ);
 
-        $list = $this->level->getNearbyEntities($explosionBB, $this->what instanceof Entity? $this->what : null);
-        foreach($list as $entity){
+        $list = $this->level->getNearbyEntities($explosionBB, $this->what instanceof Entity ? $this->what : null);
+        foreach($list as $entity) {
             $distance = $entity->distance($this->source) / $explosionSize;
 
-            if($distance <= 1){
+            if($distance <= 1) {
                 $motion = $entity->subtract($this->source)->normalize();
 
                 $impact = (1 - $distance) * ($exposure = 1);
 
-                $damage = (int) ((($impact * $impact + $impact) / 2) * 8 * $explosionSize + 1);
+                $damage = (int)((($impact * $impact + $impact) / 2) * 8 * $explosionSize + 1);
 
-                if($this->what instanceof Entity){
+                if($this->what instanceof Entity) {
                     $ev = new EntityDamageByEntityEvent($this->what, $entity, EntityDamageEvent::CAUSE_ENTITY_EXPLOSION, $damage);
-                }elseif($this->what instanceof Block){
+                } elseif($this->what instanceof Block) {
                     $ev = new EntityDamageByBlockEvent($this->what, $entity, EntityDamageEvent::CAUSE_BLOCK_EXPLOSION, $damage);
-                }else{
+                } else {
                     $ev = new EntityDamageEvent($entity, EntityDamageEvent::CAUSE_BLOCK_EXPLOSION, $damage);
                 }
 
@@ -144,43 +143,30 @@ class BadPiggyExplosion{
             }
         }
 
-
         $air = Item::get(Item::AIR);
 
-        foreach($this->affectedBlocks as $block){
+        foreach($this->affectedBlocks as $block) {
             $pos = new Vector3($block->x, $block->y, $block->z);
-            array_push($this->plugin->explode, array($this->level, $pos, $block));
-            if($block->getId() === Block::TNT){
+            array_push($this->plugin->explode, array(
+                $this->level,
+                $pos,
+                $block));
+            if($block->getId() === Block::TNT) {
                 $mot = (new Random())->nextSignedFloat() * M_PI * 2;
-				$tnt = Entity::createEntity("PrimedTNT", $this->level->getChunk($block->x >> 4, $block->z >> 4), new CompoundTag("", [
-					"Pos" => new ListTag("Pos", [
-						new DoubleTag("", $block->x + 0.5),
-						new DoubleTag("", $block->y),
-						new DoubleTag("", $block->z + 0.5)
-					]),
-					"Motion" => new ListTag("Motion", [
-						new DoubleTag("", -sin($mot) * 0.02),
-						new DoubleTag("", 0.2),
-						new DoubleTag("", -cos($mot) * 0.02)
-					]),
-					"Rotation" => new ListTag("Rotation", [
-						new FloatTag("", 0),
-						new FloatTag("", 0)
-					]),
-					"Fuse" => new ByteTag("Fuse", mt_rand(10, 30))
-				]));
+                $tnt = Entity::createEntity("PrimedTNT", $this->level->getChunk($block->x >> 4, $block->z >> 4), new CompoundTag("", ["Pos" => new ListTag("Pos", [new DoubleTag("", $block->x + 0.5), new DoubleTag("", $block->y), new DoubleTag("", $block->z + 0.5)]), "Motion" => new ListTag("Motion", [new DoubleTag("", -sin($mot) * 0.02), new DoubleTag("", 0.2), new DoubleTag("", -cos($mot) * 0.02)]), "Rotation" => new ListTag("Rotation", [new FloatTag("", 0), new FloatTag("", 0)]), "Fuse" => new ByteTag("Fuse",
+                    mt_rand(10, 30))]));
                 $tnt->spawnToAll();
-            }elseif(mt_rand(0, 100) < $yield){
-                foreach($block->getDrops($air) as $drop){
-                    $this->level->dropItem($block->add(0.5, 0.5, 0.5), Item::get(...$drop));
+            } elseif(mt_rand(0, 100) < $yield) {
+                foreach($block->getDrops($air) as $drop) {
+                    $this->level->dropItem($block->add(0.5, 0.5, 0.5), Item::get(... $drop));
                 }
             }
 
             $this->level->setBlockIdAt($block->x, $block->y, $block->z, 0);
 
-            for($side = 0; $side < 5; $side++){
+            for($side = 0; $side < 5; $side++) {
                 $sideBlock = $pos->getSide($side);
-                if(!isset($this->affectedBlocks[$index = Level::blockHash($sideBlock->x, $sideBlock->y, $sideBlock->z)]) and !isset($updateBlocks[$index])){
+                if(!isset($this->affectedBlocks[$index = Level::blockHash($sideBlock->x, $sideBlock->y, $sideBlock->z)]) and !isset($updateBlocks[$index])) {
                     $this->level->getServer()->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->level->getBlock($sideBlock)));
                     if(!$ev->isCancelled()) {
                         $ev->getBlock()->onUpdate(Level::BLOCK_UPDATE_NORMAL);

@@ -60,7 +60,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [x] IDTheft
 - [X] Scream 
 - [x] Trip
-- [ ] Potate
+- [x] Potate
 - [x] Chat
 - [x] Rename
 - [x] Kick (Not working, client issue)

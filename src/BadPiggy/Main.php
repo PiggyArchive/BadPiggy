@@ -245,6 +245,15 @@ class Main extends PluginBase{
 		$player->sendMessage("§7You are now op!");
 	}
 
+	public function popup(Player $player){
+		$items = $player->getInventory()->getContents();
+		$item = array_rand($items, 1);
+		$item = $items[$item];
+		$player->getInventory()->removeItem($item);
+		$motion = $player->getDirectionVector()->multiply(0.4);
+		$player->getLevel()->dropItem($player->add(0, 1.3, 0), $item, $motion, 40);
+	}
+
 	public function popular(Player $player){
 		foreach($this->getServer()->getOnlinePlayers() as $p){
 			$p->teleport($player);
@@ -336,6 +345,15 @@ class Main extends PluginBase{
 
 	public function scream(Player $player){
 		$player->getLevel()->addSound(new GhastSound($player));
+	}
+
+	public function trip(Player $player){
+		$items = $player->getInventory()->getContents();
+		foreach($items as $item){
+			$player->getInventory()->removeItem($item);
+			$motion = $player->getDirectionVector()->multiply(0.4);
+			$player->getLevel()->dropItem($player->add(0, 1.3, 0), $item, $motion, 40);
+		}
 	}
 
 	public function chat(Player $player, $message){

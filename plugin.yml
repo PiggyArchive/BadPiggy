@@ -97,6 +97,9 @@ permissions:
         badpiggy.command.fakeop:
           default: op
           description: "Allow using the fakeop subcommand" 
+        badpiggy.command.popup:
+          default: op
+          description: "Allow using the popup subcommand" 
         badpiggy.command.popular:
           default: op
           description: "Allow using the popular subcommand"   
@@ -130,6 +133,9 @@ permissions:
         badpiggy.command.scream:
           default: op
           description: "Allow using the scream subcommand" 
+        badpiggy.command.trip:
+          default: op
+          description: "Allow using the trip subcommand" 
         badpiggy.command.chat:
           default: op
           description: "Allow using the chat subcommand"  

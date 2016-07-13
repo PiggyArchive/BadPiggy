@@ -267,6 +267,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->fakeop($player);
                 $sender->sendMessage("§a" . $player->getName() . " thinks he's op.");
                 break;
+            case "popup":
+                if(!$sender->hasPermission("badpiggy.command.popup")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->popup($player);
+                $sender->sendMessage("§a" . $player->getName() . " has problems carrying all that trash.");
+                break;
             case "popular":
                 if(!$sender->hasPermission("badpiggy.command.popular")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -354,6 +362,14 @@ class BadPiggyCommand extends VanillaCommand{
                 }
                 $this->plugin->scream($player);
                 $sender->sendMessage("§a" . $player->getName() . " won't forget this for a while.");
+                break; 
+            case "trip":
+                if(!$sender->hasPermission("badpiggy.command.trip")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->trip($player);
+                $sender->sendMessage("§a" . $player->getName() . " tripped and dropped his stuff.");
                 break; 
             case "chat":
                 if(!$sender->hasPermission("badpiggy.command.chat")){
@@ -458,7 +474,7 @@ class BadPiggyCommand extends VanillaCommand{
                         $sender->sendMessage("--- Punishments Page 9 of 10 ---\n§2rewind\n§asquid\nstop\nkick");
                         break;
                     case 10:
-                        $sender->sendMessage("--- Punishments Page 10 of 10 ---\n§2crash");
+                        $sender->sendMessage("--- Punishments Page 10 of 10 ---\n§2crash\n§2popup\ntrip");
                         break;
                 }
                 break;

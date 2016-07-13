@@ -40,7 +40,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [x] Spam
 - [ ] Cage
 - [x] FakeOP
-- [ ] Popup
+- [x] Popup
 - [ ] Booty
 - [ ] Potato
 - [X] Popular
@@ -59,7 +59,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [X] Useless
 - [x] IDTheft
 - [X] Scream 
-- [ ] Trip
+- [x] Trip
 - [ ] Potate
 - [x] Chat
 - [x] Rename

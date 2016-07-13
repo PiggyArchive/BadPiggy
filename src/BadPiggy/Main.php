@@ -293,6 +293,14 @@ class Main extends PluginBase{
 		$player->getLevel()->addSound(new TNTPrimeSound($player));
 	}
 
+	public function fire(Player $player){
+		$player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y), floor($player->z) + 0.5));
+		$player->getLevel()->setBlock($player->add(1), Block::get(Block::FIRE));
+		$player->getLevel()->setBlock($player->subtract(1), Block::get(Block::FIRE));
+		$player->getLevel()->setBlock($player->add(0, 0, 1), Block::get(Block::FIRE));
+		$player->getLevel()->setBlock($player->subtract(0, 0, 1), Block::get(Block::FIRE));
+	}
+
 	public function squid(Player $player){
 		$chunk = $player->getLevel()->getChunk($player->x >> 4, $player->z >> 4);
 		$nbt = new CompoundTag("", [

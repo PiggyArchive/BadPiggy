@@ -20,7 +20,7 @@ class BadPiggyCommand extends VanillaCommand{
             return true;
         }
         if(!isset($args[0])){
-            $sender->sendMessage("/badpiggy <punishment> <player>");
+            $sender->sendMessage("/badpiggy <punishment|restore|list> <player>");
             return false;
         }
         $player = null;

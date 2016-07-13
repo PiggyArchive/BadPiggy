@@ -48,7 +48,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [x] Pumpkin
 - [X] Armour 
 - [ ] Hiss
-- [ ] Tree
+- [x] Tree
 - [X] Maim
 - [x] Brittle
 - [x] TNTTrick 

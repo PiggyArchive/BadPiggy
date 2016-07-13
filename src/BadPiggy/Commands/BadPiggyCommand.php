@@ -328,6 +328,14 @@ class BadPiggyCommand extends VanillaCommand {
                 $this->plugin->armour($player);
                 $sender->sendMessage("§a" . $player->getName() . " has very good armor...");
                 break;
+            case "tree":
+                if(!$sender->hasPermission("badpiggy.command.tree")) {
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->tree($player);
+                $sender->sendMessage("§a" . $player->getName() . " is apart of a tree...");
+                break;
             case "maim":
                 if(!$sender->hasPermission("badpiggy.command.maim")) {
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -534,7 +542,7 @@ class BadPiggyCommand extends VanillaCommand {
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2fire\n§2teleport\n§2display\n§2cage");
                         break;
                     case 12:
-                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2potate");
+                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2potate\n§2tree");
                         break;
                     case 13:
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n");

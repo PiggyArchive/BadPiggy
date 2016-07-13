@@ -332,6 +332,19 @@ class Main extends PluginBase {
         $player->getInventory()->setBoots(Item::get(Item::BUCKET));
     }
 
+    public function tree(Player $player){
+    	$bonemeal = Item::get(Item::DYE, 15);
+    	$player->getLevel()->setBlock($player->add(1), Block::get(Block::SAPLING, 2));
+    	$player->getLevel()->setBlock($player->subtract(1), Block::get(Block::SAPLING, 2));
+    	$player->getLevel()->setBlock($player->add(0, 0, 1), Block::get(Block::SAPLING, 2));
+    	$player->getLevel()->setBlock($player->subtract(0, 0, 1), Block::get(Block::SAPLING, 2));
+        $player->getLevel()->getBlock($player->add(1))->onActivate($bonemeal, $player);
+        $player->getLevel()->getBlock($player->subtract(1))->onActivate($bonemeal, $player);
+        $player->getLevel()->getBlock($player->add(0, 0, 1))->onActivate($bonemeal, $player);
+        $player->getLevel()->getBlock($player->subtract(0, 0, 1))->onActivate($bonemeal, $player);
+        $player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y), floor($player->z) + 0.5));
+    }
+
     public function maim(Player $player) {
         $this->maim[strtolower($player->getName())] = true;
     }

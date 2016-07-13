@@ -121,6 +121,9 @@ permissions:
         badpiggy.command.armour:
           default: op
           description: "Allow using the armour subcommand"  
+        badpiggy.command.tree:
+          default: op
+          description: "Allow using the tree subcommand"  
         badpiggy.command.maim:
           default: op
           description: "Allow using the maim subcommand"  

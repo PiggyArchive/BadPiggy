@@ -123,6 +123,14 @@ class BadPiggyCommand extends VanillaCommand{
                 $this->plugin->hole($player);
                 $sender->sendMessage("§a" . $player->getName() . " fell into a hole & went splat.");
                 break; 
+            case "teleport":
+                if(!$sender->hasPermission("badpiggy.command.teleport")){
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->teleport($player);
+                $sender->sendMessage("§a" . $player->getName() . " is lost.");
+                break; 
             case "freeze":
                 if(!$sender->hasPermission("badpiggy.command.freeze")){
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -494,7 +502,7 @@ class BadPiggyCommand extends VanillaCommand{
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2crash\n§2popup\ntrip\n§2anvil");
                         break;
                     case 11:
-                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2fire");
+                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2fire\n§2teleport");
                         break;
                     case 12:
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n");

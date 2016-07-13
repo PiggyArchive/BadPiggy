@@ -43,6 +43,9 @@ permissions:
         badpiggy.command.hole:
           default: op
           description: "Allow using the hole subcommand"  
+        badpiggy.command.teleport:
+          default: op
+          description: "Allow using the teleport subcommand"  
         badpiggy.command.freeze:
           default: op
           description: "Allow using the freeze subcommand"  

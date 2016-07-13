@@ -13,7 +13,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [X] Invoid
 - [X] Lavablock
 - [X] Hole
-- [ ] Teleport
+- [x] Teleport
 - [X] Freeze
 - [X] Fexplode
 - [X] Blind

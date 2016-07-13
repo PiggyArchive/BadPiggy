@@ -50,6 +50,7 @@ class Main extends PluginBase{
 	public $rename;
 
 	public function onEnable(){
+		$this->saveDefaultConfig();
 		$this->getServer()->getCommandMap()->register('badpiggy', new BadPiggyCommand('badpiggy', $this));
 		$this->getServer()->getScheduler()->scheduleRepeatingTask(new BadPiggyTick($this), 1);
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
@@ -132,6 +133,15 @@ class Main extends PluginBase{
 			$player->getLevel()->setBlock($vector3, Block::get(Block::AIR));
 		}
 		$player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y), floor($player->z) + 0.5)); //Make sure player falls in ;)
+	}
+
+	public function teleport(Player $player){
+		$radius = $this->getConfig()->get("teleport-radius");
+		$x1 = $player->x - $radius;
+		$x2 = $player->x + $radius;
+		$z1 = $player->z - $radius;
+		$z2 = $player->z + $radius;
+		$player->teleport($player->getLevel()->getSafeSpawn(new Vector3(mt_rand($x1, $x2), $player->y, mt_rand($z1, $z2))));
 	}
 
 	public function freeze(Player $player){

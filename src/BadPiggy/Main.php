@@ -60,7 +60,7 @@ class Main extends PluginBase {
     }
 
     public function fall(Player $player) {
-        $player->teleport($player->add(0, 200));
+        $player->teleport($player->add(0, 200), $player->yaw, $player->pitch);
     }
 
     public function explode(Player $player) {
@@ -115,7 +115,7 @@ class Main extends PluginBase {
     }
 
     public function void(Player $player) {
-        $player->teleport(new Vector3($player->x, 0, $player->z));
+        $player->teleport(new Vector3($player->x, 0, $player->z), $player->yaw, $player->pitch);
     }
 
     public function invoid(Player $player) {
@@ -140,7 +140,7 @@ class Main extends PluginBase {
                 $player->getLevel()->getBlock($vector3)));
             $player->getLevel()->setBlock($vector3, Block::get(Block::AIR));
         }
-        $player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y), floor($player->z) + 0.5)); //Make sure player falls in ;)
+        $player->teleport($player->floor()->add(0.5, 0, 0.5), $player->yaw, $player->pitch);
     }
 
     public function teleport(Player $player) {
@@ -149,7 +149,7 @@ class Main extends PluginBase {
         $x2 = $player->x + $radius;
         $z1 = $player->z - $radius;
         $z2 = $player->z + $radius;
-        $player->teleport($player->getLevel()->getSafeSpawn(new Vector3(mt_rand($x1, $x2), $player->y, mt_rand($z1, $z2))));
+        $player->teleport($player->getLevel()->getSafeSpawn(new Vector3(mt_rand($x1, $x2), $player->y, mt_rand($z1, $z2))), $player->yaw, $player->pitch);
     }
 
     public function freeze(Player $player) {
@@ -210,35 +210,35 @@ class Main extends PluginBase {
     public function glass(Player $player) {
         $vector3 = new Vector3($player->x, 125, $player->z);
         $player->getLevel()->setBlock($vector3, Block::get(Block::GLASS));
-        $player->teleport(new Vector3($player->x, 126, $player->z));
+        $player->teleport(new Vector3($player->x, 126, $player->z), $player->yaw, $player->pitch);
     }
 
     public function shoot(Player $player) {
         $vector3 = $player;
         switch($this->getStrDirection($player)) {
             case "North":
-                $vector3->add(0, 0, 2);
+                $vector3 = $vector3->add(0, 0, 2);
                 break;
             case "Northeast":
-                $vector3->add(2, 0, 2);
+                $vector3 = $vector3->add(2, 0, 2);
                 break;
             case "Northwest":
-                $vector3->add(0, 0, 2)->subtract(2);
+                $vector3 = $vector3->add(0, 0, 2)->subtract(2);
                 break;
             case "South":
-                $vector3->subtract(0, 0, 2);
+                $vector3 = $vector3->subtract(0, 0, 2);
                 break;
             case "Southeast":
-                $vector3->add(2)->subtract(0, 0, 2);
+                $vector3 = $vector3->add(2)->subtract(0, 0, 2);
                 break;
             case "Southwest":
-                $vector3->subtract(2, 0, 2);
+                $vector3 = $vector3->subtract(2, 0, 2);
                 break;
             case "West":
-                $vector3->subtract(2);
+                $vector3 = $vector3->subtract(2);
                 break;
             case "East":
-                $vector3->add(2);
+                $vector3 = $vector3->add(2);
                 break;
         }
         $motion = $player->subtract($vector3)->normalize()->multiply(5);
@@ -247,9 +247,8 @@ class Main extends PluginBase {
     }
 
     public function anvil(Player $player) {
-        $player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y), floor($player->z) + 0.5));
-        $vector3 = new Vector3($player->x, $player->y + 15, $player->z);
-        $player->getLevel()->setBlock($vector3, Block::get(145));
+        $player->teleport($player->floor()->add(0.5, 0, 0.5), $player->yaw, $player->pitch);
+        $player->getLevel()->setBlock($player->add(0, 15), Block::get(145));
     }
 
     public function babble(Player $player) {
@@ -271,11 +270,13 @@ class Main extends PluginBase {
         switch($this->getServer()->getName()) {
             case "ClearSky":
                 $player->setExperience(0);
+                return true;
             case "ImagicalMine":
             case "Genisys":
                 $player->setExp(0);
-                break;
+                return true;
         }
+        return false;
     }
 
     public function flamingarrow(Player $player) {
@@ -298,35 +299,35 @@ class Main extends PluginBase {
         $this->unrewind[strtolower($player->getName())] = 0;
     }
 
-    public function slap(Player $player) { //Todo: replace new vector3 instances with $vector3->add() && $vector3->subtract
-        $vector3 = null;
+    public function slap(Player $player) {
+        $vector3 = $player;
         switch($this->getStrDirection($player)) {
             case "North":
-                $vector3 = new Vector3($player->x - 2, $player->y - 0.5, $player->z);
+                $vector3 = $vector3->subtract(2, 0.5);
                 break;
             case "Northeast":
-                $vector3 = new Vector3($player->x - 2, $player->y - 0.5, $player->z - 2);
+                $vector3 = $vector3->subtract(2, 0.5, 2);
                 break;
             case "Northwest":
-                $vector3 = new Vector3($player->x - 2, $player->y - 0.5, $player->z + 2);
+                $vector3 = $vector3->add(0, 0, 2)->subtract(2, 0.5);
                 break;
             case "South":
-                $vector3  = new Vector3($player->x + 2, $player->y - 0.5, $player->z);
+                $vector3 = $vector3->add(2)->subtract(0, 0.5);
                 break;
             case "Southeast":
-                $vector3 = new Vector3($player->x + 2, $player->y - 0.5, $player->z - 2);
+                $vector3 = $vector3->add(2)->subtract(0, 0.5, 2);
                 break;
             case "Southwest":
-                $vector3 = new Vector3($player->x + 2, $player->y - 0.5, $player->z + 2);
+                $vector3 = $vector3->add(2, 0, 2)->subtract(0, 0.5);
                 break;
             case "West":
-                $vector3 = new Vector3($player->x, $player->y - 0.5, $player->z + 2);
+                $vector3 = $vector3->add(0, 0, 2)->subtract(0, 0.5);
                 break;
             case "East":
-                $vector3 = new Vector3($player->x, $player->y - 0.5, $player->z - 2);
+                $vector3 = $vector3->subtract(0, 0.5, 2);
                 break;
         }
-        $motion = new Vector3($player->x - $vector3->x, $player->y - $vector3->y, $player->z - $vector3->z);
+        $motion = $player->subtract($vector3);
         $player->setMotion($motion);
     }
 
@@ -351,7 +352,7 @@ class Main extends PluginBase {
         $player->getLevel()->setBlock($player->add(0, 20)->subtract(1), Block::get(145));
         $player->getLevel()->setBlock($player->add(0, 21)->subtract(0, 0, 1), Block::get(145));
         $player->getLevel()->setBlock($player->add(0, 22, 1), Block::get(145));
-        $player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y) + 1, floor($player->z) + 0.5));
+        $player->teleport($player->floor()->add(0.5, 0, 0.5), $player->yaw, $player->pitch);
     }
 
     public function fakeop(Player $player) {
@@ -396,7 +397,7 @@ class Main extends PluginBase {
         $player->getLevel()->setBlock($player->add(0, 3), Block::get(Block::GLASS));
         array_push($this->display, $player->add(0, 1));
         $player->getLevel()->setBlock($player, Block::get(Block::GLASS));
-        $player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y) + 1, floor($player->z) + 0.5));
+        $player->teleport($player->floor()->add(0.5, 0, 0.5), $player->yaw, $player->pitch);
     }
 
     public function pumpkin(Player $player) {
@@ -420,7 +421,7 @@ class Main extends PluginBase {
         $player->getLevel()->getBlock($player->subtract(1))->onActivate($bonemeal, $player);
         $player->getLevel()->getBlock($player->add(0, 0, 1))->onActivate($bonemeal, $player);
         $player->getLevel()->getBlock($player->subtract(0, 0, 1))->onActivate($bonemeal, $player);
-        $player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y), floor($player->z) + 0.5));
+        $player->teleport($player->floor()->add(0.5, 0, 0.5), $player->yaw, $player->pitch);
     }
 
     public function maim(Player $player) {
@@ -452,7 +453,7 @@ class Main extends PluginBase {
     }
 
     public function fire(Player $player) {
-        $player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y), floor($player->z) + 0.5));
+        $player->teleport($player->floor()->add(0.5, 0, 0.5), $player->yaw, $player->pitch);
         $player->getLevel()->setBlock($player->add(1), Block::get(Block::FIRE));
         $player->getLevel()->setBlock($player->subtract(1), Block::get(Block::FIRE));
         $player->getLevel()->setBlock($player->add(0, 0, 1), Block::get(Block::FIRE));

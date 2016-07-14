@@ -247,7 +247,11 @@ class BadPiggyCommand extends VanillaCommand {
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
                     return false;
                 }
-                $this->plugin->leveldown($player);
+                $result = $this->plugin->leveldown($player);
+                if(!$result) {
+                    $sender->sendMessage("§cYour server might not support xp. If you think this is a mistake, please contact MCPEPIG.");
+                    return false;
+                }
                 $sender->sendMessage("§a" . $player->getName() . " has no enchanting rights!");
                 break;
             case "flamingarrow":

@@ -100,6 +100,9 @@ permissions:
         badpiggy.command.rewind:
           default: op
           description: "Allow using the rewind subcommand"
+        badpiggy.command.slap:
+          default: op
+          description: "Allow using the slap subcommand"
         badpiggy.command.exblock:
           default: op
           description: "Allow using the exblock subcommand"  

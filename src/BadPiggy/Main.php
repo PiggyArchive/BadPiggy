@@ -213,9 +213,9 @@ class Main extends PluginBase {
         $player->teleport(new Vector3($player->x, 126, $player->z));
     }
 
-    public function shoot(Player $player){
+    public function shoot(Player $player) {
         $vector3 = $player;
-        switch($this->getStrDirection($player)){
+        switch($this->getStrDirection($player)) {
             case "North":
                 $vector3->add(0, 0, 2);
                 break;
@@ -296,6 +296,38 @@ class Main extends PluginBase {
     public function rewind(Player $player) {
         $this->rewind[strtolower($player->getName())] = $player->getLevel()->getTime();
         $this->unrewind[strtolower($player->getName())] = 0;
+    }
+
+    public function slap(Player $player) { //Todo: replace new vector3 instances with $vector3->add() && $vector3->subtract
+        $vector3 = null;
+        switch($this->getStrDirection($player)) {
+            case "North":
+                $vector3 = new Vector3($player->x - 2, $player->y - 0.5, $player->z);
+                break;
+            case "Northeast":
+                $vector3 = new Vector3($player->x - 2, $player->y - 0.5, $player->z - 2);
+                break;
+            case "Northwest":
+                $vector3 = new Vector3($player->x - 2, $player->y - 0.5, $player->z + 2);
+                break;
+            case "South":
+                $vector3  = new Vector3($player->x + 2, $player->y - 0.5, $player->z);
+                break;
+            case "Southeast":
+                $vector3 = new Vector3($player->x + 2, $player->y - 0.5, $player->z - 2);
+                break;
+            case "Southwest":
+                $vector3 = new Vector3($player->x + 2, $player->y - 0.5, $player->z + 2);
+                break;
+            case "West":
+                $vector3 = new Vector3($player->x, $player->y - 0.5, $player->z + 2);
+                break;
+            case "East":
+                $vector3 = new Vector3($player->x, $player->y - 0.5, $player->z - 2);
+                break;
+        }
+        $motion = new Vector3($player->x - $vector3->x, $player->y - $vector3->y, $player->z - $vector3->z);
+        $player->setMotion($motion);
     }
 
     public function exblock(Player $player) {
@@ -592,40 +624,40 @@ class Main extends PluginBase {
         $sender->sendMessage("§a" . $count . " blocks restored.");
     }
 
-	public function getStrDirection(Player $player){
+    public function getStrDirection(Player $player) {
         $rot = ($player->yaw - 90) % 360;
-        if($rot < 0.0){
+        if($rot < 0.0) {
             $rot += 360.0;
         }
         return $this->getDirection($rot);
     }
 
     public function getDirection($rot) {
-        if (0.0 <= $rot && $rot < 22.5) {
+        if(0.0 <= $rot && $rot < 22.5) {
             return "North";
         }
-        if (22.5 <= $rot && $rot < 67.5) {
+        if(22.5 <= $rot && $rot < 67.5) {
             return "Northeast";
         }
-        if (67.5 <= $rot && $rot < 112.5) {
+        if(67.5 <= $rot && $rot < 112.5) {
             return "East";
         }
-        if (112.5 <= $rot && $rot < 157.5) {
+        if(112.5 <= $rot && $rot < 157.5) {
             return "Southeast";
         }
-        if (157.5 <= $rot && $rot < 202.5) {
+        if(157.5 <= $rot && $rot < 202.5) {
             return "South";
         }
-        if (202.5 <= $rot && $rot < 247.5) {
+        if(202.5 <= $rot && $rot < 247.5) {
             return "Southwest";
         }
-        if (247.5 <= $rot && $rot < 292.5) {
+        if(247.5 <= $rot && $rot < 292.5) {
             return "West";
         }
-        if (292.5 <= $rot && $rot < 337.5) {
+        if(292.5 <= $rot && $rot < 337.5) {
             return "Northwest";
         }
-        if (337.5 <= $rot && $rot < 360.0) {
+        if(337.5 <= $rot && $rot < 360.0) {
             return "North";
         }
         return null;

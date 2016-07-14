@@ -32,7 +32,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [x] FlamingArrow
 - [x] Night
 - [x] Rewind
-- [ ] Slap
+- [x] Slap
 - [ ] Lag
 - [X] Exblock
 - [X] Mute

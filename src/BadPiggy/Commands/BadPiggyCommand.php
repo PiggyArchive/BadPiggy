@@ -65,9 +65,11 @@ class BadPiggyCommand extends VanillaCommand {
                 }
                 if(!isset($args[2])) {
                     $sender->sendMessage("/badpiggy burn <seconds>");
+                    return false;
                 }
                 if(!is_numeric($args[2])) {
                     $sender->sendMessage("Seconds must be numeric.");
+                    return false;
                 }
                 $this->plugin->burn($player, $args[2]);
                 $sender->sendMessage("§a" . $player->getName() . " is becoming human bacon.");
@@ -271,6 +273,14 @@ class BadPiggyCommand extends VanillaCommand {
                 }
                 $this->plugin->rewind($player);
                 $sender->sendMessage("§a" . $player->getName() . " is dizzy.");
+                break;
+            case "slap":
+                if(!$sender->hasPermission("badpiggy.command.slap")) {
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->slap($player);
+                $sender->sendMessage("§a" . $player->getName() . " got slapped.");
                 break;
             case "exblock":
                 if(!$sender->hasPermission("badpiggy.command.exblock")) {
@@ -569,7 +579,7 @@ class BadPiggyCommand extends VanillaCommand {
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2potate\n§2tree\n§2flamingarrow\n§2spin");
                         break;
                     case 13:
-                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2shoot");
+                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2shoot\n§2slap");
                         break;
                     case 14:
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n");

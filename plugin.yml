@@ -1,6 +1,6 @@
 name: BadPiggy
 main: BadPiggy\Main
-version: 1.0.0 BETA4
+version: 1.0.0
 api: 2.0.0
 author: MCPEPIG
 
@@ -103,6 +103,9 @@ permissions:
         badpiggy.command.slap:
           default: op
           description: "Allow using the slap subcommand"
+        badpiggy.command.lag:
+          default: op
+          description: "Allow using the lag subcommand"
         badpiggy.command.exblock:
           default: op
           description: "Allow using the exblock subcommand"  

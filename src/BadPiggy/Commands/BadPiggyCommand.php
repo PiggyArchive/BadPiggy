@@ -286,6 +286,14 @@ class BadPiggyCommand extends VanillaCommand {
                 $this->plugin->slap($player);
                 $sender->sendMessage("§a" . $player->getName() . " got slapped.");
                 break;
+            case "lag":
+                if(!$sender->hasPermission("badpiggy.command.lag")) {
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->lag($player);
+                $sender->sendMessage("§a" . $player->getName() . " is lagging.");
+                break;
             case "exblock":
                 if(!$sender->hasPermission("badpiggy.command.exblock")) {
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");

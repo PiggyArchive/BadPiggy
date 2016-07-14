@@ -34,6 +34,7 @@ class Main extends PluginBase {
     public $freeze;
     public $babble;
     public $spin;
+    public $lag;
     public $exblock;
     public $blind;
     public $drunk;
@@ -55,6 +56,7 @@ class Main extends PluginBase {
         $this->saveDefaultConfig();
         $this->getServer()->getCommandMap()->register('badpiggy', new BadPiggyCommand('badpiggy', $this));
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new BadPiggyTick($this), 1);
+        $this->getServer()->getScheduler()->scheduleRepeatingTask(new LagTick($this), 5);
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
         $this->getLogger()->info("§aEnabled.");
     }
@@ -331,6 +333,10 @@ class Main extends PluginBase {
         $player->setMotion($motion);
     }
 
+    public function lag(Player $player) {
+        $this->lag[strtolower($player->getName())] = true;
+    }
+
     public function exblock(Player $player) {
         $this->exblock[strtolower($player->getName())] = true;
     }
@@ -542,6 +548,9 @@ class Main extends PluginBase {
         }
         if(isset($this->spin[strtolower($player->getName())])) {
             unset($this->spin[strtolower($player->getName())]);
+        }
+        if(isset($this->lag[strtolower($player->getName())])) {
+            unset($this->lag[strtolower($player->getName())]);
         }
         if(isset($this->exblock[strtolower($player->getName())])) {
             unset($this->exblock[strtolower($player->getName())]);

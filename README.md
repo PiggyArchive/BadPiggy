@@ -24,7 +24,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [X] Strip
 - [ ] Nether
 - [x] Glass
-- [ ] Shoot
+- [x] Shoot
 - [x] Babble
 - [x] Spin
 - [x] Unaware

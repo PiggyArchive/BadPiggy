@@ -200,6 +200,14 @@ class BadPiggyCommand extends VanillaCommand {
                 $this->plugin->glass($player);
                 $sender->sendMessage("§a" . $player->getName() . " is uh stuck... in the air.");
                 break;
+            case "shoot":
+                if(!$sender->hasPermission("badpiggy.command.shoot")) {
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->shoot($player);
+                $sender->sendMessage("§a" . $player->getName() . " is a human cannonball.");
+                break;
             case "anvil":
                 if(!$sender->hasPermission("badpiggy.command.anvil")) {
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -518,7 +526,7 @@ class BadPiggyCommand extends VanillaCommand {
                 if(!is_numeric($page)) {
                     $page = 1;
                 }
-                $maxpage = 12;
+                $maxpage = 13;
                 if($page > $maxpage) {
                     $page = $maxpage;
                 }
@@ -561,7 +569,7 @@ class BadPiggyCommand extends VanillaCommand {
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2potate\n§2tree\n§2flamingarrow\n§2spin");
                         break;
                     case 13:
-                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n");
+                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2shoot");
                         break;
                     case 14:
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n");

@@ -213,6 +213,39 @@ class Main extends PluginBase {
         $player->teleport(new Vector3($player->x, 126, $player->z));
     }
 
+    public function shoot(Player $player){
+        $vector3 = $player;
+        switch($this->getStrDirection($player)){
+            case "North":
+                $vector3->add(0, 0, 2);
+                break;
+            case "Northeast":
+                $vector3->add(2, 0, 2);
+                break;
+            case "Northwest":
+                $vector3->add(0, 0, 2)->subtract(2);
+                break;
+            case "South":
+                $vector3->subtract(0, 0, 2);
+                break;
+            case "Southeast":
+                $vector3->add(2)->subtract(0, 0, 2);
+                break;
+            case "Southwest":
+                $vector3->subtract(2, 0, 2);
+                break;
+            case "West":
+                $vector3->subtract(2);
+                break;
+            case "East":
+                $vector3->add(2);
+                break;
+        }
+        $motion = $player->subtract($vector3)->normalize()->multiply(5);
+        $motion->y = ($motion->y + 5) * 2;
+        $player->setMotion($motion);
+    }
+
     public function anvil(Player $player) {
         $player->teleport(new Vector3(floor($player->x) + 0.5, floor($player->y), floor($player->z) + 0.5));
         $vector3 = new Vector3($player->x, $player->y + 15, $player->z);
@@ -557,6 +590,45 @@ class Main extends PluginBase {
         $this->holes = array();
         $this->webs = array();
         $sender->sendMessage("§a" . $count . " blocks restored.");
+    }
+
+	public function getStrDirection(Player $player){
+        $rot = ($player->yaw - 90) % 360;
+        if($rot < 0.0){
+            $rot += 360.0;
+        }
+        return $this->getDirection($rot);
+    }
+
+    public function getDirection($rot) {
+        if (0.0 <= $rot && $rot < 22.5) {
+            return "North";
+        }
+        if (22.5 <= $rot && $rot < 67.5) {
+            return "Northeast";
+        }
+        if (67.5 <= $rot && $rot < 112.5) {
+            return "East";
+        }
+        if (112.5 <= $rot && $rot < 157.5) {
+            return "Southeast";
+        }
+        if (157.5 <= $rot && $rot < 202.5) {
+            return "South";
+        }
+        if (202.5 <= $rot && $rot < 247.5) {
+            return "Southwest";
+        }
+        if (247.5 <= $rot && $rot < 292.5) {
+            return "West";
+        }
+        if (292.5 <= $rot && $rot < 337.5) {
+            return "Northwest";
+        }
+        if (337.5 <= $rot && $rot < 360.0) {
+            return "North";
+        }
+        return null;
     }
 
 }

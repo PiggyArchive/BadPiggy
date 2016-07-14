@@ -73,6 +73,9 @@ permissions:
         badpiggy.command.glass:
           default: op
           description: "Allow using the glass subcommand"  
+        badpiggy.command.shoot:
+          default: op
+          description: "Allow using the shoot subcommand" 
         badpiggy.command.anvil:
           default: op
           description: "Allow using the anvil subcommand" 

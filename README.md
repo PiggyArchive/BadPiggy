@@ -22,7 +22,6 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [x] Slow
 - [x] Poison
 - [X] Strip
-- [ ] Nether
 - [x] Glass
 - [x] Shoot
 - [x] Babble
@@ -41,13 +40,10 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [x] Cage
 - [x] FakeOP
 - [x] Popup
-- [ ] Booty
-- [ ] Potato
 - [X] Popular
 - [x] Display
 - [x] Pumpkin
 - [X] Armour 
-- [ ] Hiss
 - [x] Tree
 - [X] Maim
 - [x] Brittle
@@ -63,9 +59,16 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [x] Potate
 - [x] Chat
 - [x] Rename
-- [x] Kick (Not working, client issue)
+- [ ] Kick (Not working, client issue)
 
 #Coming Soon
+- [ ] Nether
+- [ ] Booty
+- [ ] Potato
+- [ ] Hiss
+- [ ] Sudo
+- [ ] Repeating Punishments
+- [ ] Add restoring tnt damage
 - [ ] Possibly Hounds
 - [ ] Possibly Creeper
 - [ ] Possibly Iron Golem

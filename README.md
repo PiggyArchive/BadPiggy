@@ -62,6 +62,8 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 - [ ] Kick (Not working, client issue)
 
 #Coming Soon
+- [ ] Surround
+- [ ] Drop
 - [ ] Nether
 - [ ] Booty
 - [ ] Potato

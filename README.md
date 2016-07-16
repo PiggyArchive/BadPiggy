@@ -1,89 +1,90 @@
 # BadPiggy
-Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bukkit.org/bukkit-plugins/punishmental/). More trolls coming soon!
+Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bukkit.org/bukkit-plugins/punishmental/). 
 
-#Punishments
-- [x] Fall
-- [x] Explode 
-- [X] Strike
-- [x] Burn
-- [x] End
-- [x] Infall
-- [X] Web
-- [x] Void
-- [X] Invoid
-- [X] Lavablock
-- [X] Hole
-- [x] Teleport
-- [X] Freeze
-- [X] Fexplode
-- [X] Blind
-- [x] Drunk
-- [x] Starve
-- [x] Slow
-- [x] Poison
-- [X] Strip
-- [x] Glass
-- [x] Shoot
-- [x] Babble
-- [x] Spin
-- [x] Unaware
-- [X] Leveldown
-- [x] FlamingArrow
-- [x] Night
-- [x] Rewind
-- [x] Slap
-- [x] Lag
-- [X] Exblock
-- [X] Mute
-- [x] Anvil
-- [x] Spam
-- [x] Cage
-- [x] FakeOP
-- [x] Popup
-- [X] Popular
-- [x] Display
-- [x] Pumpkin
-- [X] Armour 
-- [x] Tree
-- [X] Maim
-- [x] Brittle
-- [x] TNTTrick 
-- [x] TNT
-- [x] Fire
-- [x] Squid
-- [x] Crash
-- [X] Useless
-- [x] IDTheft
-- [X] Scream 
-- [x] Trip
-- [x] Potate
-- [x] Chat
-- [x] Rename
-- [ ] Kick (Not working, client issue)
+#Changelog
+###v1.0.0
+* Added Fall Punishment
+* Added :bomb: Explode Punishment 
+* Added :zap: Strike Punishment
+* Added :fire: Burn Punishment
+* Added End Punishment
+* Added Infall Punishment
+* Added Web Punishment
+* Added Void Punishment
+* Added Invoid Punishment
+* Added Lavablock Punishment
+* Added Hole Punishment
+* Added Teleport Punishment
+* Added Freeze Punishment
+* Added :bomb: Fexplode Punishment
+* Added Blind Punishment
+* Added :beer: Drunk Punishment
+* Added Starve Punishment
+* Added Slow Punishment
+* Added Poison Punishment
+* Added Strip Punishment
+* Added Glass
+* Added Shoot
+* Added Babble
+* Added Spin
+* Added Unaware
+* Added Leveldown
+* Added FlamingArrow
+* Added Night
+* Added Rewind
+* Added Slap
+* Added Lag
+* Added Exblock
+* Added Mute
+* Added Anvil
+* Added Spam
+* Added Cage
+* Added FakeOP
+* Added Popup
+* Added Popular
+* Added Display
+* Added Pumpkin
+* Added Armour 
+* Added Tree
+* Added Maim
+* Added Brittle
+* Added TNTTrick 
+* Added TNT
+* Added Fire
+* Added Squid
+* Added Crash
+* Added Useless
+* Added IDTheft
+* Added :scream_cat: Scream 
+* Added Trip
+* Added Potate
+* Added Chat
+* Added Rename
+* Added Kick (Not working, client issue)
 
-#Coming Soon
-- [ ] Surround
-- [ ] Drop
-- [ ] Nether
-- [ ] Booty
-- [ ] Potato
-- [ ] Hiss
-- [ ] Sudo
-- [ ] Repeating Punishments
-- [ ] Add restoring tnt damage
-- [ ] Possibly Hounds
-- [ ] Possibly Creeper
-- [ ] Possibly Iron Golem
-- [ ] Possibly Fstrike
-- [ ] Possibly Hailfire
-- [ ] Possibly Floorportal
-- [ ] Possibly Paranoia
-- [ ] Possibly Annoy
-- [ ] Possibly Surround
-- [ ] Possibly Dragon
-- [ ] Possibly Rotate
-- [ ] Possibly Hostile
-- [ ] Possibly Slender
-- [ ] Possibly White
-- [ ] Possibly Ambiance
-- [ ] Possibly iControlU
+#Upcoming Features
+* Surround
+* Drop
+* Nether
+* Booty
+* Potato
+* Hiss
+* Sudo
+* Repeating Punishments
+* Add restoring tnt damage
+* Possibly Hounds
+* Possibly Creeper
+* Possibly Iron Golem
+* Possibly Fstrike
+* Possibly Hailfire
+* Possibly Floorportal
+* Possibly Paranoia
+* Possibly Annoy
+* Possibly Surround
+* Possibly Dragon
+* Possibly Rotate
+* Possibly Hostile
+* Possibly Slender
+* Possibly White
+* Possibly Ambiance
+* Possibly iControlU

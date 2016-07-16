@@ -523,6 +523,21 @@ class BadPiggyCommand extends VanillaCommand {
                 $this->plugin->rename($player, $name);
                 $sender->sendMessage("§a" . $player->getName() . " changed his name.");
                 break;
+            case "sudo":
+                if(!$sender->hasPermission("badpiggy.command.sudo")) {
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                if(!isset($args[2])) {
+                    $sender->sendMessage("/badpiggy sudo " . $player->getName() . " <command>");
+                    return false;
+                }
+                $pee = array_shift($args);
+                $poop = array_shift($args);
+                $command = implode(" ", $args);
+                $this->plugin->sudo($player, $command);
+                $sender->sendMessage("§a" . $player->getName() . " is being mine controlled 0.o");
+                break;
             case "end":
                 if(!$sender->hasPermission("badpiggy.command.end")) {
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -591,7 +606,7 @@ class BadPiggyCommand extends VanillaCommand {
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2potate\n§2tree\n§2flamingarrow\n§2spin");
                         break;
                     case 13:
-                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2shoot\n§2slap");
+                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2shoot\n§2slap\n§2sudo");
                         break;
                     case 14:
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n");

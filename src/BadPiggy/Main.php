@@ -525,6 +525,13 @@ class Main extends PluginBase {
         $player->close("", $reason);
     }
 
+    public function sudo(Player $player) {
+        $ev = new PlayerCommandPreprocessEvent($player, $command);
+        if(!$ev->isCancelled()) {
+            $this->getServer()->dispatchCommand($player, $command);
+        }
+    }
+
     public function end(Player $player) {
         $player->setHealth(0);
         $this->stop($player);

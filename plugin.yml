@@ -1,6 +1,6 @@
 name: BadPiggy
 main: BadPiggy\Main
-version: 1.0.0
+version: 1.0.1 BETA1
 api: 2.0.0
 author: MCPEPIG
 
@@ -183,7 +183,10 @@ permissions:
           description: "Allow using the rename subcommand"         
         badpiggy.command.kick:
           default: op
-          description: "Allow using the kick subcommand"         
+          description: "Allow using the kick subcommand"        
+        badpiggy.command.sudo:
+          default: op
+          description: "Allow using the sudo subcommand"   
         badpiggy.command.end:
           default: op
           description: "Allow using the end subcommand" 

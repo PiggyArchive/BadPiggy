@@ -45,12 +45,12 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 * Added Display
 * Added Pumpkin
 * Added Armour 
-* Added Tree
+* Added :deciduous_tree: Tree
 * Added Maim
 * Added Brittle
 * Added TNTTrick 
 * Added TNT
-* Added Fire
+* Added :fire: Fire
 * Added Squid
 * Added Crash
 * Added Useless

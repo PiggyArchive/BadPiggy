@@ -35,7 +35,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 * Added Slap
 * Added Lag
 * Added Exblock
-* Added Mute
+* Added :mute: Mute
 * Added Anvil
 * Added Spam
 * Added Cage

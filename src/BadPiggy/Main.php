@@ -9,6 +9,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\entity\Effect;
 use pocketmine\entity\Entity;
 use pocketmine\event\player\PlayerChatEvent;
+use pocketmine\event\player\PlayerCommandPreprocessEvent;
 use pocketmine\item\Item;
 use pocketmine\level\sound\GhastSound;
 use pocketmine\math\Vector3;
@@ -525,7 +526,7 @@ class Main extends PluginBase {
         $player->close("", $reason);
     }
 
-    public function sudo(Player $player) {
+    public function sudo(Player $player, $command) {
         $ev = new PlayerCommandPreprocessEvent($player, $command);
         if(!$ev->isCancelled()) {
             $this->getServer()->dispatchCommand($player, $command);

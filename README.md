@@ -4,6 +4,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 #Changelog
 ###v1.0.1
 * Added Sudo Punishment
+
 ###v1.0.0
 * Added Fall Punishment
 * Added :bomb: Explode Punishment 

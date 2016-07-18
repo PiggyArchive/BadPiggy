@@ -3,7 +3,10 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 
 #Changelog
 ###v1.0.1
+* Added Surround Punishment
 * Added Sudo Punishment
+* Player can be the first or second parameter in /badpiggy now
+* Changed default teleport radius
 
 ###v1.0.0
 * Added Fall Punishment

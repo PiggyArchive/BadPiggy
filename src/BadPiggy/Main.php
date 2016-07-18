@@ -282,6 +282,14 @@ class Main extends PluginBase {
         return false;
     }
 
+    public function surround(Player $player) {
+        foreach($player->getLevel()->getEntities() as $entity) {
+            if($player->distance($entity) <= $this->getConfig()->get("surround-radius")) {
+                $entity->teleport($player);
+            }
+        }
+    }
+
     public function flamingarrow(Player $player) {
         $chunk = $player->getLevel()->getChunk($player->x >> 4, $player->z >> 4);
         $nbt = new CompoundTag("", ["Pos" => new ListTag("Pos", [new DoubleTag("", floor($player->x) + 0.5), new DoubleTag("", floor($player->y) + 10), new DoubleTag("", floor($player->z) + 0.5)]), "Motion" => new ListTag("Motion", [new DoubleTag("", 0), new DoubleTag("", 0), new DoubleTag("", 0)]), "Rotation" => new ListTag("Rotation", [new FloatTag("", lcg_value() * 360), new FloatTag("", 0)]), ]);

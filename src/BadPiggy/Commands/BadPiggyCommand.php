@@ -21,19 +21,26 @@ class BadPiggyCommand extends VanillaCommand {
             return false;
         }
         $player = null;
+        $punishment = null;
         if($args[0] !== "list" && $args[0] !== "restore") {
             if(isset($args[1])) {
-                $player = $this->plugin->getServer()->getPlayer($args[1]);
+                $player = $this->plugin->getServer()->getPlayer($args[0]);
                 if(!$player instanceof Player) {
-                    $sender->sendMessage("§cInvalid player.");
-                    return false;
+                    $player = $this->plugin->getServer()->getPlayer($args[1]);
+                    if(!$player instanceof Player) {
+                        $sender->sendMessage("§cInvalid player.");
+                        return false;
+                    }
+                    $punishment = $args[0];
+                } else {
+                    $punishment = $args[1];
                 }
             } else {
                 $sender->sendMessage("/badpiggy <punishment> <player>");
                 return false;
             }
         }
-        switch(strtolower($args[0])) {
+        switch(strtolower($punishment)) {
             case "fall":
                 if(!$sender->hasPermission("badpiggy.command.fall")) {
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -253,6 +260,14 @@ class BadPiggyCommand extends VanillaCommand {
                     return false;
                 }
                 $sender->sendMessage("§a" . $player->getName() . " has no enchanting rights!");
+                break;
+            case "surround":
+                if(!$sender->hasPermission("badpiggy.command.surround")) {
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->surround($player);
+                $sender->sendMessage("§a" . $player->getName() . " is surrounded by cops!");
                 break;
             case "flamingarrow":
                 if(!$sender->hasPermission("badpiggy.command.flamingarrow")) {
@@ -606,7 +621,7 @@ class BadPiggyCommand extends VanillaCommand {
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2potate\n§2tree\n§2flamingarrow\n§2spin");
                         break;
                     case 13:
-                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2shoot\n§2slap\n§2sudo");
+                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2shoot\n§2slap\n§2sudo\n§2surround");
                         break;
                     case 14:
                         $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n");

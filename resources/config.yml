@@ -17,5 +17,6 @@
 
 #Max radius for teleport punishment
 teleport-radius: 500
+#Max radius for surround punishment
 surround-radius: 50
                                                        

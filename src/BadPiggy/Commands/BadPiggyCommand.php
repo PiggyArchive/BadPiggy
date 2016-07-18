@@ -39,6 +39,8 @@ class BadPiggyCommand extends VanillaCommand {
                 $sender->sendMessage("/badpiggy <punishment> <player>");
                 return false;
             }
+        }else{
+            $punishment = $args[0];
         }
         switch(strtolower($punishment)) {
             case "fall":

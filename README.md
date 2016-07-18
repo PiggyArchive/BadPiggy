@@ -69,7 +69,6 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 * Added Kick (Not working, client issue)
 
 #Upcoming Features
-* Surround
 * Drop
 * Nether
 * Booty

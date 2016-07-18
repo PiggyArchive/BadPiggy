@@ -1,6 +1,6 @@
 name: BadPiggy
 main: BadPiggy\Main
-version: 1.0.1 BETA1
+version: 1.0.1 BETA2
 api: 2.0.0
 author: MCPEPIG
 
@@ -91,6 +91,9 @@ permissions:
         badpiggy.command.leveldown:
           default: op
           description: "Allow using the leveldown subcommand"
+        badpiggy.command.surround:
+          default: op
+          description: "Allow using the surround subcommand"
         badpiggy.command.flamingarrow:
           default: op
           description: "Allow using the flamingarrow subcommand"

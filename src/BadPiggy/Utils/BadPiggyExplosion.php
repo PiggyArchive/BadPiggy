@@ -1,5 +1,5 @@
 <?php
-namespace BadPiggy;
+namespace BadPiggy\Utils;
 
 use pocketmine\block\Block;
 use pocketmine\entity\Entity;
@@ -9,6 +9,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityExplodeEvent;
 use pocketmine\event\block\BlockUpdateEvent;
 use pocketmine\item\Item;
+use pocketmine\level\Explosion;
 use pocketmine\level\Level;
 use pocketmine\level\Position;
 use pocketmine\math\AxisAlignedBB;
@@ -23,14 +24,7 @@ use pocketmine\network\protocol\ExplodePacket;
 
 use pocketmine\utils\Random;
 
-class BadPiggyExplosion {
-    private $rays = 16; //Rays
-    public $level;
-    public $source;
-    public $size;
-    public $affectedBlocks = [];
-    public $stepLen = 0.3;
-    private $what;
+class BadPiggyExplosion extends Explosion {
     private $plugin;
 
     public function __construct(Position $center, $size, $what = null, $plugin) {
@@ -39,57 +33,6 @@ class BadPiggyExplosion {
         $this->size = max($size, 0);
         $this->what = $what;
         $this->plugin = $plugin;
-    }
-
-    public function explodeA() {
-        if($this->size < 0.1) {
-            return false;
-        }
-
-        $vector = new Vector3(0, 0, 0);
-        $vBlock = new Vector3(0, 0, 0);
-
-        $mRays = intval($this->rays - 1);
-        for($i = 0; $i < $this->rays; ++$i) {
-            for($j = 0; $j < $this->rays; ++$j) {
-                for($k = 0; $k < $this->rays; ++$k) {
-                    if($i === 0 or $i === $mRays or $j === 0 or $j === $mRays or $k === 0 or $k === $mRays) {
-                        $vector->setComponents($i / $mRays * 2 - 1, $j / $mRays * 2 - 1, $k / $mRays * 2 - 1);
-                        $vector->setComponents(($vector->x / ($len = $vector->length())) * $this->stepLen, ($vector->y / $len) * $this->stepLen, ($vector->z / $len) * $this->stepLen);
-                        $pointerX = $this->source->x;
-                        $pointerY = $this->source->y;
-                        $pointerZ = $this->source->z;
-
-                        for($blastForce = $this->size * (mt_rand(700, 1300) / 1000); $blastForce > 0; $blastForce -= $this->stepLen * 0.75) {
-                            $x = (int)$pointerX;
-                            $y = (int)$pointerY;
-                            $z = (int)$pointerZ;
-                            $vBlock->x = $pointerX >= $x ? $x : $x - 1;
-                            $vBlock->y = $pointerY >= $y ? $y : $y - 1;
-                            $vBlock->z = $pointerZ >= $z ? $z : $z - 1;
-                            if($vBlock->y < 0 or $vBlock->y > 127) {
-                                break;
-                            }
-                            $block = $this->level->getBlock($vBlock);
-
-                            if($block->getId() !== 0) {
-                                $blastForce -= ($block->getResistance() / 5 + 0.3) * $this->stepLen;
-                                if($blastForce > 0) {
-                                    if(!isset($this->affectedBlocks[$index = Level::blockHash($block->x, $block->y, $block->z)])) {
-                                        $this->affectedBlocks[$index] = $block;
-                                    }
-                                }
-                            }
-                            $pointerX += $vector->x;
-                            $pointerY += $vector->y;
-                            $pointerZ += $vector->z;
-                        }
-                    }
-                }
-            }
-        }
-
-        return true;
     }
 
     public function explodeB() {
@@ -155,10 +98,6 @@ class BadPiggyExplosion {
                 $mot = (new Random())->nextSignedFloat() * M_PI * 2;
                 $tnt = Entity::createEntity("PrimedTNT", $this->level->getChunk($block->x >> 4, $block->z >> 4), new CompoundTag("", ["Pos" => new ListTag("Pos", [new DoubleTag("", $block->x + 0.5), new DoubleTag("", $block->y), new DoubleTag("", $block->z + 0.5)]), "Motion" => new ListTag("Motion", [new DoubleTag("", -sin($mot) * 0.02), new DoubleTag("", 0.2), new DoubleTag("", -cos($mot) * 0.02)]), "Rotation" => new ListTag("Rotation", [new FloatTag("", 0), new FloatTag("", 0)]), "Fuse" => new ByteTag("Fuse", mt_rand(10, 30))]));
                 $tnt->spawnToAll();
-            } elseif(mt_rand(0, 100) < $yield) {
-                foreach($block->getDrops($air) as $drop) {
-                    $this->level->dropItem($block->add(0.5, 0.5, 0.5), Item::get(... $drop));
-                }
             }
 
             $this->level->setBlockIdAt($block->x, $block->y, $block->z, 0);

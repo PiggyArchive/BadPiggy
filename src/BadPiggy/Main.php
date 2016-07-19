@@ -2,7 +2,11 @@
 namespace BadPiggy;
 
 use BadPiggy\Commands\BadPiggyCommand;
+use BadPiggy\Entities\PrimedTNT;
 use BadPiggy\Sounds\TNTPrimeSound;
+use BadPiggy\Tasks\BadPiggyTick;
+use BadPiggy\Tasks\LagTick;
+use BadPiggy\Utils\BadPiggyExplosion;
 
 use pocketmine\block\Block;
 use pocketmine\command\CommandSender;
@@ -55,6 +59,7 @@ class Main extends PluginBase {
 
     public function onEnable() {
         $this->saveDefaultConfig();
+        Entity::registerEntity(PrimedTNT::class, true);
         $this->getServer()->getCommandMap()->register('badpiggy', new BadPiggyCommand('badpiggy', $this));
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new BadPiggyTick($this), 1);
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new LagTick($this), 5);

@@ -5,6 +5,7 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 ###v1.0.1
 * Added Surround Punishment
 * Added Sudo Punishment
+* Added restoring tnt damage
 * Player can be the first or second parameter in /badpiggy now
 * Changed default teleport radius
 
@@ -76,7 +77,6 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 * Hiss
 * Disguises
 * Repeating Punishments
-* Add restoring tnt damage
 * Possibly Hounds
 * Possibly Creeper
 * Possibly Iron Golem

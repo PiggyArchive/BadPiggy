@@ -1,6 +1,7 @@
 <?php
 namespace BadPiggy;
 
+use BadPiggy\Utils\BadPiggyExplosion;
 use pocketmine\block\Block;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\entity\EntityDamageEvent;

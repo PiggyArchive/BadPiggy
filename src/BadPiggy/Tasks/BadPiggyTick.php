@@ -1,5 +1,5 @@
 <?php
-namespace BadPiggy;
+namespace BadPiggy\Tasks;
 
 use pocketmine\item\Item;
 use pocketmine\network\protocol\SetTimePacket;

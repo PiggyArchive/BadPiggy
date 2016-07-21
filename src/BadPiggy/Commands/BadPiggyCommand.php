@@ -599,34 +599,34 @@ class BadPiggyCommand extends VanillaCommand {
                         $sender->sendMessage("--- Punishments Page 4 of " . $maxpage . " ---\n§2popular\n§2pumpkin\n§2armour\n§2maim");
                         break;
                     case 5:
-                        $sender->sendMessage("--- Punishments Page 5 of " . $maxpage . " ---\n§2scream\n§2strip\n§afreeze\n§amute");
+                        $sender->sendMessage("--- Punishments Page 5 of " . $maxpage . " ---\n§2scream\n§2strip\n§2freeze\n§2mute");
                         break;
                     case 6:
-                        $sender->sendMessage("--- Punishments Page 6 of " . $maxpage . " ---\n§2unaware\n§aweb\n§auseless\nhole");
+                        $sender->sendMessage("--- Punishments Page 6 of " . $maxpage . " ---\n§2unaware\n§2web\n§2useless\n§2hole");
                         break;
                     case 7:
-                        $sender->sendMessage("--- Punishments Page 7 of " . $maxpage . " ---\n§2blind\n§adrunk\n§starve\nslow");
+                        $sender->sendMessage("--- Punishments Page 7 of " . $maxpage . " ---\n§2blind\n§2drunk\n§2starve\n§2slow");
                         break;
                     case 8:
-                        $sender->sendMessage("--- Punishments Page 8 of " . $maxpage . " ---\n§2poison\n§afakeop\nidtheft\nnight");
+                        $sender->sendMessage("--- Punishments Page 8 of " . $maxpage . " ---\n§2poison\n§2fakeop\n§2idtheft\n§2night");
                         break;
                     case 9:
-                        $sender->sendMessage("--- Punishments Page 9 of " . $maxpage . " ---\n§2rewind\n§asquid\nstop\nkick");
+                        $sender->sendMessage("--- Punishments Page 9 of " . $maxpage . " ---\n§2rewind\n§2squid\n§2stop\n§2kick");
                         break;
                     case 10:
-                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2crash\n§2popup\ntrip\n§2anvil");
+                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2crash\n§2popup\n§2trip\n§2anvil");
                         break;
                     case 11:
-                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2fire\n§2teleport\n§2display\n§2cage");
+                        $sender->sendMessage("--- Punishments Page 11 of " . $maxpage . " ---\n§2fire\n§2teleport\n§2display\n§2cage");
                         break;
                     case 12:
-                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2potate\n§2tree\n§2flamingarrow\n§2spin");
+                        $sender->sendMessage("--- Punishments Page 12 of " . $maxpage . " ---\n§2potate\n§2tree\n§2flamingarrow\n§2spin");
                         break;
                     case 13:
-                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n§2shoot\n§2slap\n§2sudo\n§2surround");
+                        $sender->sendMessage("--- Punishments Page 13 of " . $maxpage . " ---\n§2shoot\n§2slap\n§2sudo\n§2surround");
                         break;
                     case 14:
-                        $sender->sendMessage("--- Punishments Page 10 of " . $maxpage . " ---\n");
+                        $sender->sendMessage("--- Punishments Page 14 of " . $maxpage . " ---\n");
                         break;
                 }
                 break;

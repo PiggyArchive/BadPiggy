@@ -415,7 +415,7 @@ class Main extends PluginBase {
         }
         array_push($this->display, $player->add(0, 3));
         $player->getLevel()->setBlock($player->add(0, 3), Block::get(Block::GLASS));
-        array_push($this->display, $player->add(0, 1));
+        array_push($this->display, $player);
         $player->getLevel()->setBlock($player, Block::get(Block::GLASS));
         $player->teleport($player->floor()->add(0.5, 1, 0.5), $player->yaw, $player->pitch);
     }

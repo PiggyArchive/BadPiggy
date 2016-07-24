@@ -127,6 +127,9 @@ permissions:
         badpiggy.command.popup:
           default: op
           description: "Allow using the popup subcommand" 
+        badpiggy.command.potato:
+          default: op
+          description: "Allow using the potato subcommand" 
         badpiggy.command.popular:
           default: op
           description: "Allow using the popular subcommand"   

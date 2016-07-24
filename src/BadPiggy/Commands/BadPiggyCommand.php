@@ -359,6 +359,14 @@ class BadPiggyCommand extends VanillaCommand {
                 $this->plugin->popup($player);
                 $sender->sendMessage("§a" . $player->getName() . " has problems carrying all that trash.");
                 break;
+            case "potato":
+                if(!$sender->hasPermission("badpiggy.command.potato")) {
+                    $sender->sendMessage("§cYou do not have permission to use this subcommand.");
+                    return false;
+                }
+                $this->plugin->potato($player);
+                $sender->sendMessage("§a" . $player->getName() . " is a potato :0");
+                break;
             case "popular":
                 if(!$sender->hasPermission("badpiggy.command.popular")) {
                     $sender->sendMessage("§cYou do not have permission to use this subcommand.");
@@ -580,7 +588,68 @@ class BadPiggyCommand extends VanillaCommand {
                 if(!is_numeric($pagenumber) || $pagenumber < 1) {
                     $pagenumber = 1;
                 }
-                $cmds = array("anvil", "armour", "babble", "blind", "brittle", "cage", "chat", "crash", "drunk", "end", "exblock", "explode", "fakeop", "fall", "fexplode", "fire", "freeze", "flamingarrow", "idtheft", "infall", "glass", "hole", "invoid", "kick", "lag", "lavablock", 'leveldown', "list", "maim", "mute", "night", "poison", "popular", "popup", "potate", "pumpkin", "rename", "restore", "rewind", "scream", "shoot", "slap", "slow", "spam", "spin", "squid", "starve", "strike", "strip", "sudo", "surround", "teleport", "tnt", "tnttrick", "tree", "trip", "unaware", "useless", "void", "web");
+                $cmds = array(
+                    "anvil",
+                    "armour",
+                    "babble",
+                    "blind",
+                    "brittle",
+                    "cage",
+                    "chat",
+                    "crash",
+                    "drunk",
+                    "end",
+                    "exblock",
+                    "explode",
+                    "fakeop",
+                    "fall",
+                    "fexplode",
+                    "fire",
+                    "freeze",
+                    "flamingarrow",
+                    "idtheft",
+                    "infall",
+                    "glass",
+                    "hole",
+                    "invoid",
+                    "kick",
+                    "lag",
+                    "lavablock",
+                    'leveldown',
+                    "list",
+                    "maim",
+                    "mute",
+                    "night",
+                    "poison",
+                    "popular",
+                    "popup",
+                    "potate",
+                    "potato",
+                    "pumpkin",
+                    "rename",
+                    "restore",
+                    "rewind",
+                    "scream",
+                    "shoot",
+                    "slap",
+                    "slow",
+                    "spam",
+                    "spin",
+                    "squid",
+                    "starve",
+                    "strike",
+                    "strip",
+                    "sudo",
+                    "surround",
+                    "teleport",
+                    "tnt",
+                    "tnttrick",
+                    "tree",
+                    "trip",
+                    "unaware",
+                    "useless",
+                    "void",
+                    "web");
                 if($sender instanceof Player) {
                     $pages = array_chunk($cmds, 4);
                     $maxpage = count($pages);

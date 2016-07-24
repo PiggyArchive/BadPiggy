@@ -51,6 +51,7 @@ class Main extends PluginBase {
     public $unrewind;
     public $mute;
     public $spam;
+    public $potato;
     public $maim;
     public $brittle;
     public $idtheft;
@@ -388,6 +389,24 @@ class Main extends PluginBase {
         $player->getLevel()->dropItem($player->add(0, 1.3, 0), $item, $motion, 40);
     }
 
+    public function potato(Player $player) {
+        $this->potato[strtolower($player->getName())] = true;
+        $this->unaware($player);
+        $effect = Effect::getEffect(15);
+        $effect->setDuration(999999);
+        $effect->setAmplifier(99);
+        $effect->setVisible(false);
+        $player->addEffect($effect);
+        $effect = Effect::getEffect(16);
+        $effect->setDuration(999999);
+        $effect->setAmplifier(99);
+        $effect->setVisible(false);
+        $player->addEffect($effect);
+        $player->teleport($player->add(999999, 0, 999999)); //Prevent other players from crashing
+        $player->respawnToAll();
+        $player->teleport($player->subtract(999999, 0, 999999));
+    }
+
     public function popular(Player $player) {
         foreach($this->getServer()->getOnlinePlayers() as $p) {
             $p->teleport($player);
@@ -609,6 +628,13 @@ class Main extends PluginBase {
         }
         if(isset($this->spam[strtolower($player->getName())])) {
             unset($this->spam[strtolower($player->getName())]);
+        }
+        if(isset($this->potato[strtolower($player->getName())])) {
+            $player->removeEffect(15);
+            $player->removeEffect(16);
+            $player->despawnToAll();
+            unset($this->potato[strtolower($player->getName())]);
+            $player->spawnToAll();
         }
         if(isset($this->maim[strtolower($player->getName())])) {
             unset($this->maim[strtolower($player->getName())]);

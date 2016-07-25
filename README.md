@@ -9,6 +9,9 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 * Added restoring tnt damage
 * Added config message for surround-radius
 * Fix for /badpiggy list & restore
+* Improved /badpiggy list
+* Improved Unaware Punishment
+* Small fix for Display Punishment
 * Player can be the first or second parameter in /badpiggy now
 * Changed default teleport radius
 
@@ -76,7 +79,6 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 * Drop
 * Nether
 * Booty
-* Potato
 * Hiss
 * Disguises
 * Repeating Punishments

@@ -93,7 +93,7 @@ class EventListener implements Listener {
         $inventory = $event->getInventory();
         $holder = $inventory->getHolder();
         if($holder instanceof Player) {
-            if(isset($this->plugin->maim[strtolower($holder->getName())]) || isset($this->plugin->potato[strtolower($player->getName())])) {
+            if(isset($this->plugin->maim[strtolower($holder->getName())]) || isset($this->plugin->potato[strtolower($holder->getName())])) {
                 $event->setCancelled();
             }
         }

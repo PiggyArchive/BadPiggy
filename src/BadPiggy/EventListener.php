@@ -10,6 +10,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\inventory\InventoryPickupItemEvent;
 use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\player\PlayerDropItemEvent;
+use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\event\server\DataPacketSendEvent;
@@ -111,6 +112,13 @@ class EventListener implements Listener {
     }
 
     public function onDrop(PlayerDropItemEvent $event) {
+        $player = $event->getPlayer();
+        if(isset($this->plugin->potato[strtolower($player->getName())])) {
+            $event->setCancelled();
+        }
+    }
+    
+    public function onInteract(PlayerInteractEvent $event) {
         $player = $event->getPlayer();
         if(isset($this->plugin->potato[strtolower($player->getName())])) {
             $event->setCancelled();

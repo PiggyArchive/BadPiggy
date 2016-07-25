@@ -632,7 +632,7 @@ class Main extends PluginBase {
         if(isset($this->potato[strtolower($player->getName())])) {
             $player->removeEffect(15);
             $player->removeEffect(16);
-            $player->despawnToAll();
+            $player->despawnFromAll();
             unset($this->potato[strtolower($player->getName())]);
             $player->spawnToAll();
         }

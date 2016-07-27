@@ -90,7 +90,6 @@ Be a bad piggy and troll your players! Based off of [Punishmental](http://dev.bu
 * Possibly Floorportal
 * Possibly Paranoia
 * Possibly Annoy
-* Possibly Surround
 * Possibly Dragon
 * Possibly Rotate
 * Possibly Hostile
